@@ -1,5 +1,8 @@
-import { Chicken } from './chicken';
-describe('Chicken', () => {
+require("babel-register");
+var Chicken = require("../chicken.js")
+
+describe("Chicken", function() {
+
   var chicken;
 
   beforeEach(function() {
@@ -52,4 +55,6 @@ describe('Chicken', () => {
     expect(chicken.speed).toBe(1);
     expect(chicken.scare).toBe(3);
   });
+
+
 });
