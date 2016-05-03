@@ -4,6 +4,7 @@ export class Chicken {
   maxScare:number;
   maxSpeed:number;
   scare: number;
+  id: number;
   
   constructor(options){
     this.name = options.name;

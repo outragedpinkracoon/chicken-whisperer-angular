@@ -1,12 +1,12 @@
 <h1>{{title}}</h1>
 <h2>My Chickens</h2>
-<ul class="heroes">
+<ul class="chickens">
     <li *ngFor="#chicken of chickens" [class.selected]="chicken === selectedChicken" (click)="onSelect(chicken)">
         <span class="badge">{{chicken.id}}</span> {{chicken.name}}
     </li>
 </ul>
 <div *ngIf="selectedChicken">
     <h2>
-        {{selectedChicken.name | uppercase}} is my chicken
+        {{selectedChicken.name }} is my chicken
     </h2>
 </div>
