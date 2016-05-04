@@ -1,0 +1,1 @@
+{"version":3,"file":"diceCollection.js","sourceRoot":"","sources":["../../diceCollection.ts"],"names":[],"mappings":";;;;;;;YAAA;gBAGE,wBAAY,oBAAwB;oBAAxB,oCAAwB,GAAxB,wBAAwB;oBAClC,IAAI,CAAC,YAAY,GAAG,oBAAoB,CAAA;oBACxC,IAAI,CAAC,WAAW,GAAG,CAAC,CAAA;gBACtB,CAAC;gBAED,sCAAa,GAAb;oBACE,IAAI,CAAC,WAAW,EAAE,CAAC;gBACrB,CAAC;gBAEH,qBAAC;YAAD,CAAC,AAZD,IAYC;YAZD,2CAYC,CAAA"}
