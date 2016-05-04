@@ -23,7 +23,10 @@ export class ChickensComponent implements OnInit {
   ngOnInit() {
     this.getHeroes();
   }
-  onSelect(chicken: Chicken) { this.selectedChicken = chicken; }
+  onSelect(chicken: Chicken) { 
+    chicken.reduceScare();
+    this.selectedChicken = chicken; 
+  }
 }
 
 

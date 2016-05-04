@@ -2,11 +2,13 @@
 <h2>My Chickens</h2>
 <ul class="chickens">
     <li *ngFor="#chicken of chickenPen?.chickens" [class.selected]="chicken === selectedChicken" (click)="onSelect(chicken)">
-        <span class="badge">{{chicken.id}}</span> {{chicken.name}}
+        <span class="badge">{{chicken.name}}</span> 
+        <span> Scare: {{chicken.scare}} </span>
+        <span> Speed: {{chicken.speed}} </span>
     </li>
 </ul>
-<div *ngIf="selectedChicken">
+<!--<div *ngIf="selectedChicken">
     <h2>
         {{selectedChicken.name }} is my chicken
     </h2>
-</div>
+</div>-->

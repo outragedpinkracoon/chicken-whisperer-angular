@@ -35,7 +35,10 @@ System.register(['angular2/core', './models/chickenPen', './services/chicken.ser
                 ChickensComponent.prototype.ngOnInit = function () {
                     this.getHeroes();
                 };
-                ChickensComponent.prototype.onSelect = function (chicken) { this.selectedChicken = chicken; };
+                ChickensComponent.prototype.onSelect = function (chicken) {
+                    chicken.reduceScare();
+                    this.selectedChicken = chicken;
+                };
                 ChickensComponent = __decorate([
                     core_1.Component({
                         selector: 'my-chickens',
