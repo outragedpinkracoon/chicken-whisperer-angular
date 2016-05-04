@@ -12,6 +12,7 @@ System.register([], function(exports_1, context_1) {
                     this.maxScare = options.maxScare;
                     this.maxSpeed = options.speed;
                     this.scare = options.maxScare;
+                    this.id = options.id;
                 }
                 Chicken.prototype.reduceScare = function (value) {
                     if (value === void 0) { value = 1; }

@@ -26,7 +26,7 @@ System.register(['angular2/core', './chickens/services/chicken.service', './chic
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
-                    this.title = 'Tour of Heroes';
+                    this.title = 'My chickens';
                 }
                 AppComponent = __decorate([
                     core_1.Component({

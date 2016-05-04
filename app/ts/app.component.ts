@@ -13,5 +13,5 @@ import { ChickensComponent } from './chickens/chickens.component';
 })
 
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'My chickens';
 }

@@ -12,6 +12,7 @@ export class Chicken {
     this.maxScare = options.maxScare;
     this.maxSpeed = options.speed;
     this.scare = options.maxScare;
+    this.id = options.id;
   }
 
   reduceScare(value = 1){
