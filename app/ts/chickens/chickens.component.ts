@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {Chicken} from './models/chicken';
+import {ChickenPen} from './models/chickenPen';
 import {OnInit} from 'angular2/core';
 import { Router } from 'angular2/router';
 import { ChickenService } from './services/chicken.service';
@@ -10,14 +11,14 @@ import { ChickenService } from './services/chicken.service';
     styleUrls:  ['app/chickens/chickens.component.css']
 })
 export class ChickensComponent implements OnInit {
-  chickens: Chicken[];
+  chickenPen: ChickenPen;
   selectedChicken: Chicken;
   
   constructor(
     private _chickenService: ChickenService) { }
     
   getHeroes() {
-    this._chickenService.getChickens().then(chickens => this.chickens = chickens);
+    this._chickenService.getChickens().then(chickens => this.chickenPen = new ChickenPen(chickens));
   }
   ngOnInit() {
     this.getHeroes();

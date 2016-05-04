@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 <h2>My Chickens</h2>
 <ul class="chickens">
-    <li *ngFor="#chicken of chickens" [class.selected]="chicken === selectedChicken" (click)="onSelect(chicken)">
+    <li *ngFor="#chicken of chickenPen?.chickens" [class.selected]="chicken === selectedChicken" (click)="onSelect(chicken)">
         <span class="badge">{{chicken.id}}</span> {{chicken.name}}
     </li>
 </ul>
