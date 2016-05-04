@@ -62,7 +62,7 @@ describe("Approach", function(){
   });
 
   it("gains a capture dice on even roll", function(){
-    approach.die = fakeDie;
+    approach.strategy.die = fakeDie;
     approach.step({});
     expect(approach.captureDice).toBe(1);
   });

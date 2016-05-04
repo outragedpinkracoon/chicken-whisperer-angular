@@ -1,4 +1,3 @@
-import {DiceCollection} from './diceCollection';
 import {Die} from './die';
 import {ChickenPen} from './chickenPen';
 import {IApproachStrategy} from './iapproachStrategy';

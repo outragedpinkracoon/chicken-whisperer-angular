@@ -68,7 +68,7 @@ System.register(["../chicken", "../chickenPen", "../approach", "../die", "../whi
                     expect(approach.captureDice).toBe(0);
                 });
                 it("gains a capture dice on even roll", function () {
-                    approach.die = fakeDie;
+                    approach.strategy.die = fakeDie;
                     approach.step({});
                     expect(approach.captureDice).toBe(1);
                 });
