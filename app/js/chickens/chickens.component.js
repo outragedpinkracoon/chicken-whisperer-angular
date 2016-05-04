@@ -1,4 +1,4 @@
-System.register(['angular2/core', './services/chicken.service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../game/chickenPen', './services/chicken.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core', './services/chicken.service'], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chicken_service_1;
+    var core_1, chickenPen_1, chicken_service_1;
     var ChickensComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (chickenPen_1_1) {
+                chickenPen_1 = chickenPen_1_1;
             },
             function (chicken_service_1_1) {
                 chicken_service_1 = chicken_service_1_1;
@@ -27,7 +30,7 @@ System.register(['angular2/core', './services/chicken.service'], function(export
                 }
                 ChickensComponent.prototype.getHeroes = function () {
                     var _this = this;
-                    this._chickenService.getChickens().then(function (chickenPen) { return _this.chickenPen = chickenPen; });
+                    this._chickenService.getChickens().then(function (chickens) { return _this.chickenPen = new chickenPen_1.ChickenPen(chickens); });
                 };
                 ChickensComponent.prototype.ngOnInit = function () {
                     this.getHeroes();

@@ -18,7 +18,7 @@ export class ChickensComponent implements OnInit {
     private _chickenService: ChickenService) { }
     
   getHeroes() {
-    this._chickenService.getChickens().then(chickenPen => this.chickenPen = chickenPen);
+    this._chickenService.getChickens().then(chickens => this.chickenPen = new ChickenPen(chickens));
   }
   ngOnInit() {
     this.getHeroes();
