@@ -22,7 +22,6 @@ describe("Capture", function(){
     ]);
     
     var captureOptions = {
-      chickenPen: chickenPen, 
       die: new Die()
     }
     

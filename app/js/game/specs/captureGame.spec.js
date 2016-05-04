@@ -63,7 +63,6 @@ System.register(['../captureGame', '../player', '../chicken', '../chickenPen', '
                     };
                     var approach = new approach_1.Approach(approachOptions);
                     var captureOptions = {
-                        chickenPen: chickenPen,
                         die: new die_1.Die()
                     };
                     var capture = new capture_1.Capture(captureOptions);

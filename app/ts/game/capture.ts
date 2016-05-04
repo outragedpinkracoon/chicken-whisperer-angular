@@ -1,12 +1,9 @@
 import {Die} from './die';
-import {ChickenPen} from './chickenPen';
 
 export class Capture {
-  chickenPen: ChickenPen;
   die: Die;
   
   constructor(options) {
-    this.chickenPen = options.chickenPen;
     this.die = options.die;
   }
 

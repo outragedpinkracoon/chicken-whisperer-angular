@@ -34,7 +34,6 @@ System.register(['../capture', '../die', '../player', '../chickenPen', '../chick
                         new chicken_1.Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2 })
                     ]);
                     var captureOptions = {
-                        chickenPen: chickenPen,
                         die: new die_1.Die()
                     };
                     fakeDie = {

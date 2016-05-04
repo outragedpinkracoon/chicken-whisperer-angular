@@ -47,7 +47,6 @@ describe("Game", function() {
     var approach = new Approach(approachOptions);
 
     var captureOptions = {
-      chickenPen: chickenPen, 
       die: new Die()
     }
 

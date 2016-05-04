@@ -7,7 +7,6 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             Capture = (function () {
                 function Capture(options) {
-                    this.chickenPen = options.chickenPen;
                     this.die = options.die;
                 }
                 Capture.prototype.attempt = function (player, chicken, chickenPen, captureDice) {
