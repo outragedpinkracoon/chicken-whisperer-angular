@@ -1,8 +1,8 @@
-import {ApproachStrategy} from './approachStrategy';
+import {IApproachStrategy} from './iapproachStrategy';
 import {Die} from './die';
 import {WhispererChecker} from './whispererChecker';
 
-export class WhispererApproachStrategy {
+export class WhispererApproachStrategy implements IApproachStrategy {
 
   approachDice: number;
   die: Die;
