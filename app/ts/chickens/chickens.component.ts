@@ -1,14 +1,14 @@
 import {Component} from 'angular2/core';
-import {Chicken} from '../../game/chicken';
-import {ChickenPen} from '../../game/chickenPen';
+import {Chicken} from '../game/chicken';
+import {ChickenPen} from '../game/chickenPen';
 import {OnInit} from 'angular2/core';
 import { Router } from 'angular2/router';
 import { ChickenService } from './services/chicken.service';
 
 @Component({
     selector: 'my-chickens',
-    templateUrl: 'app/chickens/views/chickens.component.html',
-    styleUrls:  ['app/chickens/views/chickens.component.css']
+    templateUrl: 'app/chickens/chickens.component.html',
+    styleUrls:  ['app/chickens/chickens.component.css']
 })
 export class ChickensComponent implements OnInit {
   chickenPen: ChickenPen;

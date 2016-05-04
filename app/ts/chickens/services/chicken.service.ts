@@ -1,4 +1,4 @@
-import {CHICKENS} from '../data/mock-chickens';
+import {CHICKENS} from '../../game/mock-chickens';
 import {Injectable} from 'angular2/core';
 
 @Injectable()
