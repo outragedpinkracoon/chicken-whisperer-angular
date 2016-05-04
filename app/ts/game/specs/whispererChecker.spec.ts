@@ -1,5 +1,5 @@
-import {WhispererChecker} from './whispererChecker'
-import {Player} from './player'
+import {WhispererChecker} from '../whispererChecker'
+import {Player} from '../player'
 
 describe("Whisperer Checker", function(){
   

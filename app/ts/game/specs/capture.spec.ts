@@ -1,8 +1,8 @@
-import {Capture} from './capture';
-import {Die} from './die';
-import {Player} from './player';
-import {ChickenPen} from './chickenPen';
-import {Chicken} from './chicken';
+import {Capture} from '../capture';
+import {Die} from '../die';
+import {Player} from '../player';
+import {ChickenPen} from '../chickenPen';
+import {Chicken} from '../chicken';
 
 describe("Capture", function(){
 
@@ -20,6 +20,7 @@ describe("Capture", function(){
       new Chicken({ "id": 3, "name": "Jojo", "speed": 8, "maxScare": 3 }),
       new Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2 })
     ]);
+    
     var captureOptions = {
       chickenPen: chickenPen, 
       die: new Die()

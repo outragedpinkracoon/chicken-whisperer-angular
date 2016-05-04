@@ -1,13 +1,13 @@
 import {DiceCollection} from './diceCollection';
 import {Die} from './die';
 import {ChickenPen} from './chickenPen';
-import {ApproachStrategy} from './approachStrategy';
+import {IApproachStrategy} from './iapproachStrategy';
 
 export class Approach {
   chickenPen: ChickenPen;
   captureDice: number;
-  strategies: Array<ApproachStrategy>;
-  strategy: ApproachStrategy;
+  strategies: Array<IApproachStrategy>;
+  strategy: IApproachStrategy;
   
   constructor(options){
     this.chickenPen = options.chickenPen;

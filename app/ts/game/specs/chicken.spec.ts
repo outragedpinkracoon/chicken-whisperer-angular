@@ -1,4 +1,4 @@
-import { Chicken } from './chicken';
+import { Chicken } from '../chicken';
 describe('Chicken', () => {
   var chicken;
 

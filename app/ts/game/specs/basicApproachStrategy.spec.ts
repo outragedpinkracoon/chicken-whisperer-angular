@@ -1,6 +1,6 @@
-import {BasicApproachStrategy} from './basicApproachStrategy';
-import {WhispererChecker} from './whispererChecker';
-import {Die} from './die';
+import {BasicApproachStrategy} from '../basicApproachStrategy';
+import {WhispererChecker} from '../whispererChecker';
+import {Die} from '../die';
 
 describe("Basic Approach Strategy", function(){
 

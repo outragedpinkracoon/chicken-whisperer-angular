@@ -1,10 +1,10 @@
-import {Player} from "./player";
-import {Chicken} from "./chicken";
-import {ChickenPen} from "./chickenPen";
-import {Approach} from "./approach";
-import {Die} from "./die";
-import {WhispererChecker} from "./whispererChecker";
-import {BasicApproachStrategy} from "./basicApproachStrategy";
+import {Player} from "../player";
+import {Chicken} from "../chicken";
+import {ChickenPen} from "../chickenPen";
+import {Approach} from "../approach";
+import {Die} from "../die";
+import {WhispererChecker} from "../whispererChecker";
+import {BasicApproachStrategy} from "../basicApproachStrategy";
 
 describe("Approach", function(){
   var approach;
@@ -69,7 +69,7 @@ describe("Approach", function(){
 
   it("scares chickens on odd roll", function(){
     fakeDie.nums = [1,2];
-    approach.die = fakeDie;
+    approach.strategy.die = fakeDie;
     spyOn(approach.chickenPen, "scareChickens");
     
     approach.step({});

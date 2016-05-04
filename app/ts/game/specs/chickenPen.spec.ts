@@ -1,6 +1,6 @@
-import { CHICKENS } from './mock-chickens';
-import {ChickenPen} from './chickenPen'
-import {Chicken} from './chicken'
+import { CHICKENS } from '../mock-chickens';
+import {ChickenPen} from '../chickenPen'
+import {Chicken} from '../chicken'
 
 describe("Chicken Pen", function() {
   var chickenPen;

@@ -1,4 +1,4 @@
-import {Die} from './die'
+import {Die} from '../die'
 
 describe("Die", function(){
 

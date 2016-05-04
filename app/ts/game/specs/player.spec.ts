@@ -1,5 +1,5 @@
-import {Player}  from "./player"
-import {Chicken}  from "./chicken"
+import {Player}  from "../player"
+import {Chicken}  from "../chicken"
 
 describe("Player", function() {
 
