@@ -1,7 +1,8 @@
 import {ApproachStrategy} from './approachStrategy';
 import {NumberExtensions} from './extensions/numberextensions';
+import {IApproachStrategy} from './iApproachStrategy';
 
-export class BasicApproachStrategy extends ApproachStrategy {
+export class BasicApproachStrategy extends ApproachStrategy implements IApproachStrategy {
 
   name(){
     return "BasicApproachStrategy";
