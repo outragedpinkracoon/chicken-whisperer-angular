@@ -1,4 +1,3 @@
-import {ArrayExtensions} from './extensions/arrayextensions';
 import {Die} from './die';
 import {Approach} from './approach';
 import {Capture} from "./capture";
@@ -17,11 +16,11 @@ export class CaptureGame {
   currentPlayer: Player;
   
   constructor(options) {
-    this.players = options.players;
-    this.chickenPen = options.chickenPen;
-    this.capture = options.capture;
-    this.approach = options.approach;
-    this.finished = false;
+     this.players = options.players;
+     this.chickenPen = options.chickenPen;
+     this.capture = options.capture;
+     this.approach = options.approach;
+     this.finished = false;
   }
 
   reset(){
@@ -32,9 +31,9 @@ export class CaptureGame {
   }
 
   resetPlayers(){
-    this.players.forEach(function(player, index){
+    for(var player of this.players){
       player.isWhisperer = false;
-    });
+    }
   }
 
   updateCurrentPlayer() {
@@ -42,7 +41,14 @@ export class CaptureGame {
       this.currentPlayer = this.players[0];
       return;
     }
-    this.currentPlayer = ArrayExtensions.rotate(this.players)[0];
+    this.currentPlayer = this.rotate(this.players)[0];
+  }
+  
+  rotate(array){
+        if(array.length === 0) return array;
+        var item = array.shift();
+        array.push(item);
+        return array
   }
 
   playerCount() {

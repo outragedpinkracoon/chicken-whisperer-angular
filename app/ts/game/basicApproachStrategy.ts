@@ -1,5 +1,4 @@
 import {ApproachStrategy} from './approachStrategy';
-import {NumberExtensions} from './extensions/numberextensions';
 import {IApproachStrategy} from './iApproachStrategy';
 import {Die} from './die';
 import {WhispererChecker} from './whispererChecker';

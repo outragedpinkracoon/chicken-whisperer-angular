@@ -1,13 +1,9 @@
-System.register(['./extensions/arrayextensions'], function(exports_1, context_1) {
+System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var arrayextensions_1;
     var CaptureGame;
     return {
-        setters:[
-            function (arrayextensions_1_1) {
-                arrayextensions_1 = arrayextensions_1_1;
-            }],
+        setters:[],
         execute: function() {
             CaptureGame = (function () {
                 function CaptureGame(options) {
@@ -24,16 +20,24 @@ System.register(['./extensions/arrayextensions'], function(exports_1, context_1)
                     this.resetPlayers();
                 };
                 CaptureGame.prototype.resetPlayers = function () {
-                    this.players.forEach(function (player, index) {
+                    for (var _i = 0, _a = this.players; _i < _a.length; _i++) {
+                        var player = _a[_i];
                         player.isWhisperer = false;
-                    });
+                    }
                 };
                 CaptureGame.prototype.updateCurrentPlayer = function () {
                     if (this.currentPlayer === undefined) {
                         this.currentPlayer = this.players[0];
                         return;
                     }
-                    this.currentPlayer = arrayextensions_1.ArrayExtensions.rotate(this.players)[0];
+                    this.currentPlayer = this.rotate(this.players)[0];
+                };
+                CaptureGame.prototype.rotate = function (array) {
+                    if (array.length === 0)
+                        return array;
+                    var item = array.shift();
+                    array.push(item);
+                    return array;
                 };
                 CaptureGame.prototype.playerCount = function () {
                     return this.players.length;

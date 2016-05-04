@@ -1,9 +1,12 @@
-System.register(['../player', '../chicken', '../chickenPen', '../basicApproachStrategy', '../whispererApproachStrategy', '../die', '../whispererChecker'], function(exports_1, context_1) {
+System.register(['../captureGame', '../player', '../chicken', '../chickenPen', '../capture', '../approach', '../basicApproachStrategy', '../whispererApproachStrategy', '../die', '../whispererChecker'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var player_1, chicken_1, chickenPen_1, basicApproachStrategy_1, whispererApproachStrategy_1, die_1, whispererChecker_1;
+    var captureGame_1, player_1, chicken_1, chickenPen_1, capture_1, approach_1, basicApproachStrategy_1, whispererApproachStrategy_1, die_1, whispererChecker_1;
     return {
         setters:[
+            function (captureGame_1_1) {
+                captureGame_1 = captureGame_1_1;
+            },
             function (player_1_1) {
                 player_1 = player_1_1;
             },
@@ -12,6 +15,12 @@ System.register(['../player', '../chicken', '../chickenPen', '../basicApproachSt
             },
             function (chickenPen_1_1) {
                 chickenPen_1 = chickenPen_1_1;
+            },
+            function (capture_1_1) {
+                capture_1 = capture_1_1;
+            },
+            function (approach_1_1) {
+                approach_1 = approach_1_1;
             },
             function (basicApproachStrategy_1_1) {
                 basicApproachStrategy_1 = basicApproachStrategy_1_1;
@@ -45,130 +54,127 @@ System.register(['../player', '../chicken', '../chickenPen', '../basicApproachSt
                     };
                     var basic = new basicApproachStrategy_1.BasicApproachStrategy(strategyOptions);
                     var whisperer = new whispererApproachStrategy_1.WhispererApproachStrategy(strategyOptions);
-                    // var approachOptions = {
-                    //   chickenPen: chickenPen,
-                    //   strategies: {
-                    //     "BasicApproachStrategy": basic,
-                    //     "WhispererApproachStrategy" : whisperer
-                    //   }
-                    // }
-                    // var approach = new Approach(approachOptions);
-                    // var captureOptions = {
-                    //   chickenPen: chickenPen, 
-                    //   die: new Die()
-                    // }
-                    // var capture = new Capture(captureOptions);
-                    // var options = {
-                    //   players: players,
-                    //   chickenPen: chickenPen,
-                    //   capture: capture,
-                    //   approach: approach
-                    // }
-                    // game = new CaptureGame(options);
+                    var approachOptions = {
+                        chickenPen: chickenPen,
+                        strategies: {
+                            "BasicApproachStrategy": basic,
+                            "WhispererApproachStrategy": whisperer
+                        }
+                    };
+                    var approach = new approach_1.Approach(approachOptions);
+                    var captureOptions = {
+                        chickenPen: chickenPen,
+                        die: new die_1.Die()
+                    };
+                    var capture = new capture_1.Capture(captureOptions);
+                    var options = {
+                        players: players,
+                        chickenPen: chickenPen,
+                        capture: capture,
+                        approach: approach
+                    };
+                    game = new captureGame_1.CaptureGame(options);
                 });
                 it("should have chicken pen", function () {
-                    expect(true).toEqual(true);
+                    expect(game.chickenPen).toEqual(chickenPen);
                 });
-                // it("should have chicken pen", function() {
-                //   expect(game.chickenPen).toEqual(chickenPen);
-                // });
-                // it("should have 2 players", function() {
-                //   expect(game.playerCount()).toBe(2);
-                // });
-                // it("should have player1 as first player", function() {
-                //   game.nextTurn();
-                //   expect(game.currentPlayer.name).toBe("Valerie");
-                // });
-                // it("should update player", function() {
-                //   game.updateCurrentPlayer();
-                //   game.updateCurrentPlayer();
-                //   expect(game.currentPlayer.name).toBe("Jay");
-                // });
-                // it("should have an approach", function() {
-                //   expect(game.approach).not.toBe(undefined);
-                // });
-                // it("should have a capture", function() {
-                //   expect(game.capture).not.toBe(undefined);
-                // });
-                // it("should start with player 1 turn", function() {
-                //   game.nextTurn();
-                //   expect(game.currentPlayer.name).toBe("Valerie");
-                // });
-                // it("should reset approach", function() {
-                //   game.approach.captureDice = 2;
-                //   game.reset();
-                //   expect(game.approach.captureDice).toBe(0);
-                // });
-                // it("should reset chickenPen", function() {
-                //   spyOn(game.chickenPen,"refresh");
-                //   game.reset();
-                //   expect(game.chickenPen.refresh).toHaveBeenCalled();
-                // });
-                // it("should step towards chicken", function(){
-                //   game.nextTurn();
-                //   spyOn(game.approach,"step");
-                //   game.approachChicken();
-                //   expect(game.approach.step).toHaveBeenCalled();
-                // });
-                // it("should not step towards chicken if turn is finished", function(){
-                //   game.nextTurn();
-                //   game.finished = true;
-                //   spyOn(game.approach,"step");
-                //   game.approachChicken();
-                //   expect(game.approach.step).not.toHaveBeenCalled();
-                // });
-                // it("should not step towards chicken if chickenPen has no valid chickens", function(){
-                //   chickenPen.chickens = [];
-                //   game.nextTurn();
-                //   spyOn(game.approach,"step");
-                //   game.approachChicken();
-                //   expect(game.approach.step).not.toHaveBeenCalled();
-                // });
-                // it("should attempt capture", function(){
-                //   game.nextTurn();
-                //   spyOn(game.capture,"attempt").and.returnValue(true);
-                //   game.attemptCapture(null);
-                //   expect(game.capture.attempt).toHaveBeenCalled();
-                // });
-                // it("should not attempt capture if turn finished", function(){
-                //   game.nextTurn();
-                //   game.finished = true;
-                //   spyOn(game.capture,"attempt").and.returnValue(true);
-                //   game.attemptCapture(null);
-                //   expect(game.capture.attempt).not.toHaveBeenCalled();
-                // });
-                // it("should be game over when there are no chickens to capture", function(){
-                //   game.chickenPen.chickens = [];
-                //   expect(game.gameOver()).toBe(true);
-                // });
-                // it("should be the last turn", function(){
-                //   game.chickenPen.chickens = [{}];
-                //   expect(game.lastTurn()).toBe(true);
-                // });
-                // it("should reduce speed of last chicken each turn", function(){
-                //   var chicken = chickenPen.chickens[0];
-                //   chicken.speed = 10;
-                //   game.chickenPen.chickens = [chicken];
-                //   expect(game.lastTurn()).toBe(true);
-                //   game.nextTurn();
-                //   expect(chicken.speed).toBe(9);
-                // });
-                // it("should reset chickenWhisperer", function(){
-                //   game.players.first().isWhisperer = true;
-                //   game.resetPlayers();
-                //   expect(game.players[0].isWhisperer).toBe(false);
-                //   expect(game.players[1].isWhisperer).toBe(false);
-                // });
-                // it("should not swap whisperer strategy", function(){
-                //   game.currentPlayer = {};
-                //   game.setApproachStrategy();
-                //   expect(game.approach.strategy.name()).toBe(BasicApproachStrategy.name);
-                // });
-                // it("should swap whisperer strategy", function(){
-                //   game.currentPlayer = {isWhisperer: true};
-                //   game.setApproachStrategy();
-                //   expect(game.approach.strategy.name()).toBe(WhispererApproachStrategy.name);
-                // });
+                it("should have 2 players", function () {
+                    expect(game.playerCount()).toBe(2);
+                });
+                it("should have player1 as first player", function () {
+                    game.nextTurn();
+                    expect(game.currentPlayer.name).toBe("Valerie");
+                });
+                it("should update player", function () {
+                    game.updateCurrentPlayer();
+                    game.updateCurrentPlayer();
+                    expect(game.currentPlayer.name).toBe("Jay");
+                });
+                it("should have an approach", function () {
+                    expect(game.approach).not.toBe(undefined);
+                });
+                it("should have a capture", function () {
+                    expect(game.capture).not.toBe(undefined);
+                });
+                it("should start with player 1 turn", function () {
+                    game.nextTurn();
+                    expect(game.currentPlayer.name).toBe("Valerie");
+                });
+                it("should reset approach", function () {
+                    game.approach.captureDice = 2;
+                    game.reset();
+                    expect(game.approach.captureDice).toBe(0);
+                });
+                it("should reset chickenPen", function () {
+                    spyOn(game.chickenPen, "refresh");
+                    game.reset();
+                    expect(game.chickenPen.refresh).toHaveBeenCalled();
+                });
+                it("should step towards chicken", function () {
+                    game.nextTurn();
+                    spyOn(game.approach, "step");
+                    game.approachChicken();
+                    expect(game.approach.step).toHaveBeenCalled();
+                });
+                it("should not step towards chicken if turn is finished", function () {
+                    game.nextTurn();
+                    game.finished = true;
+                    spyOn(game.approach, "step");
+                    game.approachChicken();
+                    expect(game.approach.step).not.toHaveBeenCalled();
+                });
+                it("should not step towards chicken if chickenPen has no valid chickens", function () {
+                    chickenPen.chickens = [];
+                    game.nextTurn();
+                    spyOn(game.approach, "step");
+                    game.approachChicken();
+                    expect(game.approach.step).not.toHaveBeenCalled();
+                });
+                it("should attempt capture", function () {
+                    game.nextTurn();
+                    spyOn(game.capture, "attempt").and.returnValue(true);
+                    game.attemptCapture(null);
+                    expect(game.capture.attempt).toHaveBeenCalled();
+                });
+                it("should not attempt capture if turn finished", function () {
+                    game.nextTurn();
+                    game.finished = true;
+                    spyOn(game.capture, "attempt").and.returnValue(true);
+                    game.attemptCapture(null);
+                    expect(game.capture.attempt).not.toHaveBeenCalled();
+                });
+                it("should be game over when there are no chickens to capture", function () {
+                    game.chickenPen.chickens = [];
+                    expect(game.gameOver()).toBe(true);
+                });
+                it("should be the last turn", function () {
+                    game.chickenPen.chickens = [{}];
+                    expect(game.lastTurn()).toBe(true);
+                });
+                it("should reduce speed of last chicken each turn", function () {
+                    var chicken = chickenPen.chickens[0];
+                    chicken.speed = 10;
+                    game.chickenPen.chickens = [chicken];
+                    expect(game.lastTurn()).toBe(true);
+                    game.nextTurn();
+                    expect(chicken.speed).toBe(9);
+                });
+                it("should reset chickenWhisperer", function () {
+                    game.players[0].isWhisperer = true;
+                    game.resetPlayers();
+                    expect(game.players[0].isWhisperer).toBe(false);
+                    expect(game.players[1].isWhisperer).toBe(false);
+                });
+                it("should not swap whisperer strategy", function () {
+                    game.currentPlayer = {};
+                    game.setApproachStrategy();
+                    expect(game.approach.strategy.name).toBe("BasicApproachStrategy");
+                });
+                it("should swap whisperer strategy", function () {
+                    game.currentPlayer = { isWhisperer: true };
+                    game.setApproachStrategy();
+                    expect(game.approach.strategy.name).toBe("WhispererApproachStrategy");
+                });
             });
         }
     }
