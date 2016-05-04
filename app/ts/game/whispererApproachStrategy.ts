@@ -1,11 +1,25 @@
 import {ApproachStrategy} from './approachStrategy';
+import {Die} from './die';
+import {WhispererChecker} from './whispererChecker';
 
-export class WhispererApproachStrategy extends ApproachStrategy {
+export class WhispererApproachStrategy {
 
-  name(){
-    return "WhispererApproachStrategy";
+  approachDice: number;
+  die: Die;
+  name: string;
+  whispererChecker: WhispererChecker;
+  
+  constructor(options){
+    this.approachDice = 2;
+    this.die = options.die;
+    this.whispererChecker = options.whispererChecker;
+    this.name = "WhispererApproachStrategy";
   }
-
+  
+  public approachRoll(){
+    return this.die.rollMultiple(this.approachDice);
+  }
+  
   public approach(player) : boolean{
     var results = this.approachRoll();
     this.whispererChecker.update(results, player);

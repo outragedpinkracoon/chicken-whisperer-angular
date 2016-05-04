@@ -38,10 +38,11 @@ System.register(["../chicken", "../chickenPen", "../approach", "../die", "../whi
                         new chicken_1.Chicken({ "id": 3, "name": "Jojo", "speed": 8, "maxScare": 3 }),
                         new chicken_1.Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2 })
                     ]);
+                    var strategy = new basicApproachStrategy_1.BasicApproachStrategy(strategyOptions);
                     var options = {
                         chickenPen: chickenPen,
                         strategies: {
-                            basic: new basicApproachStrategy_1.BasicApproachStrategy(strategyOptions)
+                            basic: strategy
                         }
                     };
                     fakeDie = {

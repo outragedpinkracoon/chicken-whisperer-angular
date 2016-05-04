@@ -25,10 +25,11 @@ describe("Approach", function(){
       new Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2 })
     ]);
 
+    var strategy = new BasicApproachStrategy(strategyOptions);
     var options = {
       chickenPen: chickenPen,
       strategies: {
-        basic: new BasicApproachStrategy(strategyOptions)
+        basic: strategy
       }
     }
     

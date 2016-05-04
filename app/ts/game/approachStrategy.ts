@@ -4,6 +4,7 @@ import {WhispererChecker} from './whispererChecker';
 export class ApproachStrategy {
   approachDice: number;
   die: Die;
+  name: string;
   whispererChecker: WhispererChecker;
   
   constructor(options){
