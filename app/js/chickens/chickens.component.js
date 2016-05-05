@@ -28,20 +28,17 @@ System.register(['angular2/core', '../game/chickenPen', './services/chicken.serv
                 function ChickensComponent(_chickenService) {
                     this._chickenService = _chickenService;
                 }
-                ChickensComponent.prototype.getHeroes = function () {
-                    var _this = this;
-                    this._chickenService.getChickens().then(function (chickens) { return _this.chickenPen = new chickenPen_1.ChickenPen(chickens); });
-                };
-                ChickensComponent.prototype.ngOnInit = function () {
-                    this.getHeroes();
-                };
                 ChickensComponent.prototype.onSelect = function (chicken) {
                     chicken.reduceScare();
                     this.selectedChicken = chicken;
                 };
+                __decorate([
+                    core_1.Input('chickenPen'), 
+                    __metadata('design:type', chickenPen_1.ChickenPen)
+                ], ChickensComponent.prototype, "chickenPen", void 0);
                 ChickensComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-chickens',
+                        selector: 'chicken-pen',
                         templateUrl: 'app/chickens/chickens.component.html',
                         styleUrls: ['app/chickens/chickens.component.css']
                     }), 

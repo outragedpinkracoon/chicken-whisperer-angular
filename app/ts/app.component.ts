@@ -1,6 +1,7 @@
 import { Component } from 'angular2/core';
 import { ChickenService }  from './chickens/services/chicken.service';
 import { ChickensComponent } from './chickens/chickens.component';
+import {GameInitializer} from './gameInitializer';
 
 @Component({
   selector: 'my-app',
@@ -14,4 +15,5 @@ import { ChickensComponent } from './chickens/chickens.component';
 
 export class AppComponent {
   title = 'Chicken Whisperer';
+  game = GameInitializer.generateGame();
 }
