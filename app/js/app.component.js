@@ -32,8 +32,8 @@ System.register(['angular2/core', './chickens.component', './gameInitializer'], 
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        templateUrl: 'app/app.component.html',
-                        styleUrls: ['app/app.component.css'],
+                        templateUrl: 'app/views/app/app.component.html',
+                        styleUrls: ['app/views/app/app.component.css'],
                         directives: [chickens_component_1.ChickensComponent]
                     }), 
                     __metadata('design:paramtypes', [])

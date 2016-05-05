@@ -35,8 +35,8 @@ System.register(['angular2/core', './game/chickenPen'], function(exports_1, cont
                 ChickensComponent = __decorate([
                     core_1.Component({
                         selector: 'chicken-pen',
-                        templateUrl: 'app/chickens/chickens.component.html',
-                        styleUrls: ['app/chickens/chickens.component.css']
+                        templateUrl: 'app/views/chickens/chickens.component.html',
+                        styleUrls: ['app/views/chickens/chickens.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ChickensComponent);

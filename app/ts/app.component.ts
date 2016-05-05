@@ -4,8 +4,8 @@ import {GameInitializer} from './gameInitializer';
 
 @Component({
   selector: 'my-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
+  templateUrl: 'app/views/app/app.component.html',
+  styleUrls: ['app/views/app/app.component.css'],
   directives: [ChickensComponent]
 })
 

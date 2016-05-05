@@ -6,8 +6,8 @@ import { Router } from 'angular2/router';
 
 @Component({
     selector: 'chicken-pen',
-    templateUrl: 'app/chickens/chickens.component.html',
-    styleUrls:  ['app/chickens/chickens.component.css']
+    templateUrl: 'app/views/chickens/chickens.component.html',
+    styleUrls:  ['app/views/chickens/chickens.component.css']
 })
 
 export class ChickensComponent {
