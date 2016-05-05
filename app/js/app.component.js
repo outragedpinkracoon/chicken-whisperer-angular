@@ -1,4 +1,4 @@
-System.register(['angular2/core', './chickens/services/chicken.service', './chickens/chickens.component', './gameInitializer'], function(exports_1, context_1) {
+System.register(['angular2/core', './chickens.component', './gameInitializer'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,12 @@ System.register(['angular2/core', './chickens/services/chicken.service', './chic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chicken_service_1, chickens_component_1, gameInitializer_1;
+    var core_1, chickens_component_1, gameInitializer_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (chicken_service_1_1) {
-                chicken_service_1 = chicken_service_1_1;
             },
             function (chickens_component_1_1) {
                 chickens_component_1 = chickens_component_1_1;
@@ -37,10 +34,7 @@ System.register(['angular2/core', './chickens/services/chicken.service', './chic
                         selector: 'my-app',
                         templateUrl: 'app/app.component.html',
                         styleUrls: ['app/app.component.css'],
-                        directives: [chickens_component_1.ChickensComponent],
-                        providers: [
-                            chicken_service_1.ChickenService
-                        ]
+                        directives: [chickens_component_1.ChickensComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

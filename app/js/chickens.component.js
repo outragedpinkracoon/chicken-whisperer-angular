@@ -1,4 +1,4 @@
-System.register(['angular2/core', './chickens/services/chicken.service'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/chickenPen'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,36 +10,35 @@ System.register(['angular2/core', './chickens/services/chicken.service'], functi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chicken_service_1;
+    var core_1, chickenPen_1;
     var ChickensComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (chicken_service_1_1) {
-                chicken_service_1 = chicken_service_1_1;
+            function (chickenPen_1_1) {
+                chickenPen_1 = chickenPen_1_1;
             }],
         execute: function() {
             ChickensComponent = (function () {
-                function ChickensComponent(_chickenService) {
-                    this._chickenService = _chickenService;
+                function ChickensComponent() {
                 }
-                ChickensComponent.prototype.getHeroes = function () {
-                    var _this = this;
-                    this._chickenService.getChickens().then(function (chickens) { return _this.chickens = chickens; });
+                ChickensComponent.prototype.onSelect = function (chicken) {
+                    chicken.reduceScare();
+                    this.selectedChicken = chicken;
                 };
-                ChickensComponent.prototype.ngOnInit = function () {
-                    this.getHeroes();
-                };
-                ChickensComponent.prototype.onSelect = function (chicken) { this.selectedChicken = chicken; };
+                __decorate([
+                    core_1.Input('chickenPen'), 
+                    __metadata('design:type', chickenPen_1.ChickenPen)
+                ], ChickensComponent.prototype, "chickenPen", void 0);
                 ChickensComponent = __decorate([
                     core_1.Component({
-                        selector: 'my-chickens',
-                        templateUrl: 'app/chickens/view/chickens.component.html',
-                        styleUrls: ['app/chickens/view/css/chickens.component.css']
+                        selector: 'chicken-pen',
+                        templateUrl: 'app/chickens/chickens.component.html',
+                        styleUrls: ['app/chickens/chickens.component.css']
                     }), 
-                    __metadata('design:paramtypes', [chicken_service_1.ChickenService])
+                    __metadata('design:paramtypes', [])
                 ], ChickensComponent);
                 return ChickensComponent;
             }());

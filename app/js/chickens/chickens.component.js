@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../game/chickenPen', './services/chicken.service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../game/chickenPen'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../game/chickenPen', './services/chicken.serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chickenPen_1, chicken_service_1;
+    var core_1, chickenPen_1;
     var ChickensComponent;
     return {
         setters:[
@@ -19,14 +19,10 @@ System.register(['angular2/core', '../game/chickenPen', './services/chicken.serv
             },
             function (chickenPen_1_1) {
                 chickenPen_1 = chickenPen_1_1;
-            },
-            function (chicken_service_1_1) {
-                chicken_service_1 = chicken_service_1_1;
             }],
         execute: function() {
             ChickensComponent = (function () {
-                function ChickensComponent(_chickenService) {
-                    this._chickenService = _chickenService;
+                function ChickensComponent() {
                 }
                 ChickensComponent.prototype.onSelect = function (chicken) {
                     chicken.reduceScare();
@@ -42,7 +38,7 @@ System.register(['angular2/core', '../game/chickenPen', './services/chicken.serv
                         templateUrl: 'app/chickens/chickens.component.html',
                         styleUrls: ['app/chickens/chickens.component.css']
                     }), 
-                    __metadata('design:paramtypes', [chicken_service_1.ChickenService])
+                    __metadata('design:paramtypes', [])
                 ], ChickensComponent);
                 return ChickensComponent;
             }());
