@@ -51,6 +51,12 @@ describe("Basic Approach Strategy", function(){
   it("should have a die", function(){
     expect(strategy.die).not.toBe(undefined);
   });
+  
+   it("should save the last roll", function(){
+    strategy.die = fakeDie;
+    strategy.approachRoll();
+    expect(strategy.lastRoll).toEqual([2,1]);
+  });
 
   it("should have 2 approach dice", function(){
     expect(strategy.approachDice).toBe(2);

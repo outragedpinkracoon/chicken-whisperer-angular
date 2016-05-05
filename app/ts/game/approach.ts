@@ -7,12 +7,14 @@ export class Approach {
   captureDice: number;
   strategies: Array<IApproachStrategy>;
   strategy: IApproachStrategy;
+  lastRoll: Array<number>;
   
   constructor(options){
     this.chickenPen = options.chickenPen;
     this.captureDice = 0;
     this.strategies = options.strategies;
     this.strategy = this.strategies["basic"];
+    this.lastRoll = [];
   }
 
   step(player){

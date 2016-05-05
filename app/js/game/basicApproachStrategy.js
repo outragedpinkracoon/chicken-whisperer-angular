@@ -11,9 +11,12 @@ System.register([], function(exports_1, context_1) {
                     this.die = options.die;
                     this.whispererChecker = options.whispererChecker;
                     this.name = "BasicApproachStrategy";
+                    this.lastRoll = [];
                 }
                 BasicApproachStrategy.prototype.approachRoll = function () {
-                    return this.die.rollMultiple(this.approachDice);
+                    var results = this.die.rollMultiple(this.approachDice);
+                    this.lastRoll = results;
+                    return results;
                 };
                 BasicApproachStrategy.prototype.approach = function (player) {
                     var results = this.approachRoll();

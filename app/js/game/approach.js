@@ -11,6 +11,7 @@ System.register([], function(exports_1, context_1) {
                     this.captureDice = 0;
                     this.strategies = options.strategies;
                     this.strategy = this.strategies["basic"];
+                    this.lastRoll = [];
                 }
                 Approach.prototype.step = function (player) {
                     var result = this.strategy.approach(player);

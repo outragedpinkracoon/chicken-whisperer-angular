@@ -55,6 +55,12 @@ describe("Whisperer Approach Strategy", function(){
     expect(strategy.whispererChecker.update).toHaveBeenCalled();
   });
   
+   it("should save the last roll", function(){
+    strategy.die = fakeDie;
+    strategy.approachRoll();
+    expect(strategy.lastRoll).toEqual([2,1]);
+  });
+  
   it("should have a die", function(){
     expect(strategy.die).not.toBe(undefined);
   });

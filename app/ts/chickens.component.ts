@@ -2,7 +2,6 @@ import {Component, Input} from 'angular2/core';
 import {Chicken} from './game/chicken';
 import {ChickenPen} from './game/chickenPen';
 import {OnInit} from 'angular2/core';
-import { Router } from 'angular2/router';
 
 @Component({
     selector: 'chicken-pen',

@@ -13,10 +13,13 @@ System.register([], function(exports_1, context_1) {
                     this.name = "WhispererApproachStrategy";
                 }
                 WhispererApproachStrategy.prototype.approachRoll = function () {
-                    return this.die.rollMultiple(this.approachDice);
+                    var results = this.die.rollMultiple(this.approachDice);
+                    this.lastRoll = results;
+                    return results;
                 };
                 WhispererApproachStrategy.prototype.approach = function (player) {
                     var results = this.approachRoll();
+                    this.lastRoll = results;
                     this.whispererChecker.update(results, player);
                     var index = results.indexOf(1);
                     return index == -1;

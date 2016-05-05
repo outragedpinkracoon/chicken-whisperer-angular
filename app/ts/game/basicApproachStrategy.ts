@@ -8,20 +8,25 @@ export class BasicApproachStrategy implements IApproachStrategy  {
   die: Die;
   name: string;
   whispererChecker: WhispererChecker;
+  lastRoll: Array<number>;
   
   constructor(options){
     this.approachDice = 2;
     this.die = options.die;
     this.whispererChecker = options.whispererChecker;
     this.name = "BasicApproachStrategy";
+    this.lastRoll = [];
   }
   
   public approachRoll(){
-    return this.die.rollMultiple(this.approachDice);
+    var results =  this.die.rollMultiple(this.approachDice);
+    this.lastRoll = results;
+    return results;
   }
   
   public approach(player) : boolean{
     var results = this.approachRoll();
+    
     this.whispererChecker.update(results, player);
 
     var reduced = results.reduce((prev,curr) => prev +curr);
