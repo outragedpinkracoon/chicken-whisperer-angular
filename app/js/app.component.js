@@ -1,4 +1,4 @@
-System.register(['angular2/core', './chickens.component', './gameInitializer'], function(exports_1, context_1) {
+System.register(['angular2/core', './chickens.component', './players.component', './gameInitializer'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './chickens.component', './gameInitializer'], 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chickens_component_1, gameInitializer_1;
+    var core_1, chickens_component_1, players_component_1, gameInitializer_1;
     var AppComponent;
     return {
         setters:[
@@ -20,6 +20,9 @@ System.register(['angular2/core', './chickens.component', './gameInitializer'], 
             function (chickens_component_1_1) {
                 chickens_component_1 = chickens_component_1_1;
             },
+            function (players_component_1_1) {
+                players_component_1 = players_component_1_1;
+            },
             function (gameInitializer_1_1) {
                 gameInitializer_1 = gameInitializer_1_1;
             }],
@@ -28,13 +31,14 @@ System.register(['angular2/core', './chickens.component', './gameInitializer'], 
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
                     this.game = gameInitializer_1.GameInitializer.generateGame();
+                    this.game.nextTurn();
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/views/app/app.component.html',
                         styleUrls: ['app/views/app/app.component.css'],
-                        directives: [chickens_component_1.ChickensComponent]
+                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
