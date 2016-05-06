@@ -23,6 +23,10 @@ export class WhispererApproachStrategy implements IApproachStrategy {
     return results;
   }
   
+  public lastRolls() {
+    return this.lastRoll;
+  }
+  
   public approach(player) : boolean{
     var results = this.approachRoll();
     this.lastRoll = results;

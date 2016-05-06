@@ -10,7 +10,7 @@ System.register([], function(exports_1, context_1) {
                     this.chickenPen = options.chickenPen;
                     this.captureDice = 0;
                     this.strategies = options.strategies;
-                    this.strategy = this.strategies["basic"];
+                    this.strategy = this.strategies["BasicApproachStrategy"];
                     this.lastRoll = [];
                 }
                 Approach.prototype.step = function (player) {
@@ -18,7 +18,10 @@ System.register([], function(exports_1, context_1) {
                     if (result == true) {
                         this.captureDice++;
                     }
-                    this.chickenPen.scareChickens();
+                    else {
+                        this.chickenPen.scareChickens();
+                    }
+                    return result;
                 };
                 Approach.prototype.setStrategy = function (key) {
                     this.strategy = this.strategies[key];

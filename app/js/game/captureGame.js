@@ -12,6 +12,7 @@ System.register([], function(exports_1, context_1) {
                     this.capture = options.capture;
                     this.approach = options.approach;
                     this.finished = false;
+                    this.started = false;
                 }
                 CaptureGame.prototype.reset = function () {
                     this.chickenPen.refresh();
@@ -43,6 +44,7 @@ System.register([], function(exports_1, context_1) {
                     return this.players.length;
                 };
                 CaptureGame.prototype.nextTurn = function () {
+                    this.started = true;
                     if (this.lastTurn()) {
                         this.chickenPen.chickens[0].reduceSpeed();
                     }

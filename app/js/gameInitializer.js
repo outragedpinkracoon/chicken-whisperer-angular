@@ -39,9 +39,9 @@ System.register(['./game/captureGame', './game/player', './game/chicken', './gam
             GameInitializer = (function () {
                 function GameInitializer() {
                 }
-                GameInitializer.generateGame = function () {
-                    var player1 = new player_1.Player("Valerie");
-                    var player2 = new player_1.Player("Jay");
+                GameInitializer.generateGame = function (player1Name, player2Name) {
+                    var player1 = new player_1.Player(player1Name);
+                    var player2 = new player_1.Player(player2Name);
                     var players = [player1, player2];
                     var chickenPen = new chickenPen_1.ChickenPen([
                         new chicken_1.Chicken({ "id": 1, "name": "Popo", "speed": 14, "maxScare": 1 }),

@@ -30,15 +30,21 @@ System.register(['angular2/core', './chickens.component', './players.component',
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
-                    this.game = gameInitializer_1.GameInitializer.generateGame();
-                    this.game.nextTurn();
                 }
+                AppComponent.prototype.approach = function () {
+                    this.success = this.game.approach.step(this.game.currentPlayer);
+                    this.lastRoll = this.game.approach.strategy.lastRolls();
+                };
+                AppComponent.prototype.submit = function () {
+                    this.game = gameInitializer_1.GameInitializer.generateGame(this.player1Name, this.player2Name);
+                    this.game.nextTurn();
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/views/app/app.component.html',
                         styleUrls: ['app/views/app/app.component.css'],
-                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent]
+                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

@@ -13,17 +13,20 @@ export class Approach {
     this.chickenPen = options.chickenPen;
     this.captureDice = 0;
     this.strategies = options.strategies;
-    this.strategy = this.strategies["basic"];
+    this.strategy = this.strategies["BasicApproachStrategy"];
     this.lastRoll = [];
   }
 
-  step(player){
+  step(player) : boolean{
     var result = this.strategy.approach(player);
-
+    
     if(result == true){
       this.captureDice++;
     }
+    else{
     this.chickenPen.scareChickens();
+    }
+    return result;
   }
 
   setStrategy(key){

@@ -42,7 +42,7 @@ System.register(["../chicken", "../chickenPen", "../approach", "../die", "../whi
                     var options = {
                         chickenPen: chickenPen,
                         strategies: {
-                            basic: strategy
+                            "BasicApproachStrategy": strategy
                         }
                     };
                     fakeDie = {

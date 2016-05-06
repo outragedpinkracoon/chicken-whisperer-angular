@@ -18,6 +18,9 @@ System.register([], function(exports_1, context_1) {
                     this.lastRoll = results;
                     return results;
                 };
+                BasicApproachStrategy.prototype.lastRolls = function () {
+                    return this.lastRoll;
+                };
                 BasicApproachStrategy.prototype.approach = function (player) {
                     var results = this.approachRoll();
                     this.whispererChecker.update(results, player);

@@ -29,7 +29,7 @@ describe("Approach", function(){
     var options = {
       chickenPen: chickenPen,
       strategies: {
-        basic: strategy
+        "BasicApproachStrategy": strategy
       }
     }
     

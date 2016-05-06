@@ -14,6 +14,7 @@ export class CaptureGame {
   approach: Approach;
   finished:boolean;
   currentPlayer: Player;
+  started: boolean;
   
   constructor(options) {
      this.players = options.players;
@@ -21,6 +22,7 @@ export class CaptureGame {
      this.capture = options.capture;
      this.approach = options.approach;
      this.finished = false;
+     this.started = false;
   }
 
   reset(){
@@ -56,6 +58,7 @@ export class CaptureGame {
   }
 
   nextTurn(){
+    this.started = true;
     if(this.lastTurn()) {
       this.chickenPen.chickens[0].reduceSpeed();
     }

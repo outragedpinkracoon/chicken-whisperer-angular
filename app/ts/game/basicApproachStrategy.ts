@@ -24,9 +24,12 @@ export class BasicApproachStrategy implements IApproachStrategy  {
     return results;
   }
   
+  public lastRolls() {
+    return this.lastRoll;
+  }
+  
   public approach(player) : boolean{
     var results = this.approachRoll();
-    
     this.whispererChecker.update(results, player);
 
     var reduced = results.reduce((prev,curr) => prev +curr);

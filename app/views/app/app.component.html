@@ -1,4 +1,32 @@
 <h1>{{title}}</h1>
-<p>Current Player: {{game.currentPlayer.name}}</p>
-<chicken-pen [chickenPen]="game.chickenPen"></chicken-pen>
-<players [players]="game.players"></players>
+<div *ngIf="game != undefined">
+
+  <p>Current Player: {{game.currentPlayer.name}}</p>
+  <chicken-pen [chickenPen]="game.chickenPen"></chicken-pen>
+  <players [players]="game.players"></players>
+
+  <button id="btn-approach" (click)="approach()">Approach chickens!</button>
+  <div *ngIf="success">
+    Success!
+  </div>
+
+  <div *ngIf="!success">
+    Sad, you scared the chickens!
+  </div>
+  <p>{{lastRoll}}
+    <p>
+
+</div>
+
+<ul *ngIf="game == undefined">
+    <li>Enter player names</li>
+    <li>Player 1
+        <input [(ngModel)]="player1Name" />
+    </li>
+    <li>Player 2
+        <input [(ngModel)]="player2Name"  />
+    </li>
+    <li>
+        <button (click)="submit()">Start</button>
+    </li>
+</ul>

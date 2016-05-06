@@ -10,9 +10,9 @@ import {Die} from './game/die'
 import {WhispererChecker} from './game/whispererChecker'
 
 export class GameInitializer {
-    static generateGame() {
-        var player1 = new Player("Valerie");
-        var player2 = new Player("Jay");
+    static generateGame(player1Name, player2Name) {
+        var player1 = new Player(player1Name);
+        var player2 = new Player(player2Name);
 
         var players = [player1, player2];
 
