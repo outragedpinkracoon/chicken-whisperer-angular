@@ -25,10 +25,10 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 function ChickensComponent() {
                 }
                 ChickensComponent.prototype.capture = function (chicken) {
-                    var player = this.game.currentPlayer;
-                    var pen = this.game.chickenPen;
                     var captureDice = this.game.approach.captureDice;
-                    this.game.capture.attempt(player, chicken, pen, captureDice);
+                    if (captureDice == 0 || this.game.turnFinished)
+                        return;
+                    this.game.attemptCapture(chicken);
                 };
                 __decorate([
                     core_1.Input('game'), 
@@ -37,7 +37,8 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 ChickensComponent = __decorate([
                     core_1.Component({
                         selector: 'chicken-pen',
-                        templateUrl: 'app/views/chickens/chickens.component.html'
+                        templateUrl: 'app/views/chickens/chickens.component.html',
+                        styleUrls: ['app/views/chickens/chickens.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ChickensComponent);

@@ -8,6 +8,7 @@ export class Approach {
   strategies: Array<IApproachStrategy>;
   strategy: IApproachStrategy;
   lastRoll: Array<number>;
+  firstTry: boolean;
   
   constructor(options){
     this.chickenPen = options.chickenPen;
@@ -37,5 +38,6 @@ export class Approach {
 
   reset(){
     this.captureDice = 0;
+    this.firstTry = true;
   }
 } 

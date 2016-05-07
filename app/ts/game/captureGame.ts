@@ -15,6 +15,7 @@ export class CaptureGame {
   finished:boolean;
   currentPlayer: Player;
   started: boolean;
+  turnFinished: boolean;
   
   constructor(options) {
      this.players = options.players;
@@ -22,6 +23,7 @@ export class CaptureGame {
      this.capture = options.capture;
      this.approach = options.approach;
      this.finished = false;
+     this.turnFinished = false;
      this.started = false;
   }
 
@@ -67,6 +69,7 @@ export class CaptureGame {
 
   nextTurn(){
     this.started = true;
+    this.turnFinished = false;
     if(this.lastTurn()) {
       this.chickenPen.chickens[0].reduceSpeed();
     }
@@ -85,7 +88,11 @@ export class CaptureGame {
   approachChicken(){
     this.setApproachStrategy();
     if(this.finished || this.gameOver()) return;
-      this.approach.step(this.currentPlayer);
+      return this.approach.step(this.currentPlayer);
+  }
+  
+  lastRolls(){
+    return this.approach.strategy.lastRolls();
   }
 
   setApproachStrategy(){
@@ -97,12 +104,12 @@ export class CaptureGame {
   }
 
   attemptCapture(chicken){
-    if(this.finished) return;
+    if(this.turnFinished) return;
     this.capture.attempt(this.currentPlayer, 
                          chicken, 
                          this.chickenPen, 
                          this.approach.captureDice);
-    this.finished = true;
+    this.turnFinished = true;
 
   }
 

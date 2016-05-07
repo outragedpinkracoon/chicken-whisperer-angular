@@ -10,12 +10,16 @@ export class ApproachComponent {
   @Input('game') game: CaptureGame;
   lastRoll: Array<number>;
   success: boolean;
+  total: number;
   
   approach(){
-    this.success = this.game.approach.step(this.game.currentPlayer);
-    this.lastRoll = this.game.approach.strategy.lastRolls();
+    this.success = this.game.approachChicken();
+    this.lastRoll = this.game.lastRolls();
     this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
- 
   }
- 
+  
+  nextTurn(){
+      this.game.nextTurn();
+  }
+
 }

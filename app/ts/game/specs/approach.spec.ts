@@ -66,6 +66,14 @@ describe("Approach", function(){
     expect(approach.firstTry).toBe(true);
   });
   
+  it("sets capture dice to 0 and first try to true on reset", function(){
+    approach.firstTry = false;
+    approach.captureDice = 10;
+    approach.reset();
+    expect(approach.firstTry).toBe(true);
+    expect(approach.captureDice).toBe(0);
+  });
+  
   it("sets first try true on step", function(){
     approach.step({});
     expect(approach.firstTry).toBe(false);

@@ -25,9 +25,12 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 function ApproachComponent() {
                 }
                 ApproachComponent.prototype.approach = function () {
-                    this.success = this.game.approach.step(this.game.currentPlayer);
-                    this.lastRoll = this.game.approach.strategy.lastRolls();
+                    this.success = this.game.approachChicken();
+                    this.lastRoll = this.game.lastRolls();
                     this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
+                };
+                ApproachComponent.prototype.nextTurn = function () {
+                    this.game.nextTurn();
                 };
                 __decorate([
                     core_1.Input('game'), 

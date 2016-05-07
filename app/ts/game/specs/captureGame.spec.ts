@@ -149,7 +149,7 @@ describe("Game", function() {
 
   it("should not attempt capture if turn finished", function(){
     game.nextTurn();
-    game.finished = true;
+    game.turnFinished = true;
     spyOn(game.capture,"attempt").and.returnValue(true);
     game.attemptCapture(null);
     expect(game.capture.attempt).not.toHaveBeenCalled();

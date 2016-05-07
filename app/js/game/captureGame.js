@@ -16,6 +16,7 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.capture = options.capture;
                     this.approach = options.approach;
                     this.finished = false;
+                    this.turnFinished = false;
                     this.started = false;
                 }
                 CaptureGame.prototype.reset = function () {
@@ -57,6 +58,7 @@ System.register(["./player"], function(exports_1, context_1) {
                 };
                 CaptureGame.prototype.nextTurn = function () {
                     this.started = true;
+                    this.turnFinished = false;
                     if (this.lastTurn()) {
                         this.chickenPen.chickens[0].reduceSpeed();
                     }
@@ -73,7 +75,10 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.setApproachStrategy();
                     if (this.finished || this.gameOver())
                         return;
-                    this.approach.step(this.currentPlayer);
+                    return this.approach.step(this.currentPlayer);
+                };
+                CaptureGame.prototype.lastRolls = function () {
+                    return this.approach.strategy.lastRolls();
                 };
                 CaptureGame.prototype.setApproachStrategy = function () {
                     if (this.currentPlayer.isWhisperer) {
@@ -84,10 +89,10 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                 };
                 CaptureGame.prototype.attemptCapture = function (chicken) {
-                    if (this.finished)
+                    if (this.turnFinished)
                         return;
                     this.capture.attempt(this.currentPlayer, chicken, this.chickenPen, this.approach.captureDice);
-                    this.finished = true;
+                    this.turnFinished = true;
                 };
                 return CaptureGame;
             }());

@@ -30,6 +30,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 Approach.prototype.reset = function () {
                     this.captureDice = 0;
+                    this.firstTry = true;
                 };
                 return Approach;
             }());
