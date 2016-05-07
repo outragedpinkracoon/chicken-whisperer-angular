@@ -42,6 +42,13 @@ describe("Capture", function(){
   it("should have a die", function(){
     expect(capture.die).not.toBe(undefined);
   });
+  
+  it("should return last rolls", function(){
+    capture.die = fakeDie;
+    var result = capture.attempt(player, chickenPen.chickens[0], chickenPen, 1);
+    expect(capture.lastRolls).toEqual([1,1]);
+
+  });
 
   it("should have a chickenPen", function(){
     expect(capture.die).not.toBe(undefined);

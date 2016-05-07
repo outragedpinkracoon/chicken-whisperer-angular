@@ -6,3 +6,6 @@
         <span> Speed: {{chicken.speed}} </span>
     </li>
 </ul>
+
+<p *ngIf="game.turnFinished && game.capture.capturedChicken">You rolled: {{lastRolls}} = {{total}}. {{message}}.</p>
+<p *ngIf="game.turnFinished && !game.capture.capturedChicken">You failed to approach the chickens.</p>

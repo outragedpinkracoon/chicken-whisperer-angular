@@ -1,9 +1,12 @@
 <ul *ngIf="game.players" class="players">
     <li *ngFor="#player of game.players">
         <span>{{player.name}} 
+            <span *ngIf="player.name === game.currentPlayer.name">*</span>
             <span *ngIf="player.isWhisperer">whispering!</span>
-            <span *ngIf="player.name === game.currentPlayer.name">current player</span>
-       
+           
+            <ul *ngFor="#chicken of player.chickens">
+                <li>{{chicken.name}}:{{chicken.speed}}</li>
+            </ul>
         </span>
     </li>
 </ul>

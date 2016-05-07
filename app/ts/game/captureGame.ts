@@ -30,7 +30,9 @@ export class CaptureGame {
   reset(){
     this.chickenPen.refresh();
     this.approach.reset();
-    this.finished = false;
+    this.capture.reset();
+    this.started = true;
+    this.turnFinished = false;
     this.resetPlayers();
   }
 
@@ -68,8 +70,6 @@ export class CaptureGame {
   }
 
   nextTurn(){
-    this.started = true;
-    this.turnFinished = false;
     if(this.lastTurn()) {
       this.chickenPen.chickens[0].reduceSpeed();
     }
@@ -78,7 +78,7 @@ export class CaptureGame {
   }
 
   gameOver(){
-    return !this.chickenPen.hasChickensForCapture();
+    return this.chickenPen.count() == 0;
   }
 
   lastTurn(){
@@ -86,13 +86,23 @@ export class CaptureGame {
   }
 
   approachChicken(){
-    this.setApproachStrategy();
     if(this.finished || this.gameOver()) return;
-      return this.approach.step(this.currentPlayer);
+    this.setApproachStrategy();
+    var result =  this.approach.step(this.currentPlayer);
+    if(!this.chickenPen.hasChickensForCapture())
+    {
+      this.turnFinished = true;
+    }
+    return result;
+  }
+ 
+  
+  lastAppoachRolls(){
+    return this.approach.strategy.lastRolls();
   }
   
-  lastRolls(){
-    return this.approach.strategy.lastRolls();
+  lastCaptureRolls(){
+    return this.capture.lastRolls;
   }
 
   setApproachStrategy(){
@@ -105,11 +115,11 @@ export class CaptureGame {
 
   attemptCapture(chicken){
     if(this.turnFinished) return;
-    this.capture.attempt(this.currentPlayer, 
+    this.turnFinished = true;
+    return this.capture.attempt(this.currentPlayer, 
                          chicken, 
                          this.chickenPen, 
                          this.approach.captureDice);
-    this.turnFinished = true;
 
   }
 

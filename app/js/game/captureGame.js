@@ -22,7 +22,9 @@ System.register(["./player"], function(exports_1, context_1) {
                 CaptureGame.prototype.reset = function () {
                     this.chickenPen.refresh();
                     this.approach.reset();
-                    this.finished = false;
+                    this.capture.reset();
+                    this.started = true;
+                    this.turnFinished = false;
                     this.resetPlayers();
                 };
                 CaptureGame.prototype.resetPlayers = function () {
@@ -57,8 +59,6 @@ System.register(["./player"], function(exports_1, context_1) {
                     return this.players.length;
                 };
                 CaptureGame.prototype.nextTurn = function () {
-                    this.started = true;
-                    this.turnFinished = false;
                     if (this.lastTurn()) {
                         this.chickenPen.chickens[0].reduceSpeed();
                     }
@@ -66,19 +66,26 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.reset();
                 };
                 CaptureGame.prototype.gameOver = function () {
-                    return !this.chickenPen.hasChickensForCapture();
+                    return this.chickenPen.count() == 0;
                 };
                 CaptureGame.prototype.lastTurn = function () {
                     return this.chickenPen.count() == 1;
                 };
                 CaptureGame.prototype.approachChicken = function () {
-                    this.setApproachStrategy();
                     if (this.finished || this.gameOver())
                         return;
-                    return this.approach.step(this.currentPlayer);
+                    this.setApproachStrategy();
+                    var result = this.approach.step(this.currentPlayer);
+                    if (!this.chickenPen.hasChickensForCapture()) {
+                        this.turnFinished = true;
+                    }
+                    return result;
                 };
-                CaptureGame.prototype.lastRolls = function () {
+                CaptureGame.prototype.lastAppoachRolls = function () {
                     return this.approach.strategy.lastRolls();
+                };
+                CaptureGame.prototype.lastCaptureRolls = function () {
+                    return this.capture.lastRolls;
                 };
                 CaptureGame.prototype.setApproachStrategy = function () {
                     if (this.currentPlayer.isWhisperer) {
@@ -91,8 +98,8 @@ System.register(["./player"], function(exports_1, context_1) {
                 CaptureGame.prototype.attemptCapture = function (chicken) {
                     if (this.turnFinished)
                         return;
-                    this.capture.attempt(this.currentPlayer, chicken, this.chickenPen, this.approach.captureDice);
                     this.turnFinished = true;
+                    return this.capture.attempt(this.currentPlayer, chicken, this.chickenPen, this.approach.captureDice);
                 };
                 return CaptureGame;
             }());

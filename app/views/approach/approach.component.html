@@ -1,18 +1,11 @@
 <button id="btn-approach" *ngIf="!game.turnFinished" (click)="approach()">Approach chickens!</button>
 <button id="btn-next" *ngIf="game.turnFinished" (click)="nextTurn()">Next turn</button>
 
-<div *ngIf="!game.approach.firstTry">
+<div *ngIf="!game.approach.firstTry && !game.turnFinished">
     <div *ngIf="lastRoll">{{lastRoll}}
         <span> = {{total}}</span>
+        <span>{{message}} </span>
     </div>
-
-    <div *ngIf="success">
-        Success!
-    </div>
-
-    <div *ngIf="!success">
-        Sad, you scared the chickens!
-    </div>
+    <p> Capture dice: {{game.approach.captureDice}} </p>
 </div>
 
-<p> Capture dice: {{game.approach.captureDice}} </p>

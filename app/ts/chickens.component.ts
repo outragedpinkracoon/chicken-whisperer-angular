@@ -11,13 +11,24 @@ import {Chicken} from './game/chicken';
 
 export class ChickensComponent {
   @Input('game') game: CaptureGame;
+  success: boolean;
+  lastRolls: Array<number>;
+  total: number;
+  message: string;
 
   capture(chicken: Chicken) {
     var captureDice = this.game.approach.captureDice;
-    
     if (captureDice == 0 || this.game.turnFinished) return;
 
-    this.game.attemptCapture(chicken);
+    var result = this.game.attemptCapture(chicken);
+    this.setupFeedback(result, chicken);
+  }
+  
+  setupFeedback(result, chicken){
+    this.lastRolls = this.game.lastCaptureRolls();
+    this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
+    var subMessage = result ? "successfully captured " : "failed to capture ";
+    this.message = "You "+subMessage+ chicken.name;
   }
 }
 

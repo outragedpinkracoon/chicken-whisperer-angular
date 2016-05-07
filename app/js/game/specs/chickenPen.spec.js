@@ -36,10 +36,10 @@ System.register(['../mock-chickens', '../chickenPen', '../chicken'], function(ex
                     expect(chickenPen.hasChickensForCapture()).toBe(true);
                 });
                 it("should not have Chickens for capture", function () {
-                    chickenPen.chickens[0].speed = 0;
-                    chickenPen.chickens[1].speed = 0;
-                    chickenPen.chickens[2].speed = 0;
-                    chickenPen.chickens[3].speed = 0;
+                    chickenPen.chickens[0].scare = 0;
+                    chickenPen.chickens[1].scare = 0;
+                    chickenPen.chickens[2].scare = 0;
+                    chickenPen.chickens[3].scare = 0;
                     expect(chickenPen.hasChickensForCapture()).toBe(false);
                 });
                 it("should refresh Chickens", function () {

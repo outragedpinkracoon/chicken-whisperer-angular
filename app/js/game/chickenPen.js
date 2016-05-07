@@ -18,7 +18,7 @@ System.register([], function(exports_1, context_1) {
                 ChickenPen.prototype.hasChickensForCapture = function () {
                     for (var _i = 0, _a = this.chickens; _i < _a.length; _i++) {
                         var chicken = _a[_i];
-                        if (chicken.speed > 0)
+                        if (chicken.scare > 0)
                             return true;
                     }
                     return false;

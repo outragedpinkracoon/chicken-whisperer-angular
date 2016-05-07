@@ -26,7 +26,8 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 }
                 ApproachComponent.prototype.approach = function () {
                     this.success = this.game.approachChicken();
-                    this.lastRoll = this.game.lastRolls();
+                    this.message = this.success ? "Success!" : "Failure";
+                    this.lastRoll = this.game.lastAppoachRolls();
                     this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
                 };
                 ApproachComponent.prototype.nextTurn = function () {

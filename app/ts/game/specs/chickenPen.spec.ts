@@ -31,10 +31,10 @@ describe("Chicken Pen", function() {
   });
 
   it("should not have Chickens for capture", function() {
-    chickenPen.chickens[0].speed = 0;
-    chickenPen.chickens[1].speed = 0;
-    chickenPen.chickens[2].speed = 0;
-    chickenPen.chickens[3].speed = 0;
+    chickenPen.chickens[0].scare = 0;
+    chickenPen.chickens[1].scare = 0;
+    chickenPen.chickens[2].scare = 0;
+    chickenPen.chickens[3].scare = 0;
     expect(chickenPen.hasChickensForCapture()).toBe(false);
   });
 
