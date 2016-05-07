@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,28 +10,34 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, captureGame_1;
     var ChickensComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (captureGame_1_1) {
+                captureGame_1 = captureGame_1_1;
             }],
         execute: function() {
             ChickensComponent = (function () {
                 function ChickensComponent() {
                 }
                 ChickensComponent.prototype.capture = function (chicken) {
+                    var player = this.game.currentPlayer;
+                    var pen = this.game.chickenPen;
+                    var captureDice = this.game.approach.captureDice;
+                    this.game.capture.attempt(player, chicken, pen, captureDice);
                 };
                 __decorate([
                     core_1.Input('game'), 
-                    __metadata('design:type', Object)
+                    __metadata('design:type', captureGame_1.CaptureGame)
                 ], ChickensComponent.prototype, "game", void 0);
                 ChickensComponent = __decorate([
                     core_1.Component({
                         selector: 'chicken-pen',
-                        templateUrl: 'app/views/chickens/chickens.component.html',
-                        styleUrls: ['app/views/chickens/chickens.component.css']
+                        templateUrl: 'app/views/chickens/chickens.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ChickensComponent);
