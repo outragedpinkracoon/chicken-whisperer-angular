@@ -1,6 +1,6 @@
 <h2>Chicken Pen</h2>
-<ul class="chickens" *ngIf="chickenPen">
-    <li *ngFor="#chicken of chickenPen?.chickens" [class.selected]="chicken === selectedChicken" (click)="onSelect(chicken)">
+<ul class="chickens" *ngIf="game.chickenPen">
+    <li *ngFor="#chicken of game.chickenPen.chickens" (click)="capture(chicken)">
         <span class="badge">{{chicken.name}}</span> 
         <span> Scare: {{chicken.scare}} </span>
         <span> Speed: {{chicken.speed}} </span>

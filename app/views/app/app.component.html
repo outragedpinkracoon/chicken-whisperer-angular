@@ -2,18 +2,10 @@
 <!--<div *ngIf="game.started == true">
     -->
     <div>
-    <chicken-pen [chickenPen]="game.chickenPen"></chicken-pen>
+    <chicken-pen [game]="game"></chicken-pen>
     <players [game]="game"></players>
+    <approach [game]="game"></approach>
 
-    <button id="btn-approach" (click)="approach()">Approach chickens!</button>
-    <div *ngIf="success">
-        Success!
-    </div>
-
-    <div *ngIf="!success && !game.approach.firstTry">
-        Sad, you scared the chickens!
-    </div>
-    <p>{{lastRoll}}</p>
 </div>
 
 <!--<start [game]="game"></start>-->

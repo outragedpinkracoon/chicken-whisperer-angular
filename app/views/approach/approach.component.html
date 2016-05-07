@@ -1,0 +1,15 @@
+<button id="btn-approach" (click)="approach()">Approach chickens!</button>
+
+<p *ngIf="lastRoll">
+<span>{{lastRoll}}</span> <span> = {{total}}</span>
+</p>
+
+<div *ngIf="success">
+    Success! 
+</div>
+
+<p *ngIf="!success && !game.approach.firstTry">
+    Sad, you scared the chickens!
+</p>
+
+<p> Capture dice: {{game.approach.captureDice}} </p>
