@@ -62,6 +62,15 @@ describe("Approach", function(){
     expect(approach.captureDice).toBe(0);
   });
   
+  it("starts with first try true", function(){
+    expect(approach.firstTry).toBe(true);
+  });
+  
+  it("sets first try true on step", function(){
+    approach.step({});
+    expect(approach.firstTry).toBe(false);
+  });
+  
   it("gains a capture dice on even roll", function(){
     approach.strategy.die = fakeDie;
     approach.step({});

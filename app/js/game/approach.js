@@ -12,6 +12,7 @@ System.register([], function(exports_1, context_1) {
                     this.strategies = options.strategies;
                     this.strategy = this.strategies["BasicApproachStrategy"];
                     this.lastRoll = [];
+                    this.firstTry = true;
                 }
                 Approach.prototype.step = function (player) {
                     var result = this.strategy.approach(player);
@@ -21,6 +22,7 @@ System.register([], function(exports_1, context_1) {
                     else {
                         this.chickenPen.scareChickens();
                     }
+                    this.firstTry = false;
                     return result;
                 };
                 Approach.prototype.setStrategy = function (key) {

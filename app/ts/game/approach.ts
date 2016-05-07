@@ -15,6 +15,7 @@ export class Approach {
     this.strategies = options.strategies;
     this.strategy = this.strategies["BasicApproachStrategy"];
     this.lastRoll = [];
+    this.firstTry = true;
   }
 
   step(player) : boolean{
@@ -26,6 +27,7 @@ export class Approach {
     else{
     this.chickenPen.scareChickens();
     }
+    this.firstTry = false;
     return result;
   }
 
