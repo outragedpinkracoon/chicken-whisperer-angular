@@ -7,5 +7,5 @@
     </li>
 </ul>
 
-<p *ngIf="game.turnFinished && game.capture.capturedChicken">You rolled: {{lastRolls}} = {{total}}. {{message}}.</p>
-<p *ngIf="game.turnFinished && !game.capture.capturedChicken">You failed to approach the chickens.</p>
+<p *ngIf="game.turnFinished && game.capture.attempted">You rolled: {{lastRolls}} = {{total}}. {{message}}.</p>
+<p *ngIf="game.turnFinished && !game.capture.attempted">You failed to approach the chickens.</p>

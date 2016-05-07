@@ -11,14 +11,14 @@ System.register([], function(exports_1, context_1) {
                 }
                 Capture.prototype.reset = function () {
                     this.lastRolls = [];
-                    this.capturedChicken = false;
+                    this.attempted = false;
                 };
                 Capture.prototype.attempt = function (player, chicken, chickenPen, captureDice) {
+                    this.attempted = true;
                     this.lastRolls = this.die.rollMultiple(captureDice);
                     var result;
                     if (this.successfulRoll(this.lastRolls, chicken)) {
                         result = this.success(chickenPen, player, chicken);
-                        this.capturedChicken = true;
                     }
                     else {
                         result = this.failure(chicken);
