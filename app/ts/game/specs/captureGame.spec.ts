@@ -91,6 +91,14 @@ describe("Game", function() {
   it("should have a capture", function() {
     expect(game.capture).not.toBe(undefined);
   });
+  
+  it("should set player names", function() {
+    expect(game.started).toBe(false);
+    game.setPlayers(["Rick", "Keith"]);
+    console.log(game.players);
+    expect(game.players[0].name).toEqual("Rick");
+    expect(game.started).toBe(true);
+  });
 
   it("should start with player 1 turn", function() {
     game.nextTurn();

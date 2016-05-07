@@ -27,6 +27,7 @@ System.register(['angular2/core', './game/chickenPen'], function(exports_1, cont
                 ChickensComponent.prototype.onSelect = function (chicken) {
                     chicken.reduceScare();
                     this.selectedChicken = chicken;
+                    console.log("child", this.chickenPen);
                 };
                 __decorate([
                     core_1.Input('chickenPen'), 

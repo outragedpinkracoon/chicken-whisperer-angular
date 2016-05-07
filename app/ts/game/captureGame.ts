@@ -37,6 +37,14 @@ export class CaptureGame {
       player.isWhisperer = false;
     }
   }
+  
+  setPlayers(playerNames) {
+    this.players = [];
+    for(var name of playerNames) {
+      this.players.push(new Player(name));
+    }
+    this.started = true;
+  }
 
   updateCurrentPlayer() {
     if(this.currentPlayer === undefined) {

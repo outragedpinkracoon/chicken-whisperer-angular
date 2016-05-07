@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
+System.register(['angular2/core', './gameInitializer'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,39 +10,36 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1;
-    var StartComponent;
+    var core_1, gameInitializer_1;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (captureGame_1_1) {
-                captureGame_1 = captureGame_1_1;
+            function (gameInitializer_1_1) {
+                gameInitializer_1 = gameInitializer_1_1;
             }],
         execute: function() {
-            StartComponent = (function () {
-                function StartComponent() {
+            AppComponent = (function () {
+                function AppComponent() {
+                    this.title = 'Chicken Whisperer';
                 }
-                StartComponent.prototype.start = function () {
-                    this.game.setPlayers([this.player1Name, this.player2Name]);
+                AppComponent.prototype.submit = function () {
+                    this.game = gameInitializer_1.GameInitializer.generateGame(this.player1Name, this.player2Name);
                     this.game.nextTurn();
                 };
-                __decorate([
-                    core_1.Input('game'), 
-                    __metadata('design:type', captureGame_1.CaptureGame)
-                ], StartComponent.prototype, "game", void 0);
-                StartComponent = __decorate([
+                AppComponent = __decorate([
                     core_1.Component({
                         selector: 'start',
-                        templateUrl: 'app/views/start/start.component.html'
+                        templateUrl: 'app/views/app/start.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], StartComponent);
-                return StartComponent;
+                ], AppComponent);
+                return AppComponent;
             }());
-            exports_1("StartComponent", StartComponent);
+            exports_1("AppComponent", AppComponent);
         }
     }
 });
-//# sourceMappingURL=start.component.js.map
+//# sourceMappingURL=app.component.1.js.map

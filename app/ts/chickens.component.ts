@@ -16,6 +16,7 @@ export class ChickensComponent {
   onSelect(chicken: Chicken) { 
     chicken.reduceScare();
     this.selectedChicken = chicken; 
+    console.log("child", this.chickenPen);
   }
 }
 

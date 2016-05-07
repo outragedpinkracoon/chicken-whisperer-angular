@@ -1,9 +1,13 @@
-System.register([], function(exports_1, context_1) {
+System.register(["./player"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var player_1;
     var CaptureGame;
     return {
-        setters:[],
+        setters:[
+            function (player_1_1) {
+                player_1 = player_1_1;
+            }],
         execute: function() {
             CaptureGame = (function () {
                 function CaptureGame(options) {
@@ -25,6 +29,14 @@ System.register([], function(exports_1, context_1) {
                         var player = _a[_i];
                         player.isWhisperer = false;
                     }
+                };
+                CaptureGame.prototype.setPlayers = function (playerNames) {
+                    this.players = [];
+                    for (var _i = 0, playerNames_1 = playerNames; _i < playerNames_1.length; _i++) {
+                        var name = playerNames_1[_i];
+                        this.players.push(new player_1.Player(name));
+                    }
+                    this.started = true;
                 };
                 CaptureGame.prototype.updateCurrentPlayer = function () {
                     if (this.currentPlayer === undefined) {

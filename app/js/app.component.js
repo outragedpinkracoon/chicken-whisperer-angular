@@ -1,4 +1,4 @@
-System.register(['angular2/core', './chickens.component', './players.component', './gameInitializer'], function(exports_1, context_1) {
+System.register(['angular2/core', './chickens.component', './players.component', './start.component', './gameInitializer'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './chickens.component', './players.component',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chickens_component_1, players_component_1, gameInitializer_1;
+    var core_1, chickens_component_1, players_component_1, start_component_1, gameInitializer_1;
     var AppComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['angular2/core', './chickens.component', './players.component',
             function (players_component_1_1) {
                 players_component_1 = players_component_1_1;
             },
+            function (start_component_1_1) {
+                start_component_1 = start_component_1_1;
+            },
             function (gameInitializer_1_1) {
                 gameInitializer_1 = gameInitializer_1_1;
             }],
@@ -30,21 +33,18 @@ System.register(['angular2/core', './chickens.component', './players.component',
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
+                    this.game = gameInitializer_1.GameInitializer.generateGame(this.player1Name, this.player2Name);
                 }
                 AppComponent.prototype.approach = function () {
                     this.success = this.game.approach.step(this.game.currentPlayer);
                     this.lastRoll = this.game.approach.strategy.lastRolls();
-                };
-                AppComponent.prototype.submit = function () {
-                    this.game = gameInitializer_1.GameInitializer.generateGame(this.player1Name, this.player2Name);
-                    this.game.nextTurn();
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
                         templateUrl: 'app/views/app/app.component.html',
                         styleUrls: ['app/views/app/app.component.css'],
-                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent],
+                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent, start_component_1.StartComponent],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

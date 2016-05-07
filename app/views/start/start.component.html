@@ -1,0 +1,12 @@
+<ul *ngIf="game.started == false">
+<li>Enter player names</li>
+<li>Player 1
+    <input [(ngModel)]="player1Name" />
+</li>
+<li>Player 2
+    <input [(ngModel)]="player2Name" />
+</li>
+<li>
+    <button (click)="start()">Start</button>
+</li>
+</ul>
