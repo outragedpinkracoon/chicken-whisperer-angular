@@ -1,5 +1,8 @@
 <ul *ngIf="game.players" class="players">
     <li *ngFor="#player of game.players">
-        <p>{{player.name}} <span *ngIf="player.isWhisperer">whispering!</span></p>
+        <p>{{player.name}} 
+            <span *ngIf="player.isWhisperer">whispering!</span>
+            <span *ngIf="player.name === game.currentPlayer.name">current player</span>
+        </p>
     </li>
 </ul>

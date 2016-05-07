@@ -1,7 +1,6 @@
 <h1>{{title}}</h1>
 <div *ngIf="game.started == true">
-
-    <p>Current Player: {{game.currentPlayer.name}}</p>
+    
     <chicken-pen [chickenPen]="game.chickenPen"></chicken-pen>
     <players [game]="game"></players>
 
