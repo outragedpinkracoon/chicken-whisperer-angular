@@ -33,7 +33,8 @@ System.register(['angular2/core', './chickens.component', './players.component',
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
-                    this.game = gameInitializer_1.GameInitializer.generateGame(this.player1Name, this.player2Name);
+                    this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Jay");
+                    this.game.nextTurn();
                 }
                 AppComponent.prototype.approach = function () {
                     this.success = this.game.approach.step(this.game.currentPlayer);

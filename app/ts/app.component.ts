@@ -17,11 +17,10 @@ export class AppComponent {
   game: CaptureGame;
   lastRoll: Array<number>;
   success: boolean;
-  player1Name: string;
-  player2Name: string;
     
   constructor(){
-    this.game = GameInitializer.generateGame(this.player1Name, this.player2Name);
+    this.game = GameInitializer.generateGame("Val","Jay");
+    this.game.nextTurn();
   }
   
   approach(){

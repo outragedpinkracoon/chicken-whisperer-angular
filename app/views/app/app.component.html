@@ -1,6 +1,7 @@
 <h1>{{title}}</h1>
-<div *ngIf="game.started == true">
-    
+<!--<div *ngIf="game.started == true">
+    -->
+    <div>
     <chicken-pen [chickenPen]="game.chickenPen"></chicken-pen>
     <players [game]="game"></players>
 
@@ -15,4 +16,4 @@
     <p>{{lastRoll}}</p>
 </div>
 
-<start [game]="game"></start>
+<!--<start [game]="game"></start>-->

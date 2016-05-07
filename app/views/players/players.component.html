@@ -1,8 +1,11 @@
 <ul *ngIf="game.players" class="players">
     <li *ngFor="#player of game.players">
-        <p>{{player.name}} 
+        <span>{{player.name}} 
             <span *ngIf="player.isWhisperer">whispering!</span>
             <span *ngIf="player.name === game.currentPlayer.name">current player</span>
-        </p>
+       
+        </span>
     </li>
 </ul>
+
+<p> Capture dice: {{game.approach.captureDice}} </p>
