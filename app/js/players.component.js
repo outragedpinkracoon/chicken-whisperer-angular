@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,21 +10,24 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, captureGame_1;
     var PlayersComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (captureGame_1_1) {
+                captureGame_1 = captureGame_1_1;
             }],
         execute: function() {
             PlayersComponent = (function () {
                 function PlayersComponent() {
                 }
                 __decorate([
-                    core_1.Input('players'), 
-                    __metadata('design:type', Array)
-                ], PlayersComponent.prototype, "players", void 0);
+                    core_1.Input('game'), 
+                    __metadata('design:type', captureGame_1.CaptureGame)
+                ], PlayersComponent.prototype, "game", void 0);
                 PlayersComponent = __decorate([
                     core_1.Component({
                         selector: 'players',

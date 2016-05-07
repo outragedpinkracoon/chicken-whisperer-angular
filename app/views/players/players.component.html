@@ -1,5 +1,5 @@
-<ul *ngIf="players" class="players">
-    <li *ngFor="#player of players">
-        <span>{{player.name}}</span> 
+<ul *ngIf="game.players" class="players">
+    <li *ngFor="#player of game.players">
+        <p>{{player.name}} <span *ngIf="player.isWhisperer">whispering!</span></p>
     </li>
 </ul>

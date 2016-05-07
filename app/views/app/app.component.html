@@ -3,14 +3,14 @@
 
     <p>Current Player: {{game.currentPlayer.name}}</p>
     <chicken-pen [chickenPen]="game.chickenPen"></chicken-pen>
-    <players [players]="game.players"></players>
+    <players [game]="game"></players>
 
     <button id="btn-approach" (click)="approach()">Approach chickens!</button>
     <div *ngIf="success">
         Success!
     </div>
 
-    <div *ngIf="!success">
+    <div *ngIf="!success && !game.approach.firstTry">
         Sad, you scared the chickens!
     </div>
     <p>{{lastRoll}}</p>

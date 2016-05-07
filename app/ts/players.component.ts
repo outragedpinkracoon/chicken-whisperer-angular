@@ -1,5 +1,5 @@
 import {Component, Input} from 'angular2/core';
-import {Player} from './game/player';
+import {CaptureGame} from './game/captureGame';
 
 @Component({
     selector: 'players',
@@ -7,7 +7,7 @@ import {Player} from './game/player';
 })
 
 export class PlayersComponent {
-  @Input('players') players: Player[];
+  @Input('game') game: CaptureGame;
 }
 
 
