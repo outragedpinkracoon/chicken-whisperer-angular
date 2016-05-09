@@ -24,10 +24,11 @@ export class ChickensComponent {
     this.setupFeedback(result, chicken);
   }
   
-  setupFeedback(chicken){
+  setupFeedback(result, chicken){
     this.lastRolls = this.game.lastCaptureRolls();
     this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
-    this.chickenName = chicken.name;
+    var subMessage = result ? "successfully captured " : "failed to capture ";
+    this.message = "You "+subMessage+ chicken.name;
   }
 }
 

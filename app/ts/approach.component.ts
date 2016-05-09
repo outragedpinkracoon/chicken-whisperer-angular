@@ -1,10 +1,12 @@
 import { Component, Input } from 'angular2/core';
 import { CaptureGame } from './game/captureGame';
+import { DiceService } from './services/diceService';
 
 @Component({
   selector: 'approach',
   templateUrl: 'app/views/approach/approach.component.html',
-  styleUrls: ['app/views/approach/approach.component.css']
+  styleUrls: ['app/views/approach/approach.component.css'],
+  providers: [DiceService]
 })
 
 export class ApproachComponent {
@@ -14,28 +16,14 @@ export class ApproachComponent {
   total: number;
   message: string;
   dieResults: Array<string>;
+
+  constructor(private diceService: DiceService) { }
   
   approach(){
     this.success = this.game.approachChicken();
     this.lastRoll = this.game.lastAppoachRolls();
-    this.dieResults = this.getDieResults(this.lastRoll);
+    this.dieResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
     this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
-  }
-
-  getDieResults(rollsArray){
-    var results = [];
-    var lookup = {
-      1: "\u2680",
-      2: "\u2681",
-      3: "\u2682",
-      4: "\u2683",
-      5: "\u2684",
-      6: "\u2685"
-    }
-    for(var roll of rollsArray){
-      results.push(lookup[roll]);
-    }
-    return results;
   }
 
   nextTurn(){

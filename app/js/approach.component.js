@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './services/diceService'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1;
+    var core_1, captureGame_1, diceService_1;
     var ApproachComponent;
     return {
         setters:[
@@ -19,32 +19,20 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
             },
             function (captureGame_1_1) {
                 captureGame_1 = captureGame_1_1;
+            },
+            function (diceService_1_1) {
+                diceService_1 = diceService_1_1;
             }],
         execute: function() {
             ApproachComponent = (function () {
-                function ApproachComponent() {
+                function ApproachComponent(diceService) {
+                    this.diceService = diceService;
                 }
                 ApproachComponent.prototype.approach = function () {
                     this.success = this.game.approachChicken();
                     this.lastRoll = this.game.lastAppoachRolls();
-                    this.dieResults = this.getDieResults(this.lastRoll);
+                    this.dieResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
                     this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
-                };
-                ApproachComponent.prototype.getDieResults = function (rollsArray) {
-                    var results = [];
-                    var lookup = {
-                        1: "\u2680",
-                        2: "\u2681",
-                        3: "\u2682",
-                        4: "\u2683",
-                        5: "\u2684",
-                        6: "\u2685"
-                    };
-                    for (var _i = 0, rollsArray_1 = rollsArray; _i < rollsArray_1.length; _i++) {
-                        var roll = rollsArray_1[_i];
-                        results.push(lookup[roll]);
-                    }
-                    return results;
                 };
                 ApproachComponent.prototype.nextTurn = function () {
                     this.game.nextTurn();
@@ -57,9 +45,10 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                     core_1.Component({
                         selector: 'approach',
                         templateUrl: 'app/views/approach/approach.component.html',
-                        styleUrls: ['app/views/approach/approach.component.css']
+                        styleUrls: ['app/views/approach/approach.component.css'],
+                        providers: [diceService_1.DiceService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], ApproachComponent);
                 return ApproachComponent;
             }());
