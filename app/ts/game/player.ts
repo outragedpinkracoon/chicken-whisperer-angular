@@ -14,6 +14,10 @@ export class Player {
   addChicken(chicken){
     this.chickens.push(chicken)
   }
+  
+  hasChickens(){
+    return this.chickenCount() > 0;
+  }
 
   chickenCount(){
     return this.chickens.length;

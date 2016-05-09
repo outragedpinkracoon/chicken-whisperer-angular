@@ -15,7 +15,6 @@ export class ApproachComponent {
   
   approach(){
     this.success = this.game.approachChicken();
-    this.message = this.success ? "Success!" : "Failure"
     this.lastRoll = this.game.lastAppoachRolls();
     this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
   }

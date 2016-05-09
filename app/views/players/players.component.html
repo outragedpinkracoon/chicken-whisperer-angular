@@ -1,12 +1,16 @@
-<ul *ngIf="game.players" class="players">
-    <li *ngFor="#player of game.players">
-        <span>{{player.name}} 
-            <span *ngIf="player.name === game.currentPlayer.name">*</span>
-            <span *ngIf="player.isWhisperer">whispering!</span>
-           
-            <ul *ngFor="#chicken of player.chickens">
-                <li>{{chicken.name}}:{{chicken.speed}}</li>
-            </ul>
-        </span>
-    </li>
-</ul>
+<div *ngIf="game.players" class="players">
+    <div *ngFor="#player of game.players" class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <span *ngIf="player.name === game.currentPlayer.name">*</span>
+                {{player.name}}  
+                <span *ngIf="player.isWhisperer">- whispering!</span>
+            </h3>
+        </div>
+        <div *ngIf="player.hasChickens()" class="panel-body">
+            <div *ngFor="#chicken of player.chickens">
+                <p>{{chicken.name}} ({{chicken.speed}})</p>
+            </div>
+        </div>
+    </div>
+</div>

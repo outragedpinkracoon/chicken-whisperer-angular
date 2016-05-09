@@ -23,7 +23,10 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
         execute: function() {
             ChickensComponent = (function () {
                 function ChickensComponent() {
+                    this.prefix = "&#x268";
+                    this.suffix = ";";
                 }
+                // test = "\u2680";
                 ChickensComponent.prototype.capture = function (chicken) {
                     var captureDice = this.game.approach.captureDice;
                     if (captureDice == 0 || this.game.turnFinished)

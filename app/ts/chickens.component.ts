@@ -15,6 +15,9 @@ export class ChickensComponent {
   lastRolls: Array<number>;
   total: number;
   message: string;
+  prefix = "&#x268";
+  suffix = ";";
+  // test = "\u2680";
 
   capture(chicken: Chicken) {
     var captureDice = this.game.approach.captureDice;

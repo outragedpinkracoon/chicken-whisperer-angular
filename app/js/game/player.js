@@ -14,6 +14,9 @@ System.register([], function(exports_1, context_1) {
                 Player.prototype.addChicken = function (chicken) {
                     this.chickens.push(chicken);
                 };
+                Player.prototype.hasChickens = function () {
+                    return this.chickenCount() > 0;
+                };
                 Player.prototype.chickenCount = function () {
                     return this.chickens.length;
                 };
