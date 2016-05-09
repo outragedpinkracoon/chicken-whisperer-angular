@@ -32,11 +32,12 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                     var captureDice = this.game.approach.captureDice;
                     if (captureDice == 0 || this.game.turnFinished)
                         return;
-                    var result = this.game.attemptCapture(chicken);
-                    this.setupFeedback(result, chicken);
+                    this.success = this.game.attemptCapture(chicken);
+                    this.setupFeedback(this.success, chicken);
                 };
                 ChickensComponent.prototype.setupFeedback = function (result, chicken) {
                     this.lastRolls = this.game.lastCaptureRolls();
+                    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
                     this.total = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
                     var subMessage = result ? "successfully captured " : "failed to capture ";
                     this.message = "You " + subMessage + chicken.name;

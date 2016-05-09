@@ -14,8 +14,7 @@ export class ApproachComponent {
   lastRoll: Array<number>;
   success: boolean;
   total: number;
-  message: string;
-  dieResults: Array<string>;
+  diceResults: Array<string>;
   sixSidedDie: string;
   captureDice: Array<string>;
 
@@ -26,7 +25,7 @@ export class ApproachComponent {
   approach(){
     this.success = this.game.approachChicken();
     this.lastRoll = this.game.lastAppoachRolls();
-    this.dieResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
+    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
     this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
 
     this.setupCaptureDice();

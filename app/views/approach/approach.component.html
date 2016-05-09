@@ -1,7 +1,7 @@
 <div *ngIf="!game.approach.firstTry && !game.turnFinished">
     <div *ngIf="lastRoll">
         <ul class="die-results">
-          <li *ngFor="#die of dieResults">
+          <li *ngFor="#die of diceResults">
             {{die}}
           </li>
           <li>
@@ -9,7 +9,7 @@
           </li>
         </ul>
     </div>
-    HERE{{captrueDice}}
+    Capture dice collection:
     <ul class="die-results">
       <li *ngFor="#die of captureDice">
         {{die}}
