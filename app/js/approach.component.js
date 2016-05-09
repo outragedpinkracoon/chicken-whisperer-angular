@@ -46,6 +46,9 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                     }
                     return results;
                 };
+                ApproachComponent.prototype.nextTurn = function () {
+                    this.game.nextTurn();
+                };
                 __decorate([
                     core_1.Input('game'), 
                     __metadata('design:type', captureGame_1.CaptureGame)

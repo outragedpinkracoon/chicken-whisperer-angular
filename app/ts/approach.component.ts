@@ -38,4 +38,8 @@ export class ApproachComponent {
     return results;
   }
 
+  nextTurn(){
+    this.game.nextTurn();
+  }
+
 }

@@ -21,5 +21,4 @@ export class AppComponent {
     this.game = GameInitializer.generateGame("Val","Jay");
     this.game.nextTurn();
   }
- 
 }
