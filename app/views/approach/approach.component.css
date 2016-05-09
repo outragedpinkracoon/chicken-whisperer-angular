@@ -1,11 +1,3 @@
-.success {
-  color: green;  
-}
-
-.failure {
-  color:red;
-}
-
 .die-results {
   font-size: 3em;
   list-style-type: none;

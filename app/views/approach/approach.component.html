@@ -1,5 +1,11 @@
 <div *ngIf="!game.approach.firstTry && !game.turnFinished">
-    <div *ngIf="lastRoll">{{lastRoll}}
+    <div *ngIf="lastRoll">
+        <ul class="die-results">
+          <li *ngFor="#die of dieResults">
+            {{die}}
+          </li>
+        </ul>
+
         <span> = {{total}}</span>
         <span class="failure" *ngIf="!success">Failure</span>
         <span class="success" *ngIf="success">Success! </span>
@@ -9,5 +15,6 @@
 
 <p>
 <button class="btn btn-primary pure-button pure-button-primary" id="btn-approach" *ngIf="!game.turnFinished" (click)="approach()">Approach chickens!</button>
+
 <button class="btn btn-primary pure-button pure-button-primary" id="btn-next" *ngIf="game.turnFinished" (click)="nextTurn()">Next turn</button>
 </p>

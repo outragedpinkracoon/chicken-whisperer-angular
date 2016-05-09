@@ -27,10 +27,24 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 ApproachComponent.prototype.approach = function () {
                     this.success = this.game.approachChicken();
                     this.lastRoll = this.game.lastAppoachRolls();
+                    this.dieResults = this.getDieResults(this.lastRoll);
                     this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
                 };
-                ApproachComponent.prototype.nextTurn = function () {
-                    this.game.nextTurn();
+                ApproachComponent.prototype.getDieResults = function (rollsArray) {
+                    var results = [];
+                    var lookup = {
+                        1: "\u2680",
+                        2: "\u2681",
+                        3: "\u2682",
+                        4: "\u2683",
+                        5: "\u2684",
+                        6: "\u2685"
+                    };
+                    for (var _i = 0, rollsArray_1 = rollsArray; _i < rollsArray_1.length; _i++) {
+                        var roll = rollsArray_1[_i];
+                        results.push(lookup[roll]);
+                    }
+                    return results;
                 };
                 __decorate([
                     core_1.Input('game'), 
@@ -39,7 +53,8 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 ApproachComponent = __decorate([
                     core_1.Component({
                         selector: 'approach',
-                        templateUrl: 'app/views/approach/approach.component.html'
+                        templateUrl: 'app/views/approach/approach.component.html',
+                        styleUrls: ['app/views/approach/approach.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ApproachComponent);

@@ -1,4 +1,4 @@
-<h2>Chicken Pen {{test}</h2>
+<h2>Chicken Pen</h2>
 <ul class="chickens list-group" *ngIf="game.chickenPen">
     <li class="list-group-item" *ngFor="#chicken of game.chickenPen.chickens" (click)="capture(chicken)">
         <span class="badge">{{chicken.name}}</span> 
@@ -8,9 +8,6 @@
 </ul>
 
 <p *ngIf="game.turnFinished && game.capture.attempted">
-    <li *ngFor="#roll of lastRolls">
-        {{prefix}}{{roll}}{{suffix}}
-    </li>
     You rolled: {{lastRolls}} = {{total}}. {{message}}.
 </p>
 <p *ngIf="game.turnFinished && !game.capture.attempted">You failed to approach the chickens.</p>

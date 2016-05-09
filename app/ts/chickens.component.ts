@@ -15,9 +15,6 @@ export class ChickensComponent {
   lastRolls: Array<number>;
   total: number;
   message: string;
-  prefix = "&#x268";
-  suffix = ";";
-  // test = "\u2680";
 
   capture(chicken: Chicken) {
     var captureDice = this.game.approach.captureDice;
@@ -27,11 +24,10 @@ export class ChickensComponent {
     this.setupFeedback(result, chicken);
   }
   
-  setupFeedback(result, chicken){
+  setupFeedback(chicken){
     this.lastRolls = this.game.lastCaptureRolls();
     this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
-    var subMessage = result ? "successfully captured " : "failed to capture ";
-    this.message = "You "+subMessage+ chicken.name;
+    this.chickenName = chicken.name;
   }
 }
 
