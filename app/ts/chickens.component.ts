@@ -1,12 +1,14 @@
 import {Component, Input} from 'angular2/core';
 import {CaptureGame} from './game/captureGame';
 import {Chicken} from './game/chicken';
+import {DiceService} from './services/diceService'
 
 
 @Component({
   selector: 'chicken-pen',
   templateUrl: 'app/views/chickens/chickens.component.html',
-  styleUrls: ['app/views/chickens/chickens.component.css']
+  styleUrls: ['app/views/chickens/chickens.component.css'],
+  providers: [DiceService]
 })
 
 export class ChickensComponent {
@@ -15,6 +17,8 @@ export class ChickensComponent {
   lastRolls: Array<number>;
   total: number;
   message: string;
+
+  constructor(private diceService: DiceService){}
 
   capture(chicken: Chicken) {
     var captureDice = this.game.approach.captureDice;

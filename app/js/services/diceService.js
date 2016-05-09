@@ -20,7 +20,15 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         execute: function() {
             DiceService = (function () {
                 function DiceService() {
+                    this.sixSidedDie = this.dieUnicode(6);
                 }
+                DiceService.prototype.dummyDice = function (numberRequired, sideToShow) {
+                    var results = [];
+                    for (var i = 0; i < numberRequired; i++) {
+                        results.push(sideToShow);
+                    }
+                    return this.dieResultsAsUnicode(results);
+                };
                 DiceService.prototype.dieResultsAsUnicode = function (rollsArray) {
                     var results = [];
                     for (var _i = 0, rollsArray_1 = rollsArray; _i < rollsArray_1.length; _i++) {

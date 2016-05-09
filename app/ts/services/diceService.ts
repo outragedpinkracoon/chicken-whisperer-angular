@@ -3,6 +3,21 @@ import { Injectable } from 'angular2/core';
 @Injectable()
 export class DiceService {
   
+  sixSidedDie: string;
+
+  constructor(){
+    this.sixSidedDie = this.dieUnicode(6);
+  }
+
+  dummyDice(numberRequired, sideToShow){
+    var results = [];
+    for(var i = 0;i< numberRequired; i++){
+      results.push(sideToShow);
+    }
+
+    return this.dieResultsAsUnicode(results);
+  }
+
   dieResultsAsUnicode(rollsArray){
     var results = [];
     

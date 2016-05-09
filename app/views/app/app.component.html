@@ -1,13 +1,12 @@
 <div class="container">
-    <div class="page-header">
-        <h1>{{title}}</h1>
-    </div>
+    <h1>{{title}}</h1>
     <div *ngIf="game.started == true">
-    
-
+  
     <chicken-pen [game]="game"></chicken-pen>
     <approach [game]="game"></approach>
     <players [game]="game"></players>
-</div>
+    </div>
 <!-- 
 <start [game]="game"></start> -->
+
+</div>

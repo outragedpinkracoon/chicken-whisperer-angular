@@ -16,14 +16,25 @@ export class ApproachComponent {
   total: number;
   message: string;
   dieResults: Array<string>;
+  sixSidedDie: string;
+  captureDice: Array<string>;
 
-  constructor(private diceService: DiceService) { }
+  constructor(private diceService: DiceService) { 
+    this.sixSidedDie = diceService.sixSidedDie;
+  }
   
   approach(){
     this.success = this.game.approachChicken();
     this.lastRoll = this.game.lastAppoachRolls();
     this.dieResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
     this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
+
+    this.setupCaptureDice();
+    
+  }
+
+  setupCaptureDice(){
+    this.captureDice = this.diceService.dummyDice(this.game.approach.captureDice, 6);
   }
 
   nextTurn(){

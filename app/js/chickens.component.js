@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './services/diceService'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1;
+    var core_1, captureGame_1, diceService_1;
     var ChickensComponent;
     return {
         setters:[
@@ -19,10 +19,14 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
             },
             function (captureGame_1_1) {
                 captureGame_1 = captureGame_1_1;
+            },
+            function (diceService_1_1) {
+                diceService_1 = diceService_1_1;
             }],
         execute: function() {
             ChickensComponent = (function () {
-                function ChickensComponent() {
+                function ChickensComponent(diceService) {
+                    this.diceService = diceService;
                 }
                 ChickensComponent.prototype.capture = function (chicken) {
                     var captureDice = this.game.approach.captureDice;
@@ -45,9 +49,10 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                     core_1.Component({
                         selector: 'chicken-pen',
                         templateUrl: 'app/views/chickens/chickens.component.html',
-                        styleUrls: ['app/views/chickens/chickens.component.css']
+                        styleUrls: ['app/views/chickens/chickens.component.css'],
+                        providers: [diceService_1.DiceService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], ChickensComponent);
                 return ChickensComponent;
             }());

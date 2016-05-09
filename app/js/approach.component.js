@@ -27,12 +27,17 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
             ApproachComponent = (function () {
                 function ApproachComponent(diceService) {
                     this.diceService = diceService;
+                    this.sixSidedDie = diceService.sixSidedDie;
                 }
                 ApproachComponent.prototype.approach = function () {
                     this.success = this.game.approachChicken();
                     this.lastRoll = this.game.lastAppoachRolls();
                     this.dieResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
                     this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
+                    this.setupCaptureDice();
+                };
+                ApproachComponent.prototype.setupCaptureDice = function () {
+                    this.captureDice = this.diceService.dummyDice(this.game.approach.captureDice, 6);
                 };
                 ApproachComponent.prototype.nextTurn = function () {
                     this.game.nextTurn();

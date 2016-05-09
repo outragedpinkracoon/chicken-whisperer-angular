@@ -4,13 +4,17 @@
           <li *ngFor="#die of dieResults">
             {{die}}
           </li>
+          <li>
+            = <span [class.failure]="!success" [class.success]="success"> {{total}}</span>
+          </li>
         </ul>
-
-        <span> = {{total}}</span>
-        <span class="failure" *ngIf="!success">Failure</span>
-        <span class="success" *ngIf="success">Success! </span>
     </div>
-    <p> Capture dice: {{game.approach.captureDice}} </p>
+    HERE{{captrueDice}}
+    <ul class="die-results">
+      <li *ngFor="#die of captureDice">
+        {{die}}
+      </li>
+    </ul>
 </div>
 
 <p>
