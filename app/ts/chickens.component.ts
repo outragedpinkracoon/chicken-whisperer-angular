@@ -18,7 +18,6 @@ export class ChickensComponent {
   total: number;
   message: string;
   diceResults: Array<string>;
-  success: boolean;
 
   constructor(private diceService: DiceService){}
 
