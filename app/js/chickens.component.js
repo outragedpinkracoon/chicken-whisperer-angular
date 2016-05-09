@@ -30,7 +30,7 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                 }
                 ChickensComponent.prototype.capture = function (chicken) {
                     var captureDice = this.game.approach.captureDice;
-                    if (captureDice == 0 || this.game.turnFinished)
+                    if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0)
                         return;
                     this.success = this.game.attemptCapture(chicken);
                     this.setupFeedback(this.success, chicken);

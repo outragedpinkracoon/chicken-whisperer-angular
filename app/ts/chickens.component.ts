@@ -24,7 +24,7 @@ export class ChickensComponent {
 
   capture(chicken: Chicken) {
     var captureDice = this.game.approach.captureDice;
-    if (captureDice == 0 || this.game.turnFinished) return;
+    if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0) return;
 
     this.success = this.game.attemptCapture(chicken);
     this.setupFeedback(this.success, chicken);
