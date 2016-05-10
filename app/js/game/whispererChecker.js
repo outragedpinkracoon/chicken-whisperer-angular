@@ -9,11 +9,11 @@ System.register([], function(exports_1, context_1) {
                 function WhispererChecker() {
                 }
                 WhispererChecker.prototype.update = function (rolls, player) {
-                    if (this.gainsWhisperer(rolls)) {
-                        player.isWhisperer = true;
+                    if (player.isWhisperer && this.losesWhisperer(rolls)) {
+                        return player.isWhisperer = false;
                     }
-                    if (this.losesWhisperer(rolls)) {
-                        player.isWhisperer = false;
+                    if (this.gainsWhisperer(rolls)) {
+                        return player.isWhisperer = true;
                     }
                 };
                 WhispererChecker.prototype.gainsWhisperer = function (rolls) {
