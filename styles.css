@@ -28,8 +28,30 @@ body {
   width: 40%;
   display: inline-block;
   margin: 10px;
+  vertical-align: top;
 }
 
 .players {
   text-align: center;
+}
+
+.chicken-image-small {
+  width: 40px;
+}
+
+.captured-chicken {
+  display: inline-block;
+  width: 30%;
+}
+/* DICE BOX */
+
+.dice-box {
+  width: 40%;
+  background-color: #efd984;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid black;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
 }

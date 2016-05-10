@@ -5,6 +5,16 @@
   font-family: 'Permanent Marker', cursive;
   font-size: 25px;
   font-weight: 200;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.approach-button:hover {
+  background-color: #efd984;
+}
+
+.approach-button:focus {
+  outline: none;
 }
 
 p {

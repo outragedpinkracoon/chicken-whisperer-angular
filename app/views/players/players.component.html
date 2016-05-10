@@ -8,8 +8,9 @@
             </h3>
         </div>
         <div *ngIf="player.hasChickens()" class="panel-body">
-            <div *ngFor="#chicken of player.chickens">
-                <p>{{chicken.name}} ({{chicken.speed}})</p>
+            <div class="captured-chicken" *ngFor="#chicken of player.chickens">
+                    <img src="http://www.wpclipart.com/cartoon/animals/bird/chicken/Chicken_cartoon_04.svg" class="chicken-image-small">
+                    <p>{{chicken.name}} ({{chicken.speed}})</p>
             </div>
         </div>
     </div>
