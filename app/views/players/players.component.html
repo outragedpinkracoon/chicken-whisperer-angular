@@ -1,5 +1,5 @@
 <div *ngIf="game.players" class="players">
-    <div *ngFor="#player of game.players" class="panel panel-default">
+    <div *ngFor="#player of game.players" class="panel panel-default player">
         <div class="panel-heading">
             <h3 class="panel-title">
                 <span *ngIf="player.name === game.currentPlayer.name">*</span>
@@ -8,8 +8,9 @@
             </h3>
         </div>
         <div *ngIf="player.hasChickens()" class="panel-body">
-            <div *ngFor="#chicken of player.chickens">
-                <p>{{chicken.name}} ({{chicken.speed}})</p>
+            <div class="captured-chicken" *ngFor="#chicken of player.chickens">
+                    <img src="http://www.wpclipart.com/cartoon/animals/bird/chicken/Chicken_cartoon_04.svg" class="chicken-image-small">
+                    <p>{{chicken.name}} ({{chicken.speed}})</p>
             </div>
         </div>
     </div>

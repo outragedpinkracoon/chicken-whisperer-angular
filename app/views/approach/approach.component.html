@@ -1,4 +1,4 @@
-<div *ngIf="!game.approach.firstTry && !game.turnFinished">
+<div class="dice-box" *ngIf="!game.approach.firstTry && !game.turnFinished">
     <div *ngIf="lastRoll">
         <ul class="die-results">
           <li *ngFor="#die of diceResults">
@@ -17,15 +17,16 @@
     </ul>
 </div>
 
+
 <p>
-    <button class="btn btn-primary pure-button pure-button-primary" 
+    <button class="approach-button" 
             id="btn-approach" 
             *ngIf="!game.turnFinished" 
             (click)="approach()">
             Approach chickens!
     </button>
 
-    <button class="btn btn-primary pure-button pure-button-primary" 
+    <button class="approach-button" 
             id="btn-next" 
             *ngIf="game.turnFinished" 
             (click)="nextTurn()">
