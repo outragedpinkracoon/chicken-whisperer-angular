@@ -1,7 +1,8 @@
 <h2>Chicken Pen</h2>
 <ul class="chickens list-group" *ngIf="game.chickenPen">
     <li class="list-group-item" *ngFor="#chicken of game.chickenPen.chickens" (click)="capture(chicken)">
-        <span class="badge">{{chicken.name}}</span> 
+        <img src="http://www.wpclipart.com/cartoon/animals/bird/chicken/Chicken_cartoon_04.svg" class="chicken-image">
+        <span class="chicken-name">{{chicken.name}}</span> 
         <span> Scare: {{chicken.scare}} </span>
         <span> Speed: {{chicken.speed}} </span>
     </li>

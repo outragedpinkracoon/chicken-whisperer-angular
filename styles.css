@@ -1,3 +1,7 @@
+body {
+  background-image: url('./images/strawbg.jpg');
+}
+
 .success {
   color: green;  
 }
@@ -16,4 +20,16 @@
 .die-results li {
   display: inline-block;
   padding: 0px;
+}
+
+/* PLAYERS */
+
+.player {
+  width: 40%;
+  display: inline-block;
+  margin: 10px;
+}
+
+.players {
+  text-align: center;
 }

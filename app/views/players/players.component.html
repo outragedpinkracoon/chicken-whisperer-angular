@@ -1,5 +1,5 @@
 <div *ngIf="game.players" class="players">
-    <div *ngFor="#player of game.players" class="panel panel-default">
+    <div *ngFor="#player of game.players" class="panel panel-default player">
         <div class="panel-heading">
             <h3 class="panel-title">
                 <span *ngIf="player.name === game.currentPlayer.name">*</span>
