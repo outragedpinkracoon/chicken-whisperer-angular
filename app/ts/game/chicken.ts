@@ -5,6 +5,7 @@ export class Chicken {
   maxSpeed:number;
   scare: number;
   id: number;
+  image: string;
   
   constructor(options){
     this.name = options.name;
@@ -13,6 +14,7 @@ export class Chicken {
     this.maxSpeed = options.speed;
     this.scare = options.maxScare;
     this.id = options.id;
+    this.image = options.image;
   }
 
   reduceScare(value = 1){

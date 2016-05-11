@@ -1,14 +1,14 @@
 export class WhispererChecker {
 
   update(rolls, player) {
+    if(player.isWhisperer && this.losesWhisperer(rolls)){
+      return player.isWhisperer = false;
+    }
+    
     if(this.gainsWhisperer(rolls)) {
-      player.isWhisperer = true
+      return player.isWhisperer = true
     }
-
-    if(this.losesWhisperer(rolls)){
-      player.isWhisperer = false;
-      
-    }
+    
   }
 
   gainsWhisperer(rolls){
