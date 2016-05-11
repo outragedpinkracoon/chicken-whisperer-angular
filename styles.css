@@ -22,27 +22,6 @@ body {
   padding: 0px;
 }
 
-/* PLAYERS */
-
-.player {
-  width: 40%;
-  display: inline-block;
-  margin: 10px;
-  vertical-align: top;
-}
-
-.players {
-  text-align: center;
-}
-
-.chicken-image-small {
-  width: 40px;
-}
-
-.captured-chicken {
-  display: inline-block;
-  width: 30%;
-}
 /* DICE BOX */
 
 .dice-box {

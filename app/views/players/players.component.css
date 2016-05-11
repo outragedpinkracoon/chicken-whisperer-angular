@@ -1,0 +1,38 @@
+.player {
+  width: 40%;
+  display: inline-block;
+  margin: 10px;
+  vertical-align: top;
+}
+
+.players {
+  text-align: center;
+}
+
+.chicken-image-small {
+  width: 40px;
+}
+
+.captured-chicken {
+  display: inline-block;
+  width: 30%;
+}
+
+.current-player {
+  display: inline-block;
+  color: black;
+  background-color: #E5C032;
+  border: 2px solid black;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  min-width: 150px;
+  border-radius: 10px;
+  height: 30px;
+}
+
+.resting-player {
+  padding: 5px;
+  display: inline-block;
+  height: 30px;
+}

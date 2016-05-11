@@ -31,7 +31,8 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 PlayersComponent = __decorate([
                     core_1.Component({
                         selector: 'players',
-                        templateUrl: 'app/views/players/players.component.html'
+                        templateUrl: 'app/views/players/players.component.html',
+                        styleUrls: ['app/views/players/players.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], PlayersComponent);

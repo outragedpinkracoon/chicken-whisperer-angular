@@ -2,8 +2,8 @@
     <div *ngFor="#player of game.players" class="panel panel-default player">
         <div class="panel-heading">
             <h3 class="panel-title">
-                <span *ngIf="player.name === game.currentPlayer.name">*</span>
-                {{player.name}}  
+                <span class='current-player' *ngIf="player.name === game.currentPlayer.name">{{player.name}}</span>
+                <span class='resting-player' *ngIf="player.name !== game.currentPlayer.name">{{player.name}}</span>
                 <span *ngIf="player.isWhisperer">- whispering!</span>
             </h3>
         </div>
