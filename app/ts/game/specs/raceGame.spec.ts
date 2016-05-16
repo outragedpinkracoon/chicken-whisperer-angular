@@ -3,7 +3,7 @@ import {Chicken}  from "../chicken"
 import {Die}  from "../die"
 import {RaceGame}  from "../raceGame"
 
-describe("Player", function() {
+describe("Race Game", function() {
 
   var chicken1;
   var chicken2;
@@ -51,9 +51,6 @@ describe("Player", function() {
     }
 
     raceGame = new RaceGame(options);
-
-    /* Todo: duplicated all over the place */
-    
 
   });
 
@@ -126,6 +123,18 @@ describe("Player", function() {
 
   it("has finish line of 40", function() {
     expect(raceGame.finishLine).toBe(40);
+  });
+
+  it("sets winning chicken", function() {
+    chicken1.racePosition = 41;
+    raceGame.checkForWinner();
+    expect(raceGame.winner).toBe(chicken1);
+  });
+
+  it("does not set winning chicken", function() {
+    chicken1.racePosition = 30;
+    raceGame.checkForWinner();
+    expect(raceGame.winner).toBe(undefined);
   });
 
 });

@@ -9,7 +9,7 @@ export class RaceGame {
   currentPlayer: Player;
   die: Die;
   lastRolls: Array<number>;
-  winningChicken: Chicken;
+  winner: Chicken;
   finishLine: number;
 
   constructor(options) {
@@ -19,7 +19,7 @@ export class RaceGame {
     this.chickenCounter = 0;
     this.die = options.die;
     this.lastRolls = [];
-    this.winningChicken = undefined;
+    this.winner = undefined;
     this.finishLine = options.finishLine;
   }
 
@@ -34,7 +34,7 @@ export class RaceGame {
   }
 
   nextTurn(){
-    if(this.winningChicken != undefined) return;
+    if(this.winner != undefined) return;
   }
 
   roll(){
@@ -52,7 +52,7 @@ export class RaceGame {
 
   checkForWinner(){
     if(this.currentChicken.racePosition >= this.finishLine) {
-      this.winningChicken = this.currentChicken;
+      this.winner = this.currentChicken;
     }
   }
 

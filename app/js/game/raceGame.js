@@ -14,7 +14,7 @@ System.register([], function(exports_1, context_1) {
                     this.chickenCounter = 0;
                     this.die = options.die;
                     this.lastRolls = [];
-                    this.winningChicken = undefined;
+                    this.winner = undefined;
                     this.finishLine = options.finishLine;
                 }
                 RaceGame.prototype.updateCurrentChicken = function () {
@@ -26,7 +26,7 @@ System.register([], function(exports_1, context_1) {
                     this.currentChicken = this.currentPlayer.chickens[this.chickenCounter];
                 };
                 RaceGame.prototype.nextTurn = function () {
-                    if (this.winningChicken != undefined)
+                    if (this.winner != undefined)
                         return;
                 };
                 RaceGame.prototype.roll = function () {
@@ -42,7 +42,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.checkForWinner = function () {
                     if (this.currentChicken.racePosition >= this.finishLine) {
-                        this.winningChicken = this.currentChicken;
+                        this.winner = this.currentChicken;
                     }
                 };
                 RaceGame.prototype.failure = function () {

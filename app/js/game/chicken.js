@@ -7,7 +7,6 @@ System.register([], function(exports_1, context_1) {
         execute: function() {
             Chicken = (function () {
                 function Chicken(options) {
-                    this.racePosition = 0;
                     this.name = options.name;
                     this.speed = options.speed;
                     this.maxScare = options.maxScare;
@@ -15,7 +14,7 @@ System.register([], function(exports_1, context_1) {
                     this.scare = options.maxScare;
                     this.id = options.id;
                     this.image = options.image;
-                    this.racePositions = 0;
+                    this.racePosition = 0;
                 }
                 Chicken.prototype.reduceScare = function (value) {
                     if (value === void 0) { value = 1; }

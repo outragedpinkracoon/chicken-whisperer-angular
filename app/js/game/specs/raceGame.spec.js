@@ -14,7 +14,7 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                 raceGame_1 = raceGame_1_1;
             }],
         execute: function() {
-            describe("Player", function () {
+            describe("Race Game", function () {
                 var chicken1;
                 var chicken2;
                 var chicken3;
@@ -53,7 +53,6 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                         finishLine: 40
                     };
                     raceGame = new raceGame_1.RaceGame(options);
-                    /* Todo: duplicated all over the place */
                 });
                 it("should have 2 players", function () {
                     expect(raceGame.players.length).toBe(2);
@@ -111,6 +110,16 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                 });
                 it("has finish line of 40", function () {
                     expect(raceGame.finishLine).toBe(40);
+                });
+                it("sets winning chicken", function () {
+                    chicken1.racePosition = 41;
+                    raceGame.checkForWinner();
+                    expect(raceGame.winner).toBe(chicken1);
+                });
+                it("does not set winning chicken", function () {
+                    chicken1.racePosition = 30;
+                    raceGame.checkForWinner();
+                    expect(raceGame.winner).toBe(undefined);
                 });
             });
         }
