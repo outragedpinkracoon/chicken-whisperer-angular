@@ -1,10 +1,14 @@
 <div class="container">
     <h1>{{title}}</h1>
-    <div *ngIf="game.started == true">
+    <div *ngIf="game.started == true && !game.gameOver()">
   
     <chicken-pen [game]="game"></chicken-pen>
     <approach [game]="game"></approach>
     <players [game]="game"></players>
+    </div>
+
+    <div>
+    <race-game></race-game>
     </div>
 <!-- 
 <start [game]="game"></start> -->

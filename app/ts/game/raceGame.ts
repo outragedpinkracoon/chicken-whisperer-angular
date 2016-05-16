@@ -35,6 +35,7 @@ export class RaceGame {
 
   nextTurn(){
     if(this.winner != undefined) return;
+    updateCurrentChicken();
   }
 
   roll(){

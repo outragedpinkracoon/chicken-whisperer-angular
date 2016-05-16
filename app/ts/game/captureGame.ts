@@ -12,7 +12,6 @@ export class CaptureGame {
   chickenPen: ChickenPen;
   capture: Capture;
   approach: Approach;
-  finished:boolean;
   currentPlayer: Player;
   started: boolean;
   turnFinished: boolean;
@@ -22,7 +21,6 @@ export class CaptureGame {
      this.chickenPen = options.chickenPen;
      this.capture = options.capture;
      this.approach = options.approach;
-     this.finished = false;
      this.turnFinished = false;
      this.started = false;
   }
@@ -86,7 +84,7 @@ export class CaptureGame {
   }
 
   approachChicken(){
-    if(this.finished || this.gameOver()) return;
+    if(this.gameOver()) return;
     this.setApproachStrategy();
     var result =  this.approach.step(this.currentPlayer);
     if(!this.chickenPen.hasChickensForCapture())

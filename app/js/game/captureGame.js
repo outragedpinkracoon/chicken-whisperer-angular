@@ -15,7 +15,6 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.chickenPen = options.chickenPen;
                     this.capture = options.capture;
                     this.approach = options.approach;
-                    this.finished = false;
                     this.turnFinished = false;
                     this.started = false;
                 }
@@ -72,7 +71,7 @@ System.register(["./player"], function(exports_1, context_1) {
                     return this.chickenPen.count() == 1;
                 };
                 CaptureGame.prototype.approachChicken = function () {
-                    if (this.finished || this.gameOver())
+                    if (this.gameOver())
                         return;
                     this.setApproachStrategy();
                     var result = this.approach.step(this.currentPlayer);
