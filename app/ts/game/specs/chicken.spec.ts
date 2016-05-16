@@ -6,7 +6,8 @@ describe('Chicken', () => {
     var options = {
       name: "Old Chicken",
       speed: 5,
-      maxScare: 3
+      maxScare: 3,
+      racePosition: 0
     }
     chicken = new Chicken(options);
   });
@@ -17,6 +18,10 @@ describe('Chicken', () => {
 
   it("should have a speed", function() {
     expect(chicken.speed).toBe(5);
+  });
+
+  it("should have a racePosition", function() {
+    expect(chicken.racePosition).toBe(0);
   });
 
   it("should have a max speed", function() {
@@ -30,6 +35,11 @@ describe('Chicken', () => {
   it("should decrease scare by 1", function() {
     chicken.reduceScare();
     expect(chicken.scare).toBe(2);
+  });
+
+  it("should increase race position by speed", function() {
+    chicken.move();
+    expect(chicken.racePosition).toBe(5);
   });
 
   it("should decrease speed by 2", function() {

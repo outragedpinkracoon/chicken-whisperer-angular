@@ -18,17 +18,17 @@ export class BasicApproachStrategy implements IApproachStrategy  {
     this.lastRoll = [];
   }
   
-  public approachRoll(){
+  approachRoll(){
     var results =  this.die.rollMultiple(this.approachDice);
     this.lastRoll = results;
     return results;
   }
   
-  public lastRolls() {
+  lastRolls() {
     return this.lastRoll;
   }
   
-  public approach(player) : boolean{
+  approach(player) : boolean{
     var results = this.approachRoll();
     this.whispererChecker.update(results, player);
 

@@ -47,7 +47,12 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                             return this.nums.reduce(function (prev, curr) { return prev + curr; });
                         }
                     };
-                    raceGame = new raceGame_1.RaceGame(players, fakeDie);
+                    var options = {
+                        players: players,
+                        die: fakeDie,
+                        finishLine: 40
+                    };
+                    raceGame = new raceGame_1.RaceGame(options);
                     /* Todo: duplicated all over the place */
                 });
                 it("should have 2 players", function () {
@@ -85,10 +90,27 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                     var result = raceGame.roll();
                     expect(result).toBe(true);
                 });
+                it("should move chicken on even roll", function () {
+                    var result = raceGame.roll();
+                    expect(chicken1.racePosition).toBe(14);
+                });
                 it("should return false on odd roll", function () {
                     fakeDie.nums = [1, 2];
                     var result = raceGame.roll();
                     expect(result).toBe(false);
+                });
+                it("should not move chicken on odd roll", function () {
+                    fakeDie.nums = [1, 2];
+                    var result = raceGame.roll();
+                    expect(chicken1.racePosition).toBe(0);
+                });
+                it("returns the last rolls", function () {
+                    fakeDie.nums = [1, 2];
+                    var result = raceGame.roll();
+                    expect(raceGame.lastRolls).toEqual([1, 2]);
+                });
+                it("has finish line of 40", function () {
+                    expect(raceGame.finishLine).toBe(40);
                 });
             });
         }

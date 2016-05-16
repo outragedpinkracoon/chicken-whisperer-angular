@@ -6,13 +6,16 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             RaceGame = (function () {
-                function RaceGame(players, die) {
+                function RaceGame(options) {
                     this.chickenCounter = 0;
-                    this.players = players;
+                    this.players = options.players;
                     this.currentPlayer = this.players[0];
-                    this.currentChicken = players[0].chickens[0];
+                    this.currentChicken = this.players[0].chickens[0];
                     this.chickenCounter = 0;
-                    this.die = die;
+                    this.die = options.die;
+                    this.lastRolls = [];
+                    this.winningChicken = undefined;
+                    this.finishLine = options.finishLine;
                 }
                 RaceGame.prototype.updateCurrentChicken = function () {
                     this.chickenCounter++;
@@ -22,13 +25,25 @@ System.register([], function(exports_1, context_1) {
                     }
                     this.currentChicken = this.currentPlayer.chickens[this.chickenCounter];
                 };
+                RaceGame.prototype.nextTurn = function () {
+                    if (this.winningChicken != undefined)
+                        return;
+                };
                 RaceGame.prototype.roll = function () {
-                    var roll = this.die.rollAndReduce(2);
-                    var result = (roll % 2 == 0) ? this.success() : this.failure();
+                    this.lastRolls = this.die.rollMultiple(2);
+                    var reduced = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
+                    var result = (reduced % 2 == 0) ? this.success() : this.failure();
                     return result;
                 };
                 RaceGame.prototype.success = function () {
+                    this.currentChicken.move();
+                    this.checkForWinner();
                     return true;
+                };
+                RaceGame.prototype.checkForWinner = function () {
+                    if (this.currentChicken.racePosition >= this.finishLine) {
+                        this.winningChicken = this.currentChicken;
+                    }
                 };
                 RaceGame.prototype.failure = function () {
                     return false;

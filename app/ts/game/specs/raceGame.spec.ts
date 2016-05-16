@@ -21,7 +21,6 @@ describe("Player", function() {
 
     var players = [player1, player2];
 
-    
     chicken1 = new Chicken({"id": 1, "name": "Popo", "speed": 14, "maxScare": 1 });
     chicken2 = new Chicken({"id": 2, "name": "Pudgy", "speed": 5, "maxScare": 3 });
     chicken3 = new Chicken({"id": 3, "name": "Jojo", "speed": 8, "maxScare": 3 });
@@ -45,7 +44,13 @@ describe("Player", function() {
       }
     }
 
-    raceGame = new RaceGame(players, fakeDie);
+    var options = {
+      players: players,
+      die: fakeDie,
+      finishLine: 40
+    }
+
+    raceGame = new RaceGame(options);
 
     /* Todo: duplicated all over the place */
     
@@ -96,10 +101,31 @@ describe("Player", function() {
     expect(result).toBe(true);
   });
 
+  it("should move chicken on even roll", function() {
+    var result = raceGame.roll();
+    expect(chicken1.racePosition).toBe(14);
+  });
+
   it("should return false on odd roll", function() {
     fakeDie.nums = [1,2]
     var result = raceGame.roll();
     expect(result).toBe(false);
+  });
+
+  it("should not move chicken on odd roll", function() {
+    fakeDie.nums = [1,2]
+    var result = raceGame.roll();
+    expect(chicken1.racePosition).toBe(0);
+  });
+
+  it("returns the last rolls", function() {
+    fakeDie.nums = [1,2]
+    var result = raceGame.roll();
+    expect(raceGame.lastRolls).toEqual([1,2]);
+  });
+
+  it("has finish line of 40", function() {
+    expect(raceGame.finishLine).toBe(40);
   });
 
 });

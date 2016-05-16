@@ -98,7 +98,6 @@ System.register(['../captureGame', '../player', '../chicken', '../chickenPen', '
                 it("should set player names", function () {
                     expect(game.started).toBe(false);
                     game.setPlayers(["Rick", "Keith"]);
-                    console.log(game.players);
                     expect(game.players[0].name).toEqual("Rick");
                     expect(game.started).toBe(true);
                 });

@@ -8,13 +8,19 @@ export class RaceGame {
   chickenCounter = 0;
   currentPlayer: Player;
   die: Die;
+  lastRolls: Array<number>;
+  winningChicken: Chicken;
+  finishLine: number;
 
-  constructor(players : Array<Player>, die: Die) {
-    this.players = players;
+  constructor(options) {
+    this.players = options.players;
     this.currentPlayer = this.players[0];
-    this.currentChicken = players[0].chickens[0];
+    this.currentChicken = this.players[0].chickens[0];
     this.chickenCounter = 0;
-    this.die = die;
+    this.die = options.die;
+    this.lastRolls = [];
+    this.winningChicken = undefined;
+    this.finishLine = options.finishLine;
   }
 
   updateCurrentChicken(){
@@ -27,14 +33,27 @@ export class RaceGame {
     this.currentChicken = this.currentPlayer.chickens[this.chickenCounter];
   }
 
+  nextTurn(){
+    if(this.winningChicken != undefined) return;
+  }
+
   roll(){
-    var roll = this.die.rollAndReduce(2);
-    var result = (roll % 2 == 0) ? this.success() : this.failure();
-    return result;  
+    this.lastRolls = this.die.rollMultiple(2);
+    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr)
+    var result = (reduced % 2 == 0) ? this.success() : this.failure();
+    return result; 
   }
 
   success(){
+    this.currentChicken.move();
+    this.checkForWinner();
     return true;
+  }
+
+  checkForWinner(){
+    if(this.currentChicken.racePosition >= this.finishLine) {
+      this.winningChicken = this.currentChicken;
+    }
   }
 
   failure(){

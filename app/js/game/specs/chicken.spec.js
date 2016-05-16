@@ -14,7 +14,8 @@ System.register(['../chicken'], function(exports_1, context_1) {
                     var options = {
                         name: "Old Chicken",
                         speed: 5,
-                        maxScare: 3
+                        maxScare: 3,
+                        racePosition: 0
                     };
                     chicken = new chicken_1.Chicken(options);
                 });
@@ -23,6 +24,9 @@ System.register(['../chicken'], function(exports_1, context_1) {
                 });
                 it("should have a speed", function () {
                     expect(chicken.speed).toBe(5);
+                });
+                it("should have a racePosition", function () {
+                    expect(chicken.racePosition).toBe(0);
                 });
                 it("should have a max speed", function () {
                     expect(chicken.maxSpeed).toBe(5);
@@ -33,6 +37,10 @@ System.register(['../chicken'], function(exports_1, context_1) {
                 it("should decrease scare by 1", function () {
                     chicken.reduceScare();
                     expect(chicken.scare).toBe(2);
+                });
+                it("should increase race position by speed", function () {
+                    chicken.move();
+                    expect(chicken.racePosition).toBe(5);
                 });
                 it("should decrease speed by 2", function () {
                     chicken.reduceSpeed(2);
