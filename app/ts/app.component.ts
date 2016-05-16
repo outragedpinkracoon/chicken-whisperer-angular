@@ -10,7 +10,7 @@ import {GameInitializer} from './gameInitializer';
   selector: 'my-app',
   templateUrl: 'app/views/app/app.component.html',
   styleUrls: ['app/views/app/app.component.css'],
-  directives: [ChickensComponent, PlayersComponent, StartComponent, ApproachComponent],
+  directives: [ChickensComponent, PlayersComponent, StartComponent, ApproachComponent]
 })
 
 export class AppComponent {
@@ -18,7 +18,7 @@ export class AppComponent {
   game: CaptureGame;
   
   constructor(){
-    this.game = GameInitializer.generateGame("Val","Jay");
+    this.game = GameInitializer.generateGame("Val","Chris");
     this.game.nextTurn();
   }
 }

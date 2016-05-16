@@ -59,10 +59,10 @@ export class CaptureGame {
   }
   
   rotate(array){
-        if(array.length === 0) return array;
-        var item = array.shift();
-        array.push(item);
-        return array
+    if(array.length === 0) return array;
+    var item = array.shift();
+    array.push(item);
+    return array
   }
 
   playerCount() {

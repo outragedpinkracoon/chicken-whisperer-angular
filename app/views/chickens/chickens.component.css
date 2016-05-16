@@ -1,4 +1,4 @@
-h2 {
+/*h2 {
   -webkit-text-stroke: 1px black;
   color: #E5C032;
   text-shadow:
@@ -10,11 +10,11 @@ h2 {
   font-family: 'Permanent Marker', cursive;
   font-size: 30px;
 }
-
+*/
 .chickens li:hover {
   cursor: pointer;
 }
-
+/*
 .list-group-item {
   width: 22%;
   height: 270px;
@@ -38,3 +38,4 @@ h2 {
   font-size: 1.5em;
   padding: 3px;
 }
+*/

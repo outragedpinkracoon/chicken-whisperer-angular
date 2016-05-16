@@ -1,4 +1,4 @@
-.approach-button {
+/*.approach-button {
   background-color: #E5C032;
   color: black;
   border: 2px solid black;
@@ -15,20 +15,9 @@
 
 .approach-button:focus {
   outline: none;
-}
-
+}*/
+/*
 p {
   text-align: center;
 }
-
-.die-results {
-  font-size: 3em;
-  list-style-type: none;
-  padding:0px;
-
-}
-
-.die-results li {
-  display: inline-block;
-  padding: 0px;
-}
+*/

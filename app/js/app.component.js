@@ -36,7 +36,7 @@ System.register(['angular2/core', './chickens.component', './players.component',
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
-                    this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Jay");
+                    this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Chris");
                     this.game.nextTurn();
                 }
                 AppComponent = __decorate([
@@ -44,7 +44,7 @@ System.register(['angular2/core', './chickens.component', './players.component',
                         selector: 'my-app',
                         templateUrl: 'app/views/app/app.component.html',
                         styleUrls: ['app/views/app/app.component.css'],
-                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent, start_component_1.StartComponent, approach_component_1.ApproachComponent],
+                        directives: [chickens_component_1.ChickensComponent, players_component_1.PlayersComponent, start_component_1.StartComponent, approach_component_1.ApproachComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
