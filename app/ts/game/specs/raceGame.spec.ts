@@ -1,5 +1,6 @@
 import {Player}  from "../player"
 import {Chicken}  from "../chicken"
+import {Die}  from "../die"
 import {RaceGame}  from "../raceGame"
 
 describe("Player", function() {
@@ -11,6 +12,7 @@ describe("Player", function() {
   var player1;
   var player2;
   var raceGame;
+  var fakeDie;
 
   beforeEach(function() {
     
@@ -30,7 +32,24 @@ describe("Player", function() {
     player2.addChicken(chicken3);
     player2.addChicken(chicken4);
 
-    raceGame = new RaceGame(players);
+    fakeDie = {
+      nums: [1,1],
+      roll: function(){
+         return this.nums.pop();
+      },
+      rollMultiple :function(){
+        return this.nums;
+      },
+      rollAndReduce: function(){
+        return this.nums.reduce((prev,curr) => prev + curr);
+      }
+    }
+
+    raceGame = new RaceGame(players, fakeDie);
+
+    /* Todo: duplicated all over the place */
+    
+
   });
 
   it("should have 2 players", function() {
@@ -58,7 +77,6 @@ describe("Player", function() {
     expect(raceGame.currentChicken).toEqual(player1.chickens[0]);
   });
 
-
   it("should update currentChicken when still same player", function() {
     raceGame.updateCurrentChicken();
     expect(raceGame.chickenCounter).toEqual(1);
@@ -71,6 +89,17 @@ describe("Player", function() {
     raceGame.updateCurrentChicken();
     expect(raceGame.chickenCounter).toEqual(0);
     expect(raceGame.currentChicken).toEqual(chicken3);
+  });
+
+  it("should return true on even roll", function() {
+    var result = raceGame.roll();
+    expect(result).toBe(true);
+  });
+
+  it("should return false on odd roll", function() {
+    fakeDie.nums = [1,2]
+    var result = raceGame.roll();
+    expect(result).toBe(false);
   });
 
 });

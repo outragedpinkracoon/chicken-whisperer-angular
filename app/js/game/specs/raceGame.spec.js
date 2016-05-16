@@ -22,6 +22,7 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                 var player1;
                 var player2;
                 var raceGame;
+                var fakeDie;
                 beforeEach(function () {
                     player1 = new player_1.Player("Valerie");
                     player2 = new player_1.Player("Jay");
@@ -34,7 +35,20 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                     player1.addChicken(chicken2);
                     player2.addChicken(chicken3);
                     player2.addChicken(chicken4);
-                    raceGame = new raceGame_1.RaceGame(players);
+                    fakeDie = {
+                        nums: [1, 1],
+                        roll: function () {
+                            return this.nums.pop();
+                        },
+                        rollMultiple: function () {
+                            return this.nums;
+                        },
+                        rollAndReduce: function () {
+                            return this.nums.reduce(function (prev, curr) { return prev + curr; });
+                        }
+                    };
+                    raceGame = new raceGame_1.RaceGame(players, fakeDie);
+                    /* Todo: duplicated all over the place */
                 });
                 it("should have 2 players", function () {
                     expect(raceGame.players.length).toBe(2);
@@ -66,6 +80,15 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                     raceGame.updateCurrentChicken();
                     expect(raceGame.chickenCounter).toEqual(0);
                     expect(raceGame.currentChicken).toEqual(chicken3);
+                });
+                it("should return true on even roll", function () {
+                    var result = raceGame.roll();
+                    expect(result).toBe(true);
+                });
+                it("should return false on odd roll", function () {
+                    fakeDie.nums = [1, 2];
+                    var result = raceGame.roll();
+                    expect(result).toBe(false);
                 });
             });
         }

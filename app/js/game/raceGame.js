@@ -6,12 +6,13 @@ System.register([], function(exports_1, context_1) {
         setters:[],
         execute: function() {
             RaceGame = (function () {
-                function RaceGame(players) {
+                function RaceGame(players, die) {
                     this.chickenCounter = 0;
                     this.players = players;
                     this.currentPlayer = this.players[0];
                     this.currentChicken = players[0].chickens[0];
                     this.chickenCounter = 0;
+                    this.die = die;
                 }
                 RaceGame.prototype.updateCurrentChicken = function () {
                     this.chickenCounter++;
@@ -21,6 +22,18 @@ System.register([], function(exports_1, context_1) {
                     }
                     this.currentChicken = this.currentPlayer.chickens[this.chickenCounter];
                 };
+                RaceGame.prototype.roll = function () {
+                    var roll = this.die.rollAndReduce(2);
+                    var result = (roll % 2 == 0) ? this.success() : this.failure();
+                    return result;
+                };
+                RaceGame.prototype.success = function () {
+                    return true;
+                };
+                RaceGame.prototype.failure = function () {
+                    return false;
+                };
+                /* Todo duplicate code from capturegame */
                 RaceGame.prototype.updateCurrentPlayer = function () {
                     this.currentPlayer = this.rotate(this.players)[0];
                 };
