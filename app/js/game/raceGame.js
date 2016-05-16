@@ -28,7 +28,7 @@ System.register([], function(exports_1, context_1) {
                 RaceGame.prototype.nextTurn = function () {
                     if (this.winner != undefined)
                         return;
-                    updateCurrentChicken();
+                    this.updateCurrentChicken();
                 };
                 RaceGame.prototype.roll = function () {
                     this.lastRolls = this.die.rollMultiple(2);

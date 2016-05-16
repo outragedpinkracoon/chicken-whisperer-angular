@@ -1,4 +1,4 @@
-System.register(["./player", "./chicken", "./die", "./raceGame"], function(exports_1, context_1) {
+System.register(["./game/player", "./game/chicken", "./game/die", "./game/raceGame"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var player_1, chicken_1, die_1, raceGame_1;

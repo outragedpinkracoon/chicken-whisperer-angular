@@ -1,7 +1,7 @@
-import {Player}  from "./player"
-import {Chicken}  from "./chicken"
-import {Die}  from "./die"
-import {RaceGame}  from "./raceGame"
+import {Player}  from "./game/player"
+import {Chicken}  from "./game/chicken"
+import {Die}  from "./game/die"
+import {RaceGame}  from "./game/raceGame"
 
 export class RaceGameInitializer {
   static generateGame() {

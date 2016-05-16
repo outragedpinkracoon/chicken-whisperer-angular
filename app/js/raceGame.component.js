@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/raceGame', './services/diceService'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,23 +10,41 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, raceGame_1, diceService_1;
     var RaceGameComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (raceGame_1_1) {
+                raceGame_1 = raceGame_1_1;
+            },
+            function (diceService_1_1) {
+                diceService_1 = diceService_1_1;
             }],
         execute: function() {
             RaceGameComponent = (function () {
-                function RaceGameComponent() {
+                function RaceGameComponent(diceService) {
+                    this.diceService = diceService;
                 }
+                RaceGameComponent.prototype.roll = function () {
+                    this.success = this.game.roll();
+                    this.diceResults = this.diceService.dieResultsAsUnicode(this.game.lastRolls);
+                    this.total = this.game.lastRolls.reduce(function (prev, curr) { return prev + curr; });
+                    this.game.nextTurn();
+                };
+                __decorate([
+                    core_1.Input('game'), 
+                    __metadata('design:type', raceGame_1.RaceGame)
+                ], RaceGameComponent.prototype, "game", void 0);
                 RaceGameComponent = __decorate([
                     core_1.Component({
                         selector: 'race-game',
-                        templateUrl: 'app/views/race-game/race-game.component.html'
+                        templateUrl: 'app/views/race-game/race-game.component.html',
+                        providers: [diceService_1.DiceService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], RaceGameComponent);
                 return RaceGameComponent;
             }());
