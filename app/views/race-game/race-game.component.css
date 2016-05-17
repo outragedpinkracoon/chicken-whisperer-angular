@@ -1,7 +1,13 @@
 #positions li {
   display: inline-block;
+  margin-right:20px;
 }
 
-.current {
-  color: purple;
+.info {
+  font-size: 0.5em;
+  font-style: italic;
+}
+
+.position {
+  font-size: 1.5em;
 }

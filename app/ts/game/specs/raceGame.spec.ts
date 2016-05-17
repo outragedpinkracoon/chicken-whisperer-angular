@@ -155,14 +155,40 @@ describe("Race Game", function() {
     raceGame.nextTurn();
     chicken1.racePosition = 41;
     raceGame.checkForWinner();
-    expect(raceGame.winner).toBe(chicken1);
+    expect(raceGame.winningChicken).toBe(chicken1);
+  });
+
+  it("sets winning player", function() {
+    raceGame.nextTurn();
+    chicken1.racePosition = 41;
+    raceGame.checkForWinner();
+    expect(raceGame.winningPlayer).toBe(player1);
   });
 
   it("does not set winning chicken", function() {
     raceGame.nextTurn();
     chicken1.racePosition = 30;
     raceGame.checkForWinner();
-    expect(raceGame.winner).toBe(undefined);
+    expect(raceGame.winningChicken).toBe(undefined);
+  });
+
+  it("should not start won", function() {
+    expect(raceGame.winningChicken).toBe(undefined);
+  });
+
+  it("should be won", function() {
+    raceGame.winningChicken = {};
+    expect(raceGame.isWon()).toBe(true);
+  });
+
+  it("should start with no last chicken", function() {
+    expect(raceGame.lastChicken).toBe(undefined);
+  });
+
+  it("should set the last chicken", function() {
+    raceGame.nextTurn();
+    raceGame.nextTurn();
+    expect(raceGame.lastChicken).toBe(chicken1);
   });
 
 });

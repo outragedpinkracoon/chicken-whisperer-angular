@@ -27,9 +27,7 @@ export class ApproachComponent {
     this.lastRoll = this.game.lastAppoachRolls();
     this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
     this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
-
     this.setupCaptureDice();
-    
   }
 
   setupCaptureDice(){

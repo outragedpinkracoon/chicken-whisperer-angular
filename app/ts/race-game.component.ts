@@ -16,11 +16,10 @@ export class RaceGameComponent {
   total:number;
   moved: boolean;
 
-  constructor(private diceService: DiceService) {
-    
-  }
+  constructor(private diceService: DiceService) {}
 
   roll(){
+    if(this.game.isWon()) return;
     this.success = this.game.roll();
     this.diceResults = this.diceService.dieResultsAsUnicode(this.game.lastRolls);
     this.total = this.game.lastRolls.reduce( (prev, curr) => prev + curr );

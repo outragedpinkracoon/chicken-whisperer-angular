@@ -13,20 +13,23 @@ System.register([], function(exports_1, context_1) {
                     this.chickenCounter = 0;
                     this.die = options.die;
                     this.lastRolls = [];
-                    this.winner = undefined;
+                    this.winningPlayer = undefined;
+                    this.winningChicken = undefined;
                     this.finishLine = options.finishLine;
                     this.currentPlayerIndex = 0;
+                    this.lastChicken = undefined;
                 }
                 RaceGame.prototype.updateCurrentChicken = function () {
                     if (this.chickenCounter == this.currentPlayer.chickenCount()) {
                         this.chickenCounter = 0;
                         this.updateCurrentPlayer();
                     }
+                    this.lastChicken = this.currentChicken;
                     this.currentChicken = this.currentPlayer.chickens[this.chickenCounter];
                     this.chickenCounter++;
                 };
                 RaceGame.prototype.nextTurn = function () {
-                    if (this.winner != undefined)
+                    if (this.winningChicken != undefined)
                         return;
                     this.updateCurrentChicken();
                 };
@@ -41,9 +44,13 @@ System.register([], function(exports_1, context_1) {
                     this.checkForWinner();
                     return true;
                 };
+                RaceGame.prototype.isWon = function () {
+                    return this.winningChicken != undefined;
+                };
                 RaceGame.prototype.checkForWinner = function () {
                     if (this.currentChicken.racePosition >= this.finishLine) {
-                        this.winner = this.currentChicken;
+                        this.winningChicken = this.currentChicken;
+                        this.winningPlayer = this.currentPlayer;
                     }
                 };
                 RaceGame.prototype.failure = function () {

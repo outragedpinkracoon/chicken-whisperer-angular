@@ -1,6 +1,33 @@
-<button id="roll" (click)="roll()">Roll</button>
-<div *ngIf="moved" class="dice-box">
-    You rolled: 
+<table id="positions">
+  <tr>
+    <th *ngFor="#player of game.players">
+      {{player.name}}'s chickens
+    </th>
+  </tr>
+  <tr>
+    <td *ngFor="#player of game.players">
+      <ul>
+        <li *ngFor="#chicken of player.chickens">
+
+          <h3>{{chicken.name}} <span *ngIf="chicken.name === game.currentChicken.name">*</span></h3>
+
+          <img height="50px" src="app/assets/images/default-chicken.png" />
+
+          <p>Speed: {{chicken.speed}}</p>
+
+          <p class="position" 
+          [class.success]="success && chicken.name === game.lastChicken.name"
+          [class.failure]="!success && game.lastChicken && chicken.name === game.lastChicken.name" >
+          Position: {{chicken.racePosition}}
+          </p>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<div *ngIf="!game.isWon()">
+  <div *ngIf="moved" class="dice-box">
     <ul class="die-results">
       <li *ngFor="#die of diceResults">
         {{die}}
@@ -8,21 +35,16 @@
       <li>
         = <span [class.failure]="!success" [class.success]="success"> {{total}}</span>
       </li>
+      <li *ngIf="success">
+        <span class="info">{{game.lastChicken.name}} moved {{game.lastChicken.speed}} spaces like a champ.</span>
+      </li>
+      <li *ngIf="!success">
+        <span class="info">{{game.lastChicken.name}} shat it and did nothing.</span>
+      </li>
     </ul>
+  </div>
+  <button id="roll" (click)="roll()">Roll!</button>
 </div>
-
-<ul id="positions">
-    <li *ngFor="#player of game.players">
-    <p>{{player.name}}'s chickens</p>
-      <ul>
-
-        <li [class.current]="chicken.name === game.currentChicken.name" *ngFor="#chicken of player.chickens">
-          <img height="50px" src="app/assets/images/default-chicken.png" />
-          <p>Name: {{chicken.name}}</p>
-          <p>Speed: {{chicken.speed}}</p>
-          <p>Position: {{chicken.racePosition}}</p>
-        </li>
-      </ul>
-
-    </li>
-</ul>
+<div *ngIf="game.isWon()">
+  <p>{{game.winningPlayer.name}}'s {{game.winningChicken.name}} is the winner!</p>
+</div>

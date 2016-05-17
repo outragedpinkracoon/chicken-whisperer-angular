@@ -29,6 +29,8 @@ System.register(['angular2/core', './game/raceGame', './services/diceService'], 
                     this.diceService = diceService;
                 }
                 RaceGameComponent.prototype.roll = function () {
+                    if (this.game.isWon())
+                        return;
                     this.success = this.game.roll();
                     this.diceResults = this.diceService.dieResultsAsUnicode(this.game.lastRolls);
                     this.total = this.game.lastRolls.reduce(function (prev, curr) { return prev + curr; });
