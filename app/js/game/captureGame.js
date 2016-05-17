@@ -17,6 +17,7 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.approach = options.approach;
                     this.turnFinished = false;
                     this.started = false;
+                    this.chickensToCapture = this.chickenPen.count();
                 }
                 CaptureGame.prototype.reset = function () {
                     this.chickenPen.refresh();
@@ -66,6 +67,14 @@ System.register(["./player"], function(exports_1, context_1) {
                 };
                 CaptureGame.prototype.gameOver = function () {
                     return this.chickenPen.count() == 0;
+                };
+                CaptureGame.prototype.canHaveRace = function () {
+                    for (var _i = 0, _a = this.players; _i < _a.length; _i++) {
+                        var player = _a[_i];
+                        if (player.chickenCount() == this.chickensToCapture)
+                            return false;
+                    }
+                    return true;
                 };
                 CaptureGame.prototype.lastTurn = function () {
                     return this.chickenPen.count() == 1;

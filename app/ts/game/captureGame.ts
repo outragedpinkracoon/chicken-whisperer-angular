@@ -23,6 +23,7 @@ export class CaptureGame {
      this.approach = options.approach;
      this.turnFinished = false;
      this.started = false;
+     this.chickensToCapture = this.chickenPen.count();
   }
 
   reset(){
@@ -77,6 +78,14 @@ export class CaptureGame {
 
   gameOver(){
     return this.chickenPen.count() == 0;
+  }
+
+  canHaveRace(){
+    for(var player of this.players){
+      if(player.chickenCount() == this.chickensToCapture)
+        return false;
+    }
+    return true;
   }
 
   lastTurn(){

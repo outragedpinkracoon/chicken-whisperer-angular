@@ -192,4 +192,14 @@ describe("Game", function() {
     expect(game.approach.strategy.name).toBe("WhispererApproachStrategy");
   });
 
+  it("should be able to race", function(){
+    game.players[0].chickens = [{},{},{}]
+    expect(game.canHaveRace()).toBe(true);
+  });
+
+  it("should not be able to race", function(){
+    game.players[0].chickens = [{},{},{},{}]
+    expect(game.canHaveRace()).toBe(false);
+  });
+
 });
