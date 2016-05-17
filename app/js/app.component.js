@@ -46,6 +46,7 @@ System.register(['angular2/core', './chickens.component', './players.component',
                     this.game.chickenPen.chickens = [];
                     this.game.nextTurn();
                     this.raceGame = raceGameInitializer_1.RaceGameInitializer.generateGame();
+                    this.raceGame.nextTurn();
                 }
                 AppComponent = __decorate([
                     core_1.Component({

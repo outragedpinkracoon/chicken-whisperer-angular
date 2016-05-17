@@ -57,7 +57,8 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                 it("should have 2 players", function () {
                     expect(raceGame.players.length).toBe(2);
                 });
-                it("should have chicekn1 as current chicken", function () {
+                it("should have chicken1 as current chicken", function () {
+                    raceGame.nextTurn();
                     expect(raceGame.currentChicken).toEqual(chicken1);
                 });
                 it("should start with chicken counter at 0", function () {
@@ -70,53 +71,78 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                     raceGame.updateCurrentPlayer();
                     expect(raceGame.currentPlayer).toEqual(player2);
                 });
-                it("should start with a currentChicken", function () {
-                    expect(raceGame.currentChicken).toEqual(player1.chickens[0]);
+                it("should return to first player", function () {
+                    raceGame.updateCurrentPlayer();
+                    raceGame.updateCurrentPlayer();
+                    expect(raceGame.currentPlayer).toEqual(player1);
                 });
                 it("should update currentChicken when still same player", function () {
                     raceGame.updateCurrentChicken();
                     expect(raceGame.chickenCounter).toEqual(1);
+                    expect(raceGame.currentChicken).toEqual(chicken1);
+                });
+                it("should update currentChicken when same player next chicken", function () {
+                    raceGame.updateCurrentChicken();
+                    raceGame.updateCurrentChicken();
+                    expect(raceGame.chickenCounter).toEqual(2);
                     expect(raceGame.currentChicken).toEqual(chicken2);
                 });
                 it("should update currentChicken when next player", function () {
                     raceGame.updateCurrentChicken();
                     raceGame.updateCurrentChicken();
                     raceGame.updateCurrentChicken();
-                    expect(raceGame.chickenCounter).toEqual(0);
+                    expect(raceGame.chickenCounter).toEqual(1);
                     expect(raceGame.currentChicken).toEqual(chicken3);
                 });
+                it("should return to first chicken", function () {
+                    raceGame.updateCurrentChicken();
+                    raceGame.updateCurrentChicken();
+                    raceGame.updateCurrentChicken();
+                    raceGame.updateCurrentChicken();
+                    raceGame.updateCurrentChicken();
+                    expect(raceGame.chickenCounter).toEqual(1);
+                    expect(raceGame.currentChicken).toEqual(chicken1);
+                });
                 it("should return true on even roll", function () {
+                    raceGame.nextTurn();
                     var result = raceGame.roll();
                     expect(result).toBe(true);
                 });
                 it("should move chicken on even roll", function () {
+                    raceGame.nextTurn();
                     var result = raceGame.roll();
                     expect(chicken1.racePosition).toBe(14);
                 });
                 it("should return false on odd roll", function () {
+                    raceGame.nextTurn();
                     fakeDie.nums = [1, 2];
                     var result = raceGame.roll();
                     expect(result).toBe(false);
                 });
                 it("should not move chicken on odd roll", function () {
+                    raceGame.nextTurn();
                     fakeDie.nums = [1, 2];
                     var result = raceGame.roll();
                     expect(chicken1.racePosition).toBe(0);
                 });
                 it("returns the last rolls", function () {
+                    raceGame.nextTurn();
                     fakeDie.nums = [1, 2];
                     var result = raceGame.roll();
                     expect(raceGame.lastRolls).toEqual([1, 2]);
                 });
                 it("has finish line of 40", function () {
+                    raceGame.nextTurn();
                     expect(raceGame.finishLine).toBe(40);
                 });
                 it("sets winning chicken", function () {
+                    raceGame.nextTurn();
                     chicken1.racePosition = 41;
                     raceGame.checkForWinner();
                     expect(raceGame.winner).toBe(chicken1);
                 });
                 it("does not set winning chicken", function () {
+                    raceGame.nextTurn();
                     chicken1.racePosition = 30;
                     raceGame.checkForWinner();
                     expect(raceGame.winner).toBe(undefined);

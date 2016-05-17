@@ -26,5 +26,6 @@ export class AppComponent {
     this.game.chickenPen.chickens = [];
     this.game.nextTurn();
     this.raceGame = RaceGameInitializer.generateGame();
+    this.raceGame.nextTurn();
   }
 }

@@ -5,15 +5,19 @@ import { DiceService } from './services/diceService';
 @Component({
     selector: 'race-game',
     templateUrl: 'app/views/race-game/race-game.component.html',
-    providers: [DiceService]
+    providers: [DiceService],
+    styleUrls: ['app/views/race-game/race-game.component.css']
 })
 
 export class RaceGameComponent {
   @Input('game') game: RaceGame;
   success: boolean;
   diceResults: Array<string>;
+  total:number;
 
-  constructor(private diceService: DiceService) { }
+  constructor(private diceService: DiceService) {
+    
+  }
 
   roll(){
     this.success = this.game.roll();

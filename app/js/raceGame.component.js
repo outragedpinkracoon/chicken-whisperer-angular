@@ -42,7 +42,8 @@ System.register(['angular2/core', './game/raceGame', './services/diceService'], 
                     core_1.Component({
                         selector: 'race-game',
                         templateUrl: 'app/views/race-game/race-game.component.html',
-                        providers: [diceService_1.DiceService]
+                        providers: [diceService_1.DiceService],
+                        styleUrls: ['app/views/race-game/race-game.component.css']
                     }), 
                     __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], RaceGameComponent);

@@ -125,7 +125,7 @@ describe("Game", function() {
 
   it("should not step towards chicken if turn is finished", function(){
     game.nextTurn();
-    game.finished = true;
+    game.chickenPen.chickens = [];
     spyOn(game.approach,"step");
     game.approachChicken();
     expect(game.approach.step).not.toHaveBeenCalled();
