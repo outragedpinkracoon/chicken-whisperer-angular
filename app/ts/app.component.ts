@@ -5,7 +5,7 @@ import { RaceGame } from './game/raceGame';
 import { PlayersComponent } from './players.component';
 import { StartComponent } from './start.component';
 import { ApproachComponent } from './approach.component';
-import { RaceGameComponent } from './raceGame.component';
+import { RaceGameComponent } from './race-game.component';
 import {GameInitializer} from './gameInitializer';
 import {RaceGameInitializer} from './raceGameInitializer'
 
