@@ -23,8 +23,12 @@ export class AppComponent {
   
   constructor(){
     this.game = GameInitializer.generateGame("Val","Chris");
-    this.game.chickenPen.chickens = [];
     this.game.nextTurn();
+    this.raceGame = undefined;
+  }
+
+  startRace(){
+    console.log("hello");
     this.raceGame = RaceGameInitializer.generateGame();
     this.raceGame.nextTurn();
   }

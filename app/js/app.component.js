@@ -43,11 +43,14 @@ System.register(['angular2/core', './chickens.component', './players.component',
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
                     this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Chris");
-                    this.game.chickenPen.chickens = [];
                     this.game.nextTurn();
+                    this.raceGame = undefined;
+                }
+                AppComponent.prototype.startRace = function () {
+                    console.log("hello");
                     this.raceGame = raceGameInitializer_1.RaceGameInitializer.generateGame();
                     this.raceGame.nextTurn();
-                }
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',

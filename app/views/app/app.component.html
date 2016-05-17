@@ -1,16 +1,19 @@
 <div class="container">
-    <h1>{{title}}</h1>
-    <div *ngIf="game.started == true && !game.gameOver()">
-  
-    <chicken-pen [game]="game"></chicken-pen>
-    <approach [game]="game"></approach>
-    <players [game]="game"></players>
+  <h1>{{title}}</h1>
+  <div *ngIf="game.started == true">
+    <div *ngIf="!game.gameOver()">
+      <chicken-pen [game]="game"></chicken-pen>
+      <approach [game]="game"></approach>
     </div>
+    <players *ngIf="!raceGame" [game]="game"></players>
+  </div>
 
-    <div>
+  <button *ngIf="game.gameOver()" (click)="startRace()">Start race!</button>
+
+  <div *ngIf="raceGame">
     <race-game [game]="raceGame"></race-game>
-    </div>
+  </div>
 <!-- 
-<start [game]="game"></start> -->
+  <start [game]="game"></start> -->
 
 </div>

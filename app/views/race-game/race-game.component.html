@@ -1,24 +1,24 @@
-<table id="positions">
-  <tr>
-    <th *ngFor="#player of game.players">
-      {{player.name}}'s chickens
-    </th>
-  </tr>
-  <tr>
-    <td *ngFor="#player of game.players">
-      <ul>
-        <li *ngFor="#chicken of player.chickens">
+  <table id="positions">
+    <tr>
+      <th *ngFor="#player of game.players">
+        {{player.name}}'s chickens
+      </th>
+    </tr>
+    <tr>
+      <td *ngFor="#player of game.players">
+        <ul>
+          <li *ngFor="#chicken of player.chickens">
 
-          <h3>{{chicken.name}} <span *ngIf="chicken.name === game.currentChicken.name">*</span></h3>
+            <h3>{{chicken.name}} <span *ngIf="chicken.name === game.currentChicken.name">*</span></h3>
 
-          <img height="50px" src="app/assets/images/default-chicken.png" />
+            <img height="50px" src="app/assets/images/default-chicken.png" />
 
-          <p>Speed: {{chicken.speed}}</p>
+            <p>Speed: {{chicken.speed}}</p>
 
-          <p class="position" 
-          [class.success]="success && chicken.name === game.lastChicken.name"
-          [class.failure]="!success && game.lastChicken && chicken.name === game.lastChicken.name" >
-          Position: {{chicken.racePosition}}
+            <p class="position" 
+            [class.success]="success && chicken.name === game.lastChicken.name"
+            [class.failure]="!success && game.lastChicken && chicken.name === game.lastChicken.name" >
+            Position: {{chicken.racePosition}}
           </p>
         </li>
       </ul>
