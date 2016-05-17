@@ -14,6 +14,7 @@ export class RaceGameComponent {
   success: boolean;
   diceResults: Array<string>;
   total:number;
+  moved: boolean;
 
   constructor(private diceService: DiceService) {
     
@@ -24,6 +25,7 @@ export class RaceGameComponent {
     this.diceResults = this.diceService.dieResultsAsUnicode(this.game.lastRolls);
     this.total = this.game.lastRolls.reduce( (prev, curr) => prev + curr );
     this.game.nextTurn();
+    this.moved = true;
   }
 }
 

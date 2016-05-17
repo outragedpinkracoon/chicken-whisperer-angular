@@ -33,6 +33,7 @@ System.register(['angular2/core', './game/raceGame', './services/diceService'], 
                     this.diceResults = this.diceService.dieResultsAsUnicode(this.game.lastRolls);
                     this.total = this.game.lastRolls.reduce(function (prev, curr) { return prev + curr; });
                     this.game.nextTurn();
+                    this.moved = true;
                 };
                 __decorate([
                     core_1.Input('game'), 

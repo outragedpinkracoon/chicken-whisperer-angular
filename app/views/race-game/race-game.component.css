@@ -1,3 +1,7 @@
 #positions li {
   display: inline-block;
 }
+
+.current {
+  color: green;
+}

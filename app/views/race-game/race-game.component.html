@@ -1,5 +1,5 @@
 <button id="roll" (click)="roll()">Roll</button>
-<div class="dice-box">
+<div *ngIf="moved" class="dice-box">
     You rolled: 
     <ul class="die-results">
       <li *ngFor="#die of diceResults">
@@ -16,8 +16,7 @@
     <p>{{player.name}}'s chickens</p>
       <ul>
 
-        <li *ngFor="#chicken of player.chickens">
-          <p *ngIf="chicken.name === game.currentChicken.name">CURRENT CHICKEN</p>
+        <li [class.current]="chicken.name === game.currentChicken.name" *ngFor="#chicken of player.chickens">
           <img height="50px" src="app/assets/images/default-chicken.png" />
           <p>Name: {{chicken.name}}</p>
           <p>Speed: {{chicken.speed}}</p>
