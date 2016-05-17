@@ -5,6 +5,7 @@ import { RaceGame } from './game/raceGame';
 import { PlayersComponent } from './players.component';
 import { StartComponent } from './start.component';
 import { ApproachComponent } from './approach.component';
+import { Die } from './game/die';
 import { RaceGameComponent } from './race-game.component';
 import {GameInitializer} from './gameInitializer';
 import {RaceGameInitializer} from './raceGameInitializer'
@@ -28,8 +29,14 @@ export class AppComponent {
   }
 
   startRace(){
-    console.log("hello");
-    this.raceGame = RaceGameInitializer.generateGame();
+
+    var options = {
+      players: this.game.players,
+      die: new Die(),
+      finishLine: 40
+    }
+
+    this.raceGame = new RaceGame(options);
     this.raceGame.nextTurn();
   }
 }

@@ -8,7 +8,7 @@
     <players *ngIf="!raceGame" [game]="game"></players>
   </div>
 
-  <button *ngIf="game.gameOver()" (click)="startRace()">Start race!</button>
+  <button *ngIf="game.gameOver() && !raceGame" (click)="startRace()">Start race!</button>
 
   <div *ngIf="raceGame">
     <race-game [game]="raceGame"></race-game>

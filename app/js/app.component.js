@@ -1,4 +1,4 @@
-System.register(['angular2/core', './chickens.component', './players.component', './start.component', './approach.component', './race-game.component', './gameInitializer', './raceGameInitializer'], function(exports_1, context_1) {
+System.register(['angular2/core', './chickens.component', './game/raceGame', './players.component', './start.component', './approach.component', './game/die', './race-game.component', './gameInitializer'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './chickens.component', './players.component',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, chickens_component_1, players_component_1, start_component_1, approach_component_1, race_game_component_1, gameInitializer_1, raceGameInitializer_1;
+    var core_1, chickens_component_1, raceGame_1, players_component_1, start_component_1, approach_component_1, die_1, race_game_component_1, gameInitializer_1;
     var AppComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './chickens.component', './players.component',
             },
             function (chickens_component_1_1) {
                 chickens_component_1 = chickens_component_1_1;
+            },
+            function (raceGame_1_1) {
+                raceGame_1 = raceGame_1_1;
             },
             function (players_component_1_1) {
                 players_component_1 = players_component_1_1;
@@ -29,14 +32,14 @@ System.register(['angular2/core', './chickens.component', './players.component',
             function (approach_component_1_1) {
                 approach_component_1 = approach_component_1_1;
             },
+            function (die_1_1) {
+                die_1 = die_1_1;
+            },
             function (race_game_component_1_1) {
                 race_game_component_1 = race_game_component_1_1;
             },
             function (gameInitializer_1_1) {
                 gameInitializer_1 = gameInitializer_1_1;
-            },
-            function (raceGameInitializer_1_1) {
-                raceGameInitializer_1 = raceGameInitializer_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -47,8 +50,12 @@ System.register(['angular2/core', './chickens.component', './players.component',
                     this.raceGame = undefined;
                 }
                 AppComponent.prototype.startRace = function () {
-                    console.log("hello");
-                    this.raceGame = raceGameInitializer_1.RaceGameInitializer.generateGame();
+                    var options = {
+                        players: this.game.players,
+                        die: new die_1.Die(),
+                        finishLine: 40
+                    };
+                    this.raceGame = new raceGame_1.RaceGame(options);
                     this.raceGame.nextTurn();
                 };
                 AppComponent = __decorate([
