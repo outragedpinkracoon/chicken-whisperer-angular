@@ -2,13 +2,15 @@ import {Component, Input} from 'angular2/core';
 import {CaptureGame} from './game/captureGame';
 import {Chicken} from './game/chicken';
 import {DiceService} from './services/diceService'
+import { DiceResultsComponent } from './dice-results.component';
 
 
 @Component({
   selector: 'chicken-pen',
   templateUrl: 'app/views/chickens/chickens.component.html',
   styleUrls: ['app/views/chickens/chickens.component.css'],
-  providers: [DiceService]
+  providers: [DiceService],
+  directives: [DiceResultsComponent]
 })
 
 export class ChickensComponent {

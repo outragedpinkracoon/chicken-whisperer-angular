@@ -12,14 +12,7 @@
 
 <div class="dice-box" *ngIf="game.turnFinished && game.capture.attempted">
     You rolled: 
-    <ul class="die-results">
-      <li *ngFor="#die of diceResults">
-        {{die}}
-      </li>
-      <li>
-        = <span [class.failure]="!success" [class.success]="success"> {{total}}</span>
-      </li>
-    </ul>
+    <dice-results [lastRolls]="lastRolls" [success]="success" [diceResults]="diceResults" [total]="total"></dice-results>
     {{message}}.
 </div>
 <p class="dice-box" *ngIf="game.turnFinished && !game.capture.attempted">You failed to approach the chickens.</p>

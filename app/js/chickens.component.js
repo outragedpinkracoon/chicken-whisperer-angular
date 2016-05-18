@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame', './services/diceService'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './services/diceService', './dice-results.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1, diceService_1;
+    var core_1, captureGame_1, diceService_1, dice_results_component_1;
     var ChickensComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
             },
             function (diceService_1_1) {
                 diceService_1 = diceService_1_1;
+            },
+            function (dice_results_component_1_1) {
+                dice_results_component_1 = dice_results_component_1_1;
             }],
         execute: function() {
             ChickensComponent = (function () {
@@ -51,7 +54,8 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                         selector: 'chicken-pen',
                         templateUrl: 'app/views/chickens/chickens.component.html',
                         styleUrls: ['app/views/chickens/chickens.component.css'],
-                        providers: [diceService_1.DiceService]
+                        providers: [diceService_1.DiceService],
+                        directives: [dice_results_component_1.DiceResultsComponent]
                     }), 
                     __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], ChickensComponent);
