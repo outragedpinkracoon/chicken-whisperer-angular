@@ -44,14 +44,10 @@ System.register(['./game/captureGame', './game/player', './game/chicken', './gam
                     var player2 = new player_1.Player(player2Name);
                     var players = [player1, player2];
                     var chickenPen = new chickenPen_1.ChickenPen([
-                        new chicken_1.Chicken({ "id": 1, "name": "Popo", "speed": 14, "maxScare": 1,
+                        new chicken_1.Chicken({ "id": 1, "name": "Popo", "speed": 3, "maxScare": 6,
                             "image": "/app/assets/images/chicken1.png" }),
-                        new chicken_1.Chicken({ "id": 2, "name": "Pudgy", "speed": 5, "maxScare": 3,
+                        new chicken_1.Chicken({ "id": 2, "name": "Pudgy", "speed": 3, "maxScare": 6,
                             "image": "/app/assets/images/chicken2.png" }),
-                        new chicken_1.Chicken({ "id": 3, "name": "Jojo", "speed": 8, "maxScare": 3,
-                            "image": "/app/assets/images/chicken3.png" }),
-                        new chicken_1.Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2,
-                            "image": "/app/assets/images/chicken4.svg" })
                     ]);
                     var strategyOptions = {
                         die: new die_1.Die(),
