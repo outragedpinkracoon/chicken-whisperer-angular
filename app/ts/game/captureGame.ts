@@ -77,12 +77,16 @@ export class CaptureGame {
 
   nextTurn(){
     if(this.gameOver()) return;
+    this.endPhase();
     if(this.turnOfEndPhase > 1) {
-      this.chickenPen.chickens[0].reduceSpeed();
-      this.chickenPen.chickens[0].increaseScare();
+      this.chickenPen.chickens[0].endPhase(this.turnOfEndPhase - 1);
     }
     this.updateCurrentPlayer();
     this.reset();
+  }
+
+  endPhaseChickenShit(){
+
   }
 
   gameOver(){
@@ -99,7 +103,7 @@ export class CaptureGame {
   endPhase(){
     var result = this.chickenPen.count() == 1;
     if(result){
-      this.turnOfEndPhase++ ;
+      this.turnOfEndPhase++;
     }
     return result;
   }

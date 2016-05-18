@@ -24,7 +24,11 @@ System.register([], function(exports_1, context_1) {
                 };
                 Chicken.prototype.increaseScare = function (value) {
                     if (value === void 0) { value = 1; }
-                    this.scare = this.scare + value;
+                    this.scare = this.maxScare + value;
+                };
+                Chicken.prototype.endPhase = function (modifier) {
+                    this.reduceSpeed();
+                    this.increaseScare(modifier);
                 };
                 Chicken.prototype.move = function () {
                     this.racePosition += this.speed;

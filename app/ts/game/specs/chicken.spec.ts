@@ -37,6 +37,11 @@ describe('Chicken', () => {
     expect(chicken.scare).toBe(2);
   });
 
+  it("should decrease speeed by 1 and increase scare by 2", function() {
+    chicken.endPhase(2);
+    expect(chicken.scare).toBe(5);
+  });
+
   it("should increase scare by 1", function() {
     chicken.increaseScare();
     expect(chicken.scare).toBe(4);

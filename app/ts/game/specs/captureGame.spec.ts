@@ -197,18 +197,18 @@ describe("Game", function() {
     var chicken = chickenPen.chickens[0];
     chicken.speed = 10;
     game.chickenPen.chickens = [chicken];
-    game.turnOfEndPhase = 2;
+    game.turnOfEndPhase = 1;
     game.nextTurn();
     expect(chicken.speed).toBe(9);
   });
 
   it("should increase scare of last chicken each turn", function(){
     var chicken = chickenPen.chickens[0];
-    chicken.scare = 2;
+    chicken.scare = 1;
     game.chickenPen.chickens = [chicken];
-    game.turnOfEndPhase = 2;
+    game.turnOfEndPhase = 1;
     game.nextTurn();
-    expect(chicken.scare).toBe(3);
+    expect(chicken.scare).toBe(2);
   });
 
   it("should reset chickenWhisperer", function(){

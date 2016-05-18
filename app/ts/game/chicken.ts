@@ -24,8 +24,13 @@ export class Chicken {
     this.scare = this.scare - value;
   }
 
-  increaseScare(value = 1){
-    this.scare = this.scare + value;
+  increaseScare(value = 1){ 
+    this.scare = this.maxScare + value;
+  }
+
+  endPhase(modifier){
+    this.reduceSpeed();
+    this.increaseScare(modifier);
   }
 
   move(){

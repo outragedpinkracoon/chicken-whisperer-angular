@@ -65,12 +65,14 @@ System.register(["./player"], function(exports_1, context_1) {
                 CaptureGame.prototype.nextTurn = function () {
                     if (this.gameOver())
                         return;
+                    this.endPhase();
                     if (this.turnOfEndPhase > 1) {
-                        this.chickenPen.chickens[0].reduceSpeed();
-                        this.chickenPen.chickens[0].increaseScare();
+                        this.chickenPen.chickens[0].endPhase(this.turnOfEndPhase - 1);
                     }
                     this.updateCurrentPlayer();
                     this.reset();
+                };
+                CaptureGame.prototype.endPhaseChickenShit = function () {
                 };
                 CaptureGame.prototype.gameOver = function () {
                     return this.chickenPen.count() == 0;
