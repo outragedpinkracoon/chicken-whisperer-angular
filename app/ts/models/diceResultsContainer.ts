@@ -1,7 +1,8 @@
-import { Component } from 'angular2/core';
+import { Component, Injectable } from 'angular2/core';
 import { DiceService } from '../services/diceService';
 
-export abstract class DiceResults {
+@Injectable()
+export class DiceResultsContainer {
   lastRolls: Array<number>;
   success: boolean;
   total: number;

@@ -1,0 +1,50 @@
+/*body {
+  background-image: url('./images/strawbg.jpg');
+}*/
+
+.success {
+  color: green;  
+}
+
+.failure {
+  color:red;
+}
+
+.dice-results {
+  font-size: 3em;
+  list-style-type: none;
+  padding:0px;
+  margin:0px;
+
+}
+
+.dice-results li {
+  display: inline-block;
+  padding: 0px;
+  margin:0px;
+}
+
+/*.die-results {
+  font-size: 3em;
+  list-style-type: none;
+  padding:0px;
+
+}
+
+.die-results li {
+  display: inline-block;
+  padding: 0px;
+}
+
+/* DICE BOX */
+/*
+.dice-box {
+  width: 40%;
+  background-color: #efd984;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 2px solid black;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}*/
