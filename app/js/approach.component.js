@@ -33,11 +33,15 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                     this.sixSidedDie = diceService.sixSidedDie;
                 }
                 ApproachComponent.prototype.approach = function () {
-                    this.success = this.game.approachChicken();
-                    this.lastRolls = this.game.lastAppoachRolls();
+                    var success = this.game.approachChicken();
+                    this.setupDiceResults(this.game.lastAppoachRolls(), success);
+                    this.setupCaptureDice();
+                };
+                ApproachComponent.prototype.setupDiceResults = function (lastRolls, success) {
+                    this.success = success;
+                    this.lastRolls = lastRolls;
                     this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
                     this.total = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
-                    this.setupCaptureDice();
                 };
                 ApproachComponent.prototype.setupCaptureDice = function () {
                     this.captureDice = this.diceService.dummyDice(this.game.approach.captureDice, 6);

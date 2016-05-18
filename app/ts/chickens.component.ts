@@ -27,14 +27,13 @@ export class ChickensComponent {
   capture(chicken: Chicken) {
     var captureDice = this.game.approach.captureDice;
     if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0) return;
-
-    this.success = this.game.attemptCapture(chicken);
     this.chicken = chicken;
-    this.setupFeedback(chicken);
+    var success= this.game.attemptCapture(chicken);
+    this.setupDiceResults(this.game.lastCaptureRolls(), success);
   }
   
-  setupFeedback(chicken){
-    this.lastRolls = this.game.lastCaptureRolls();
+  setupDiceResults(rolls, success){
+    this.lastRolls = rolls;
     this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
     this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
   }
