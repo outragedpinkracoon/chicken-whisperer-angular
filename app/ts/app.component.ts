@@ -23,6 +23,8 @@ export class AppComponent {
   raceGame: RaceGame;
   
   constructor(){
+    //TODO default chicken speed of 1
+    //TODO win game if other player has no chickens
     this.game = GameInitializer.generateGame("Val","Chris");
     this.game.nextTurn();
     this.raceGame = undefined;
