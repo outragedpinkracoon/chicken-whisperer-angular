@@ -45,13 +45,13 @@ System.register(['./game/captureGame', './game/player', './game/chicken', './gam
                     var players = [player1, player2];
                     var chickenPen = new chickenPen_1.ChickenPen([
                         new chicken_1.Chicken({ "id": 1, "name": "Popo", "speed": 14, "maxScare": 1,
-                            "image": "http://askmaryrd.com/wp-content/uploads/2014/05/Ninja-Chicken.png" }),
+                            "image": "/app/assets/images/chicken1.png" }),
                         new chicken_1.Chicken({ "id": 2, "name": "Pudgy", "speed": 5, "maxScare": 3,
-                            "image": "https://ess.ualberta.ca/wp-content/uploads/2012/09/cartoon-chicken-md.png" }),
+                            "image": "/app/assets/images/chicken2.png" }),
                         new chicken_1.Chicken({ "id": 3, "name": "Jojo", "speed": 8, "maxScare": 3,
-                            "image": "http://www.wpclipart.com/cartoon/animals/bird/chicken/leery_chicken_T.png" }),
+                            "image": "/app/assets/images/chicken3.png" }),
                         new chicken_1.Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2,
-                            "image": "http://www.wpclipart.com/cartoon/animals/bird/chicken/Chicken_cartoon_04.svg" })
+                            "image": "/app/assets/images/chicken4.svg" })
                     ]);
                     var strategyOptions = {
                         die: new die_1.Die(),
