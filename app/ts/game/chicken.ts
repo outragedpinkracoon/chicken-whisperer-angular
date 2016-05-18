@@ -29,7 +29,7 @@ export class Chicken {
   }
 
   reduceSpeed(value = 1){
-    if(this.speed === 0) return;
+    if(this.speed === 1) return;
     this.speed = this.speed - value;
   }
 

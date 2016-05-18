@@ -46,10 +46,10 @@ System.register(['../chicken'], function(exports_1, context_1) {
                     chicken.reduceSpeed(2);
                     expect(chicken.speed).toBe(3);
                 });
-                it("should not decrease speed below 0", function () {
-                    chicken.speed = 0;
+                it("should not decrease speed below 1", function () {
+                    chicken.speed = 1;
                     chicken.reduceSpeed();
-                    expect(chicken.speed).toBe(0);
+                    expect(chicken.speed).toBe(1);
                 });
                 it("should refresh scare but not speed", function () {
                     chicken.speed = 1;

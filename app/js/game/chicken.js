@@ -27,7 +27,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 Chicken.prototype.reduceSpeed = function (value) {
                     if (value === void 0) { value = 1; }
-                    if (this.speed === 0)
+                    if (this.speed === 1)
                         return;
                     this.speed = this.speed - value;
                 };
