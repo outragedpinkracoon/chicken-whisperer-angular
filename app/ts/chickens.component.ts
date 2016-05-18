@@ -20,6 +20,7 @@ export class ChickensComponent {
   total: number;
   message: string;
   diceResults: Array<string>;
+  chicken: Chicken;
 
   constructor(private diceService: DiceService){}
 
@@ -28,17 +29,14 @@ export class ChickensComponent {
     if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0) return;
 
     this.success = this.game.attemptCapture(chicken);
-    this.setupFeedback(this.success, chicken);
+    this.chicken = chicken;
+    this.setupFeedback(chicken);
   }
   
-  setupFeedback(result, chicken){
+  setupFeedback(chicken){
     this.lastRolls = this.game.lastCaptureRolls();
     this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
-
     this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
-
-    var subMessage = result ? "successfully captured " : "failed to capture ";
-    this.message = "You "+subMessage+ chicken.name;
   }
 }
 

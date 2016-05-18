@@ -36,14 +36,13 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                     if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0)
                         return;
                     this.success = this.game.attemptCapture(chicken);
-                    this.setupFeedback(this.success, chicken);
+                    this.chicken = chicken;
+                    this.setupFeedback(chicken);
                 };
-                ChickensComponent.prototype.setupFeedback = function (result, chicken) {
+                ChickensComponent.prototype.setupFeedback = function (chicken) {
                     this.lastRolls = this.game.lastCaptureRolls();
                     this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
                     this.total = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
-                    var subMessage = result ? "successfully captured " : "failed to capture ";
-                    this.message = "You " + subMessage + chicken.name;
                 };
                 __decorate([
                     core_1.Input('game'), 
