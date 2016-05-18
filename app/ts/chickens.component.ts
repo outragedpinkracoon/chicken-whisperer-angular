@@ -3,7 +3,7 @@ import {CaptureGame} from './game/captureGame';
 import {Chicken} from './game/chicken';
 import {DiceService} from './services/diceService'
 import {DiceResultsContainer} from './models/diceResultsContainer'
-import { DiceResultsComponent } from './dice-results.component';
+import {DiceResultsComponent} from './dice-results.component';
 
 
 @Component({
@@ -22,11 +22,23 @@ export class ChickensComponent {
   }
 
   capture(chicken: Chicken) {
-    var captureDice = this.game.approach.captureDice;
-    if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0) return;
+    if (this.captureNotPossible(chicken)) return;
     this.chicken = chicken;
     var success= this.game.attemptCapture(chicken);
     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+  }
+
+  captureNotPossible(chicken){
+    var captureDice = this.game.approach.captureDice;
+    return captureDice == 0 || this.game.turnFinished || chicken.scare == 0
+  }
+
+  showFailure(){
+    return this.game.turnFinished && !this.game.capture.attempted
+  }
+
+  showSuccess(){
+    return this.game.turnFinished && this.game.capture.attempted
   }
 }
 

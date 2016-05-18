@@ -9,6 +9,10 @@ import {CaptureGame} from './game/captureGame';
 
 export class PlayersComponent {
   @Input('game') game: CaptureGame;
+
+  currentPlayer(player){
+    return player.name === this.game.currentPlayer.name
+  }
 }
 
 

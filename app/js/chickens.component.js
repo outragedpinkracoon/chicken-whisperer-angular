@@ -33,12 +33,21 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                     this.diceResultsContainer = diceResultsContainer;
                 }
                 ChickensComponent.prototype.capture = function (chicken) {
-                    var captureDice = this.game.approach.captureDice;
-                    if (captureDice == 0 || this.game.turnFinished || chicken.scare == 0)
+                    if (this.captureNotPossible(chicken))
                         return;
                     this.chicken = chicken;
                     var success = this.game.attemptCapture(chicken);
                     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+                };
+                ChickensComponent.prototype.captureNotPossible = function (chicken) {
+                    var captureDice = this.game.approach.captureDice;
+                    return captureDice == 0 || this.game.turnFinished || chicken.scare == 0;
+                };
+                ChickensComponent.prototype.showFailure = function () {
+                    return this.game.turnFinished && !this.game.capture.attempted;
+                };
+                ChickensComponent.prototype.showSuccess = function () {
+                    return this.game.turnFinished && this.game.capture.attempted;
                 };
                 __decorate([
                     core_1.Input('game'), 

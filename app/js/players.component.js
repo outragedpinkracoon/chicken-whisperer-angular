@@ -24,6 +24,9 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
             PlayersComponent = (function () {
                 function PlayersComponent() {
                 }
+                PlayersComponent.prototype.currentPlayer = function (player) {
+                    return player.name === this.game.currentPlayer.name;
+                };
                 __decorate([
                     core_1.Input('game'), 
                     __metadata('design:type', captureGame_1.CaptureGame)
