@@ -1,0 +1,18 @@
+<div *ngIf="!game.isWon()">
+  <div *ngIf="moved">
+    <dice-results [diceResultsContainer]="diceResultsContainer"></dice-results>
+
+    <ul>
+      <li *ngIf="diceResultsContainer.success">
+        <span class="info">{{game.lastChicken.name}} moved {{game.lastChicken.speed}} spaces like a champ.</span>
+      </li>
+      <li *ngIf="!diceResultsContainer.success">
+        <span class="info">{{game.lastChicken.name}} shat it and did nothing.</span>
+      </li>
+    </ul>
+  </div>
+  <button id="roll" (click)="roll()">Roll!</button>
+</div>
+<div *ngIf="game.isWon()">
+  <p>{{game.winningPlayer.name}}'s {{game.winningChicken.name}} is the winner!</p>
+</div>

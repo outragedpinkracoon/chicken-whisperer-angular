@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/raceGame', './race-positions.component', './models/diceResultsContainer'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/raceGame', './race-positions.component', './race-results.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/raceGame', './race-positions.component
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, raceGame_1, race_positions_component_1, diceResultsContainer_1;
+    var core_1, raceGame_1, race_positions_component_1, race_results_component_1;
     var RaceGameComponent;
     return {
         setters:[
@@ -23,23 +23,13 @@ System.register(['angular2/core', './game/raceGame', './race-positions.component
             function (race_positions_component_1_1) {
                 race_positions_component_1 = race_positions_component_1_1;
             },
-            function (diceResultsContainer_1_1) {
-                diceResultsContainer_1 = diceResultsContainer_1_1;
+            function (race_results_component_1_1) {
+                race_results_component_1 = race_results_component_1_1;
             }],
         execute: function() {
             RaceGameComponent = (function () {
-                function RaceGameComponent(diceResultsContainer) {
-                    this.diceResultsContainer = diceResultsContainer;
-                    this.diceResultsContainer = diceResultsContainer;
+                function RaceGameComponent() {
                 }
-                RaceGameComponent.prototype.roll = function () {
-                    if (this.game.isWon())
-                        return;
-                    this.success = this.game.roll();
-                    this.diceResultsContainer.setupDiceResults(this.game.lastRolls, this.success);
-                    this.game.nextTurn();
-                    this.moved = true;
-                };
                 __decorate([
                     core_1.Input('game'), 
                     __metadata('design:type', raceGame_1.RaceGame)
@@ -48,11 +38,10 @@ System.register(['angular2/core', './game/raceGame', './race-positions.component
                     core_1.Component({
                         selector: 'race-game',
                         templateUrl: 'app/views/race-game/race-game.component.html',
-                        providers: [diceResultsContainer_1.DiceResultsContainer],
                         styleUrls: ['app/views/race-game/race-game.component.css'],
-                        directives: [race_positions_component_1.RacePositionsComponent]
+                        directives: [race_positions_component_1.RacePositionsComponent, race_results_component_1.RaceResultsComponent]
                     }), 
-                    __metadata('design:paramtypes', [diceResultsContainer_1.DiceResultsContainer])
+                    __metadata('design:paramtypes', [])
                 ], RaceGameComponent);
                 return RaceGameComponent;
             }());
