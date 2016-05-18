@@ -1,6 +1,11 @@
-System.register(['angular2/core', './game/captureGame', './services/diceService', './dice-results.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './services/diceService', './models/diceResults', './dice-results.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var __extends = (this && this.__extends) || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,7 +15,7 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1, diceService_1, dice_results_component_1;
+    var core_1, captureGame_1, diceService_1, diceResults_1, dice_results_component_1;
     var ChickensComponent;
     return {
         setters:[
@@ -23,11 +28,15 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
             function (diceService_1_1) {
                 diceService_1 = diceService_1_1;
             },
+            function (diceResults_1_1) {
+                diceResults_1 = diceResults_1_1;
+            },
             function (dice_results_component_1_1) {
                 dice_results_component_1 = dice_results_component_1_1;
             }],
         execute: function() {
-            ChickensComponent = (function () {
+            ChickensComponent = (function (_super) {
+                __extends(ChickensComponent, _super);
                 function ChickensComponent(diceService) {
                     this.diceService = diceService;
                 }
@@ -38,11 +47,6 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                     this.chicken = chicken;
                     var success = this.game.attemptCapture(chicken);
                     this.setupDiceResults(this.game.lastCaptureRolls(), success);
-                };
-                ChickensComponent.prototype.setupDiceResults = function (rolls, success) {
-                    this.lastRolls = rolls;
-                    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
-                    this.total = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
                 };
                 __decorate([
                     core_1.Input('game'), 
@@ -59,7 +63,7 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                     __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], ChickensComponent);
                 return ChickensComponent;
-            }());
+            }(diceResults_1.DiceResults));
             exports_1("ChickensComponent", ChickensComponent);
         }
     }

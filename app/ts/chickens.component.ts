@@ -2,6 +2,7 @@ import {Component, Input} from 'angular2/core';
 import {CaptureGame} from './game/captureGame';
 import {Chicken} from './game/chicken';
 import {DiceService} from './services/diceService'
+import {DiceResults} from './models/diceResults'
 import { DiceResultsComponent } from './dice-results.component';
 
 
@@ -12,14 +13,8 @@ import { DiceResultsComponent } from './dice-results.component';
   providers: [DiceService],
   directives: [DiceResultsComponent]
 })
-
-export class ChickensComponent {
+export class ChickensComponent extends DiceResults {
   @Input('game') game: CaptureGame;
-  success: boolean;
-  lastRolls: Array<number>;
-  total: number;
-  message: string;
-  diceResults: Array<string>;
   chicken: Chicken;
 
   constructor(private diceService: DiceService){}
@@ -30,12 +25,6 @@ export class ChickensComponent {
     this.chicken = chicken;
     var success= this.game.attemptCapture(chicken);
     this.setupDiceResults(this.game.lastCaptureRolls(), success);
-  }
-  
-  setupDiceResults(rolls, success){
-    this.lastRolls = rolls;
-    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
-    this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
   }
 }
 
