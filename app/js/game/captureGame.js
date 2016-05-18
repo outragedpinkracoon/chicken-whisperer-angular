@@ -17,7 +17,8 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.approach = options.approach;
                     this.turnFinished = false;
                     this.started = false;
-                    this.chickensToCapture = this.chickenPen.count();
+                    this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
+                    this.winner = undefined;
                 }
                 CaptureGame.prototype.reset = function () {
                     this.chickenPen.refresh();
@@ -59,6 +60,8 @@ System.register(["./player"], function(exports_1, context_1) {
                     return this.players.length;
                 };
                 CaptureGame.prototype.nextTurn = function () {
+                    if (this.gameOver())
+                        return;
                     if (this.lastTurn()) {
                         this.chickenPen.chickens[0].reduceSpeed();
                     }
@@ -68,13 +71,12 @@ System.register(["./player"], function(exports_1, context_1) {
                 CaptureGame.prototype.gameOver = function () {
                     return this.chickenPen.count() == 0;
                 };
-                CaptureGame.prototype.canHaveRace = function () {
+                CaptureGame.prototype.checkForWinner = function () {
                     for (var _i = 0, _a = this.players; _i < _a.length; _i++) {
                         var player = _a[_i];
                         if (player.chickenCount() == this.chickensToCapture)
-                            return false;
+                            this.winner = player;
                     }
-                    return true;
                 };
                 CaptureGame.prototype.lastTurn = function () {
                     return this.chickenPen.count() == 1;
@@ -88,6 +90,9 @@ System.register(["./player"], function(exports_1, context_1) {
                         this.turnFinished = true;
                     }
                     return result;
+                };
+                CaptureGame.prototype.isWon = function () {
+                    return this.winner != undefined;
                 };
                 CaptureGame.prototype.lastAppoachRolls = function () {
                     return this.approach.strategy.lastRolls();
@@ -107,7 +112,9 @@ System.register(["./player"], function(exports_1, context_1) {
                     if (this.turnFinished)
                         return;
                     this.turnFinished = true;
-                    return this.capture.attempt(this.currentPlayer, chicken, this.chickenPen, this.approach.captureDice);
+                    var result = this.capture.attempt(this.currentPlayer, chicken, this.chickenPen, this.approach.captureDice);
+                    this.checkForWinner();
+                    return result;
                 };
                 return CaptureGame;
             }());

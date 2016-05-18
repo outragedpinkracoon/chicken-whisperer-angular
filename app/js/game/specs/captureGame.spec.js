@@ -141,6 +141,12 @@ System.register(['../captureGame', '../player', '../chicken', '../chickenPen', '
                     game.attemptCapture(null);
                     expect(game.capture.attempt).toHaveBeenCalled();
                 });
+                it("should check for winner", function () {
+                    spyOn(game, "checkForWinner");
+                    spyOn(game.capture, "attempt").and.returnValue(true);
+                    game.attemptCapture(null);
+                    expect(game.checkForWinner).toHaveBeenCalled();
+                });
                 it("should not attempt capture if turn finished", function () {
                     game.nextTurn();
                     game.turnFinished = true;
@@ -180,13 +186,25 @@ System.register(['../captureGame', '../player', '../chicken', '../chickenPen', '
                     game.setApproachStrategy();
                     expect(game.approach.strategy.name).toBe("WhispererApproachStrategy");
                 });
-                it("should be able to race", function () {
-                    game.players[0].chickens = [{}, {}, {}];
-                    expect(game.canHaveRace()).toBe(true);
+                it("should not have winner", function () {
+                    game.players[0].chickens = [{}, {}];
+                    game.checkForWinner();
+                    expect(game.winner).toBe(undefined);
                 });
-                it("should not be able to race", function () {
+                it("should not be won", function () {
+                    game.players[0].chickens = [{}, {}];
+                    game.checkForWinner();
+                    expect(game.isWon()).toBe(false);
+                });
+                it("should not have winner", function () {
                     game.players[0].chickens = [{}, {}, {}, {}];
-                    expect(game.canHaveRace()).toBe(false);
+                    game.checkForWinner();
+                    expect(game.winner).toEqual(game.players[0]);
+                });
+                it("should be won", function () {
+                    game.players[0].chickens = [{}, {}, {}, {}];
+                    game.checkForWinner();
+                    expect(game.isWon()).toBe(true);
                 });
             });
         }

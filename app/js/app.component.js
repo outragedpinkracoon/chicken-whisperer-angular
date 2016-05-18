@@ -45,13 +45,13 @@ System.register(['angular2/core', './chickens.component', './game/raceGame', './
             AppComponent = (function () {
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
-                    //TODO default chicken speed of 1
-                    //TODO win game if other player has no chickens
                     this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Chris");
                     this.game.nextTurn();
                     this.raceGame = undefined;
                 }
                 AppComponent.prototype.startRace = function () {
+                    if (this.game.isWon())
+                        return;
                     var options = {
                         players: this.game.players,
                         die: new die_1.Die(),

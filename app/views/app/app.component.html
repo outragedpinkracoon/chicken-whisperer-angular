@@ -8,7 +8,9 @@
     <players *ngIf="!raceGame" [game]="game"></players>
   </div>
 
-  <button *ngIf="game.gameOver() && !raceGame" (click)="startRace()">Start race!</button>
+  <button *ngIf="game.gameOver() && !raceGame && !game.isWon()" (click)="startRace()">Start race!</button>
+
+  <p *ngIf="game.isWon()">{{game.winner.name}} has all the chickens and wins!</p>
 
   <div *ngIf="raceGame">
     <race-game [game]="raceGame"></race-game>

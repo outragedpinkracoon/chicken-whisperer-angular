@@ -16,7 +16,8 @@ export class CaptureGame {
   started: boolean;
   turnFinished: boolean;
   chickensToCapture: number;
-  
+  winner: Player;
+
   constructor(options) {
      this.players = options.players;
      this.chickenPen = options.chickenPen;
@@ -24,7 +25,8 @@ export class CaptureGame {
      this.approach = options.approach;
      this.turnFinished = false;
      this.started = false;
-     this.chickensToCapture = this.chickenPen.count();
+     this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
+     this.winner = undefined;
   }
 
   reset(){
@@ -70,6 +72,7 @@ export class CaptureGame {
   }
 
   nextTurn(){
+    if(this.gameOver()) return;
     if(this.lastTurn()) {
       this.chickenPen.chickens[0].reduceSpeed();
     }
@@ -81,12 +84,11 @@ export class CaptureGame {
     return this.chickenPen.count() == 0;
   }
 
-  canHaveRace(){
+  checkForWinner(){
     for(var player of this.players){
       if(player.chickenCount() == this.chickensToCapture)
-        return false;
+        this.winner = player;
     }
-    return true;
   }
 
   lastTurn(){
@@ -104,7 +106,10 @@ export class CaptureGame {
     return result;
   }
  
-  
+  isWon(){
+    return this.winner != undefined;
+  }
+
   lastAppoachRolls(){
     return this.approach.strategy.lastRolls();
   }
@@ -124,10 +129,12 @@ export class CaptureGame {
   attemptCapture(chicken){
     if(this.turnFinished) return;
     this.turnFinished = true;
-    return this.capture.attempt(this.currentPlayer, 
+    var result = this.capture.attempt(this.currentPlayer, 
                          chicken, 
                          this.chickenPen, 
                          this.approach.captureDice);
+    this.checkForWinner();
+    return result;
 
   }
 
