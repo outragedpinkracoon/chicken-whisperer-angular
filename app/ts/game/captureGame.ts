@@ -17,6 +17,7 @@ export class CaptureGame {
   turnFinished: boolean;
   chickensToCapture: number;
   winner: Player;
+  turnOfEndPhase: number;
 
   constructor(options) {
      this.players = options.players;
@@ -27,10 +28,13 @@ export class CaptureGame {
      this.started = false;
      this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
      this.winner = undefined;
+     this.turnOfEndPhase = 0;
   }
 
   reset(){
-    this.chickenPen.refresh();
+    if(this.turnOfEndPhase <= 1) {
+      this.chickenPen.refresh();
+    }
     this.approach.reset();
     this.capture.reset();
     this.started = true;
@@ -73,8 +77,9 @@ export class CaptureGame {
 
   nextTurn(){
     if(this.gameOver()) return;
-    if(this.lastTurn()) {
+    if(this.turnOfEndPhase > 1) {
       this.chickenPen.chickens[0].reduceSpeed();
+      this.chickenPen.chickens[0].increaseScare();
     }
     this.updateCurrentPlayer();
     this.reset();
@@ -91,8 +96,12 @@ export class CaptureGame {
     }
   }
 
-  lastTurn(){
-    return this.chickenPen.count() == 1;
+  endPhase(){
+    var result = this.chickenPen.count() == 1;
+    if(result){
+      this.turnOfEndPhase++ ;
+    }
+    return result;
   }
 
   approachChicken(){

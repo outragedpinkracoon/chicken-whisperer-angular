@@ -22,6 +22,10 @@ System.register([], function(exports_1, context_1) {
                         return;
                     this.scare = this.scare - value;
                 };
+                Chicken.prototype.increaseScare = function (value) {
+                    if (value === void 0) { value = 1; }
+                    this.scare = this.scare + value;
+                };
                 Chicken.prototype.move = function () {
                     this.racePosition += this.speed;
                 };

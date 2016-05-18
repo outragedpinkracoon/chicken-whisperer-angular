@@ -59,7 +59,6 @@ describe("Game", function() {
       approach: approach
     }
 
-
     game = new CaptureGame(options);
 
   });
@@ -108,6 +107,28 @@ describe("Game", function() {
     game.approach.captureDice = 2;
     game.reset();
     expect(game.approach.captureDice).toBe(0);
+  });
+
+  it("should increase end phase turn", function() {
+    game.chickenPen.chickens = [{}];
+    game.endPhase();
+    expect(game.turnOfEndPhase).toBe(1);
+  });
+
+  it("should refresh chickens on end phase first turn", function() {
+    spyOn(game.chickenPen,"refresh");
+    var chicken = chickenPen.chickens[0];
+    game.chickenPen.chickens = [chicken];
+    game.nextTurn();
+    expect(game.chickenPen.refresh).toHaveBeenCalled();
+  });
+
+  it("should not refresh chickens on end phase second turn", function() {
+    spyOn(game.chickenPen,"refresh");
+    var chicken = chickenPen.chickens[0];
+    game.chickenPen.chickens = [chicken];
+    game.turnOfEndPhase = 2;
+    expect(game.chickenPen.refresh).not.toHaveBeenCalled();
   });
 
   it("should reset chickenPen", function() {
@@ -167,18 +188,27 @@ describe("Game", function() {
     expect(game.gameOver()).toBe(true);
   });
 
-  it("should be the last turn", function(){
+  it("should be the end phase", function(){
     game.chickenPen.chickens = [{}];
-    expect(game.lastTurn()).toBe(true);
+    expect(game.endPhase()).toBe(true);
   });
 
   it("should reduce speed of last chicken each turn", function(){
     var chicken = chickenPen.chickens[0];
     chicken.speed = 10;
     game.chickenPen.chickens = [chicken];
-    expect(game.lastTurn()).toBe(true);
+    game.turnOfEndPhase = 2;
     game.nextTurn();
     expect(chicken.speed).toBe(9);
+  });
+
+  it("should increase scare of last chicken each turn", function(){
+    var chicken = chickenPen.chickens[0];
+    chicken.scare = 2;
+    game.chickenPen.chickens = [chicken];
+    game.turnOfEndPhase = 2;
+    game.nextTurn();
+    expect(chicken.scare).toBe(3);
   });
 
   it("should reset chickenWhisperer", function(){

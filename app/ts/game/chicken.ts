@@ -24,6 +24,10 @@ export class Chicken {
     this.scare = this.scare - value;
   }
 
+  increaseScare(value = 1){
+    this.scare = this.scare + value;
+  }
+
   move(){
     this.racePosition += this.speed;
   }
