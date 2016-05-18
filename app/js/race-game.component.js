@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/raceGame', './services/diceService'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/raceGame', './models/diceResultsContainer', './dice-results.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/raceGame', './services/diceService'], 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, raceGame_1, diceService_1;
+    var core_1, raceGame_1, diceResultsContainer_1, dice_results_component_1;
     var RaceGameComponent;
     return {
         setters:[
@@ -20,20 +20,22 @@ System.register(['angular2/core', './game/raceGame', './services/diceService'], 
             function (raceGame_1_1) {
                 raceGame_1 = raceGame_1_1;
             },
-            function (diceService_1_1) {
-                diceService_1 = diceService_1_1;
+            function (diceResultsContainer_1_1) {
+                diceResultsContainer_1 = diceResultsContainer_1_1;
+            },
+            function (dice_results_component_1_1) {
+                dice_results_component_1 = dice_results_component_1_1;
             }],
         execute: function() {
             RaceGameComponent = (function () {
-                function RaceGameComponent(diceService) {
-                    this.diceService = diceService;
+                function RaceGameComponent(diceResultsContainer) {
+                    this.diceResultsContainer = diceResultsContainer;
                 }
                 RaceGameComponent.prototype.roll = function () {
                     if (this.game.isWon())
                         return;
-                    this.success = this.game.roll();
-                    this.diceResults = this.diceService.dieResultsAsUnicode(this.game.lastRolls);
-                    this.total = this.game.lastRolls.reduce(function (prev, curr) { return prev + curr; });
+                    var success = this.game.roll();
+                    this.diceResultsContainer.setupDiceResults(this.game.lastRolls, success);
                     this.game.nextTurn();
                     this.moved = true;
                 };
@@ -45,10 +47,11 @@ System.register(['angular2/core', './game/raceGame', './services/diceService'], 
                     core_1.Component({
                         selector: 'race-game',
                         templateUrl: 'app/views/race-game/race-game.component.html',
-                        providers: [diceService_1.DiceService],
-                        styleUrls: ['app/views/race-game/race-game.component.css']
+                        styleUrls: ['app/views/race-game/race-game.component.css'],
+                        providers: [diceResultsContainer_1.DiceResultsContainer],
+                        directives: [dice_results_component_1.DiceResultsComponent]
                     }), 
-                    __metadata('design:paramtypes', [diceService_1.DiceService])
+                    __metadata('design:paramtypes', [diceResultsContainer_1.DiceResultsContainer])
                 ], RaceGameComponent);
                 return RaceGameComponent;
             }());
