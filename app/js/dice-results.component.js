@@ -1,4 +1,4 @@
-System.register(['./services/diceService'], function(exports_1, context_1) {
+System.register(['./services/diceService', 'angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,37 +10,49 @@ System.register(['./services/diceService'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var diceService_1;
-    var ApproachComponent;
+    var diceService_1, core_1;
+    var DiceResultsComponent;
     return {
         setters:[
             function (diceService_1_1) {
                 diceService_1 = diceService_1_1;
+            },
+            function (core_1_1) {
+                core_1 = core_1_1;
             }],
         execute: function() {
-            ApproachComponent = (function () {
-                function ApproachComponent(diceService) {
+            DiceResultsComponent = (function () {
+                function DiceResultsComponent(diceService) {
                     this.diceService = diceService;
                 }
-                ApproachComponent.prototype.approach = function (functionToEvaluate, lastRollFunc, callback) {
-                    this.success = functionToEvaluate();
-                    this.lastRoll = lastRollFunc();
-                    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
-                    this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
-                    callback();
-                };
-                ApproachComponent = __decorate([
-                    Component({
+                __decorate([
+                    core_1.Input('lastRolls'), 
+                    __metadata('design:type', Array)
+                ], DiceResultsComponent.prototype, "lastRolls", void 0);
+                __decorate([
+                    core_1.Input('success'), 
+                    __metadata('design:type', Boolean)
+                ], DiceResultsComponent.prototype, "success", void 0);
+                __decorate([
+                    core_1.Input('diceResults'), 
+                    __metadata('design:type', Array)
+                ], DiceResultsComponent.prototype, "diceResults", void 0);
+                __decorate([
+                    core_1.Input('total'), 
+                    __metadata('design:type', Number)
+                ], DiceResultsComponent.prototype, "total", void 0);
+                DiceResultsComponent = __decorate([
+                    core_1.Component({
                         selector: 'dice-results',
-                        templateUrl: 'app/views/approach/dice-results.component.html',
-                        styleUrls: ['app/views/approach/dice-results.component.css'],
+                        templateUrl: 'app/views/dice-results/dice-results.component.html',
+                        styleUrls: ['app/views/dice-results/dice-results.component.css'],
                         providers: [diceService_1.DiceService]
                     }), 
                     __metadata('design:paramtypes', [diceService_1.DiceService])
-                ], ApproachComponent);
-                return ApproachComponent;
+                ], DiceResultsComponent);
+                return DiceResultsComponent;
             }());
-            exports_1("ApproachComponent", ApproachComponent);
+            exports_1("DiceResultsComponent", DiceResultsComponent);
         }
     }
 });

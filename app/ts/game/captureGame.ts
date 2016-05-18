@@ -15,6 +15,7 @@ export class CaptureGame {
   currentPlayer: Player;
   started: boolean;
   turnFinished: boolean;
+  chickensToCapture: number;
   
   constructor(options) {
      this.players = options.players;

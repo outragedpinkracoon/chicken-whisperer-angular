@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame', './services/diceService'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './services/diceService', './dice-results.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1, diceService_1;
+    var core_1, captureGame_1, diceService_1, dice_results_component_1;
     var ApproachComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
             },
             function (diceService_1_1) {
                 diceService_1 = diceService_1_1;
+            },
+            function (dice_results_component_1_1) {
+                dice_results_component_1 = dice_results_component_1_1;
             }],
         execute: function() {
             ApproachComponent = (function () {
@@ -31,9 +34,9 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                 }
                 ApproachComponent.prototype.approach = function () {
                     this.success = this.game.approachChicken();
-                    this.lastRoll = this.game.lastAppoachRolls();
-                    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
-                    this.total = this.lastRoll.reduce(function (prev, curr) { return prev + curr; });
+                    this.lastRolls = this.game.lastAppoachRolls();
+                    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
+                    this.total = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
                     this.setupCaptureDice();
                 };
                 ApproachComponent.prototype.setupCaptureDice = function () {
@@ -51,7 +54,8 @@ System.register(['angular2/core', './game/captureGame', './services/diceService'
                         selector: 'approach',
                         templateUrl: 'app/views/approach/approach.component.html',
                         styleUrls: ['app/views/approach/approach.component.css'],
-                        providers: [diceService_1.DiceService]
+                        providers: [diceService_1.DiceService],
+                        directives: [dice_results_component_1.DiceResultsComponent]
                     }), 
                     __metadata('design:paramtypes', [diceService_1.DiceService])
                 ], ApproachComponent);

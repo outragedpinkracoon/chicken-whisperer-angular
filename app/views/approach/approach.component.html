@@ -1,16 +1,7 @@
 <div class="dice-box" *ngIf="!game.approach.firstTry && !game.turnFinished">
-    <div *ngIf="lastRoll">
-        <ul class="die-results">
-          <li *ngFor="#die of diceResults">
-            {{die}}
-          </li>
-          <li>
-            = <span [class.failure]="!success" [class.success]="success"> {{total}}</span>
-          </li>
-        </ul>
-    </div>
+    <dice-results [lastRolls]="lastRolls" [success]="success" [diceResults]="diceResults" [total]="total"></dice-results>
     Capture dice collection:
-    <ul class="die-results">
+    <ul class="dice-results">
       <li *ngFor="#die of captureDice">
         {{die}}
       </li>

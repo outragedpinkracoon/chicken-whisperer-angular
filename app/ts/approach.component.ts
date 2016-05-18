@@ -1,17 +1,19 @@
 import { Component, Input } from 'angular2/core';
 import { CaptureGame } from './game/captureGame';
 import { DiceService } from './services/diceService';
+import { DiceResultsComponent } from './dice-results.component';
 
 @Component({
   selector: 'approach',
   templateUrl: 'app/views/approach/approach.component.html',
   styleUrls: ['app/views/approach/approach.component.css'],
-  providers: [DiceService]
+  providers: [DiceService],
+  directives: [DiceResultsComponent]
 })
 
 export class ApproachComponent {
   @Input('game') game: CaptureGame;
-  lastRoll: Array<number>;
+  lastRolls: Array<number>;
   success: boolean;
   total: number;
   diceResults: Array<string>;
@@ -24,9 +26,9 @@ export class ApproachComponent {
   
   approach(){
     this.success = this.game.approachChicken();
-    this.lastRoll = this.game.lastAppoachRolls();
-    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRoll);
-    this.total = this.lastRoll.reduce( (prev, curr) => prev + curr );
+    this.lastRolls = this.game.lastAppoachRolls();
+    this.diceResults = this.diceService.dieResultsAsUnicode(this.lastRolls);
+    this.total = this.lastRolls.reduce( (prev, curr) => prev + curr );
     this.setupCaptureDice();
   }
 

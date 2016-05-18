@@ -1,0 +1,10 @@
+<div *ngIf="lastRolls">
+  <ul class="dice-results">
+    <li *ngFor="#die of diceResults">
+      {{die}}
+    </li>
+    <li>
+      = <span [class.failure]="!success" [class.success]="success"> {{total}}</span>
+    </li>
+  </ul>
+</div>
