@@ -1,26 +1,31 @@
+<p>
+    <button class="approach-button" 
+    id="btn-approach" 
+    *ngIf="!game.turnFinished" 
+    (click)="approach()">
+    Approach chickens!
+</button>
+
+<button class="approach-button" 
+id="btn-next" 
+*ngIf="game.turnFinished" 
+(click)="nextTurn()">
+Next turn
+</button>
+</p>
+
 <div class="dice-box" *ngIf="!game.approach.firstTry && !game.turnFinished">
     <dice-results [diceResultsContainer]="diceResultsContainer"></dice-results>
-    Capture dice collection:
-    <ul class="dice-results">
-      <li *ngFor="#die of captureDice">
-        {{die}}
-      </li>
+
+    <ul class="dice-results" *ngIf="game.approach.captureDice > 0">
+        <li>
+            <span class="capture-text">Capture dice:</span>
+        </li>
+
+        <li class="dice" *ngFor="#die of captureDice">
+            {{die}}
+        </li>
     </ul>
 </div>
 
 
-<p>
-    <button class="approach-button" 
-            id="btn-approach" 
-            *ngIf="!game.turnFinished" 
-            (click)="approach()">
-            Approach chickens!
-    </button>
-
-    <button class="approach-button" 
-            id="btn-next" 
-            *ngIf="game.turnFinished" 
-            (click)="nextTurn()">
-            Next turn
-    </button>
-</p>

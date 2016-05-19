@@ -1,3 +1,36 @@
 .chickens li:hover {
   cursor: pointer;
 }
+
+.chickens img {
+  height:100px;
+  margin:auto;
+}
+
+
+ul li {
+  display: inline-block;
+}
+
+ul {
+  margin: auto;
+  padding:0px;
+  background: url("/app/assets/images/straw.jpg") no-repeat fixed center; 
+  border-radius: 50px;
+  color:white;
+  font-size: 1.2em;
+  text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+  border: 5px dashed #663300;
+  float:left;
+  width: 60%;
+}
+
+li {
+  list-style-type: none;
+  width:25%;
+  padding:25px 0px 25px 0px;
+}
+
+p {
+  text-align: center;
+}

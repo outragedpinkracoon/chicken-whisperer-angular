@@ -1,14 +1,16 @@
 <div class="container">
   <h1>{{title}}</h1>
   <div *ngIf="game.started == true">
-    <div *ngIf="!game.gameOver()">
+    <div class="clearfix" *ngIf="!game.gameOver()">
       <chicken-pen [game]="game"></chicken-pen>
-      <approach [game]="game"></approach>
+      <div id="player-info">
+        <approach [game]="game"></approach>
+      </div>
     </div>
     <players *ngIf="!raceGame" [game]="game"></players>
   </div>
 
-  <button *ngIf="game.gameOver() && !raceGame && !game.isWon()" (click)="startRace()">Start race!</button>
+  <button *ngIf="startRacePossible()" (click)="startRace()">Start race!</button>
 
   <p *ngIf="game.isWon()">{{game.winner.name}} has all the chickens and wins!</p>
 
@@ -17,5 +19,5 @@
   </div>
 <!-- 
   <start [game]="game"></start> -->
-
 </div>
+

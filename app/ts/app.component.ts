@@ -40,4 +40,8 @@ export class AppComponent {
     this.raceGame = new RaceGame(options);
     this.raceGame.nextTurn();
   }
+
+  startRacePossible(){
+    return this.game.gameOver() && !this.raceGame && !this.game.isWon()
+  }
 }

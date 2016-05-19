@@ -60,6 +60,9 @@ System.register(['angular2/core', './chickens.component', './game/raceGame', './
                     this.raceGame = new raceGame_1.RaceGame(options);
                     this.raceGame.nextTurn();
                 };
+                AppComponent.prototype.startRacePossible = function () {
+                    return this.game.gameOver() && !this.raceGame && !this.game.isWon();
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',

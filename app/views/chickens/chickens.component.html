@@ -1,17 +1,17 @@
-<h2>Chicken Pen</h2>
-<ul class="chickens list-group" *ngIf="game.chickenPen">
-    <li class="list-group-item" *ngFor="#chicken of game.chickenPen.chickens" (click)="capture(chicken)">
-        <img height="50px" src="{{chicken.image}}" class="chicken-image">
-   <!--      <img height="50px" src="app/assets/images/default-chicken.png" /> -->
-        <span class="chicken-name">{{chicken.name}}</span> 
-        <span> Scare: {{chicken.scare}} </span>
-        <span> Speed: {{chicken.speed}} </span>
+<ul class="chickens" *ngIf="game.chickenPen">
+    <li *ngFor="#chicken of game.chickenPen.chickens" (click)="capture(chicken)">
+        <div>
+        <p>{{chicken.name}}</p> 
+        <p><img src="{{chicken.image}}" class="chicken-image"></p>
+            <p> Scare: {{chicken.scare}} </p>
+            <p> Speed: {{chicken.speed}} </p>
+        </div>
 
     </li>
-</ul>
+</ul>   
 
 <div class="dice-box" *ngIf="showSuccess()">
-    <span>You rolled:</span>
+    <p>You rolled:</p>
     <dice-results [diceResultsContainer]="diceResultsContainer"></dice-results>
     <p *ngIf="diceResultsContainer.success">You successfully captured {{chicken.name}}</p>
     <p *ngIf="!diceResultsContainer.success">You failed to capture {{chicken.name}}</p>

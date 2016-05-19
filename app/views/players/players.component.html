@@ -4,7 +4,7 @@
             <h3 class="panel-title">
                 <span class='current-player' *ngIf="currentPlayer(player)">{{player.name}}</span>
                 <span class='resting-player' *ngIf="!currentPlayer(player)">{{player.name}}</span>
-                <span *ngIf="player.isWhisperer">- whispering!</span>
+                <span *ngIf="player.isWhisperer && !game.gameOver()">- whispering!</span>
             </h3>
         </div>
         <div *ngIf="player.hasChickens()" class="panel-body">

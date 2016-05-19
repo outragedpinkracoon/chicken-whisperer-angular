@@ -19,3 +19,50 @@
   padding: 0px;
   margin:0px;
 }
+
+body {
+  font-family: 'Lucida Grande';
+  font-weight: 700;
+  color: #663300;
+}
+
+button:focus {
+  outline: none;
+}
+
+.dice-box {
+  text-align: center;
+}
+
+.dice {
+  color: black;
+}
+
+#player-info {
+  float:right;
+  width: 38%;
+}
+
+.clearfix::after {
+  content:"";
+  display:block;
+  clear:both;
+}
+
+button {
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(251, 236, 55);
+  border: 1px solid #663300;
+  font-family: Impact;
+  font-size: 1.2em;
+  color: #663300;
+}
+
+button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
