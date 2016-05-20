@@ -7,7 +7,7 @@
 }
 
 .dice-results {
-  font-size: 3em;
+  font-size: 2em;
   list-style-type: none;
   padding:0px;
   margin:0px;
@@ -33,18 +33,28 @@ button:focus {
 .dice-box {
   margin-top:10px;
   text-align: center;
-  padding: 15px;
+  padding: 5px;
   border-radius: 15px;
   border: none;
   background-color: rgb(251, 236, 55);
   border: 1px solid #663300;
   font-family: Impact;
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #663300;
+}
+
+.dice-box p {
+  padding: 2px;
+  margin: 0px;
+}
+
+.dice-box.approach-failure {
+  padding:15px;
 }
 
 .dice {
   color: black;
+  font-size: 2em;
 }
 
 #player-info {
@@ -67,14 +77,4 @@ button:hover {
   -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-}
-
-.flex-container {
-  display: flex;
-  height:500px;
-}
-
-#chicken-pen {
-  flex-grow: 20;
-  margin-right:10px;
 }
