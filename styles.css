@@ -6,6 +6,10 @@
   color:red;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .dice-results {
   font-size: 2em;
   list-style-type: none;
