@@ -24,6 +24,7 @@ body {
   font-family: 'Lucida Grande';
   font-weight: 700;
   color: #663300;
+  background: url('/app/assets/images/footprints.png');
 }
 
 button:focus {
