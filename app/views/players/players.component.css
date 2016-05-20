@@ -13,10 +13,6 @@ td, th {
   padding:10px;
 }
 
-th {
-  border-bottom: 1px solid black;
-}
-
 table {
   margin-top: 20px;
   background-color: white;
