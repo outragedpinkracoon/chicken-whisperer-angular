@@ -11,7 +11,6 @@
   list-style-type: none;
   padding:0px;
   margin:0px;
-
 }
 
 .dice-results li {
@@ -32,7 +31,16 @@ button:focus {
 }
 
 .dice-box {
+  margin-top:10px;
   text-align: center;
+  padding: 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: rgb(251, 236, 55);
+  border: 1px solid #663300;
+  font-family: Impact;
+  font-size: 1.2em;
+  color: #663300;
 }
 
 .dice {
@@ -40,14 +48,7 @@ button:focus {
 }
 
 #player-info {
-  float:right;
   width: 38%;
-}
-
-.clearfix::after {
-  content:"";
-  display:block;
-  clear:both;
 }
 
 button {
@@ -66,4 +67,14 @@ button:hover {
   -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.flex-container {
+  display: flex;
+  height:500px;
+}
+
+#chicken-pen {
+  flex-grow: 20;
+  margin-right:10px;
 }

@@ -21,8 +21,7 @@ ul {
   font-size: 1.2em;
   text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
   border: 5px dashed #663300;
-  float:left;
-  width: 60%;
+  height:100%;
 }
 
 li {
