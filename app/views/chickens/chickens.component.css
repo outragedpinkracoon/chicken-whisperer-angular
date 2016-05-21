@@ -7,6 +7,10 @@
   margin:auto;
 }
 
+.chickens {
+  font-family: Impact;
+}
+
 
 ul li {
   display: inline-block;
@@ -18,9 +22,13 @@ ul {
   background: url("/app/assets/images/straw.jpg") no-repeat fixed center; 
   border-radius: 50px;
   color:white;
-  font-size: 1.2em;
-  text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+  font-size: 1.6em;
+  -webkit-text-stroke: 1px black; color: white;
   border: 5px dashed #663300;
+}
+
+.chicken-name {
+  -webkit-text-stroke: 1px black; color: white;
 }
 
 li {
