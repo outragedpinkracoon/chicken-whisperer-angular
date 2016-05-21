@@ -2,35 +2,17 @@
 <table>
     <tr>
         <th *ngFor="#player of game.players">
-        <span class='current-player' *ngIf="currentPlayer(player)">{{player.name}}</span>
-        <span class='resting-player' *ngIf="!currentPlayer(player)">{{player.name}}</span>
-        <span *ngIf="player.isWhisperer && !game.gameOver()">- whispering!</span>
+        <span [class.current-player]="currentPlayer(player)">{{player.name}}</span>
         </th>
     </tr>
     <tr>
-    <td *ngFor="#player of game.players">
-        <ul *ngIf="player.hasChickens()">
-            <li *ngFor="#chicken of player.chickens">
-                <img height="50px" src="{{chicken.image}}" class="chicken-image-small">
-                <p>{{chicken.name}} ({{chicken.speed}})</p>
-            </li>
-        </ul>
-    </td>
+        <td *ngFor="#player of game.players">
+            <ul *ngIf="player.hasChickens()">
+                <li *ngFor="#chicken of player.chickens">
+                    <img height="50px" src="{{chicken.image}}" class="chicken-image-small">
+                    <p>{{chicken.name}} ({{chicken.speed}})</p>
+                </li>
+            </ul>
+        </td>
     </tr>
 </table>
-
-<!-- <ul *ngFor="#player of game.players">
-    <li>
-        <span class='current-player' *ngIf="currentPlayer(player)">{{player.name}}</span>
-        <span class='resting-player' *ngIf="!currentPlayer(player)">{{player.name}}</span>
-        <span *ngIf="player.isWhisperer && !game.gameOver()">- whispering!</span>
-    </li>
-    <li>
-        <ul *ngIf="player.hasChickens()">
-            <li class="captured-chicken" *ngFor="#chicken of player.chickens">
-                <img height="50px" src="{{chicken.image}}" class="chicken-image-small">
-                <p>{{chicken.name}} ({{chicken.speed}})</p>
-            </li>
-        </ul>
-    </li>
-</ul> -->

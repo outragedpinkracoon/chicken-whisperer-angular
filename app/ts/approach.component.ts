@@ -3,13 +3,14 @@ import { CaptureGame } from './game/captureGame';
 import { DiceResultsContainer } from './models/diceResultsContainer';
 import { DiceService } from './services/diceService';
 import { DiceResultsComponent } from './dice-results.component';
+import { PlayerStatusComponent } from './player-status.component';
 
 @Component({
   selector: 'approach',
   templateUrl: 'app/views/approach/approach.component.html',
   styleUrls: ['app/views/approach/approach.component.css'],
   providers: [DiceService, DiceResultsContainer],
-  directives: [DiceResultsComponent]
+  directives: [DiceResultsComponent, PlayerStatusComponent]
 })
 
 export class ApproachComponent {

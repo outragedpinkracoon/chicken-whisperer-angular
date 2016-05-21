@@ -1,0 +1,12 @@
+#player-status {
+  text-align: center;
+}
+
+.whispering {
+  font-style: italic;
+  color: #663300;
+}
+
+.current-player {
+  color:orange;
+}

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame', './models/diceResultsContainer', './services/diceService', './dice-results.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './models/diceResultsContainer', './services/diceService', './dice-results.component', './player-status.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1, diceResultsContainer_1, diceService_1, dice_results_component_1;
+    var core_1, captureGame_1, diceResultsContainer_1, diceService_1, dice_results_component_1, player_status_component_1;
     var ApproachComponent;
     return {
         setters:[
@@ -28,6 +28,9 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
             },
             function (dice_results_component_1_1) {
                 dice_results_component_1 = dice_results_component_1_1;
+            },
+            function (player_status_component_1_1) {
+                player_status_component_1 = player_status_component_1_1;
             }],
         execute: function() {
             ApproachComponent = (function () {
@@ -58,7 +61,7 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                         templateUrl: 'app/views/approach/approach.component.html',
                         styleUrls: ['app/views/approach/approach.component.css'],
                         providers: [diceService_1.DiceService, diceResultsContainer_1.DiceResultsContainer],
-                        directives: [dice_results_component_1.DiceResultsComponent]
+                        directives: [dice_results_component_1.DiceResultsComponent, player_status_component_1.PlayerStatusComponent]
                     }), 
                     __metadata('design:paramtypes', [diceResultsContainer_1.DiceResultsContainer, diceService_1.DiceService])
                 ], ApproachComponent);
