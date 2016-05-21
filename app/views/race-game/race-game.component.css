@@ -7,6 +7,85 @@
   font-style: italic;
 }
 
+h3 {
+  padding: 0px;
+  margin: 0px;
+}
+
 .position {
-  font-size: 1.5em;
+  font-size: 1em;
+}
+
+button {
+  margin-top: 10px;
+}
+
+img {
+  width: 50px;
+}
+
+#race {
+  display:flex;
+}
+
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+#info {
+  width: 30%;
+  text-align: center;
+  margin-left: 30px;
+}
+
+#chickens {
+  width:70%;
+  border-right: 2px dashed black;
+  background-color: white;
+}
+
+#chickens li {
+  background: url("app/assets/images/surface.jpeg")
+}
+
+#result {
+  padding: 25px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(251, 236, 55);
+  border: 1px solid #663300;
+  font-family: Impact;
+  font-size: 1.2em;
+  color: #663300;
+  margin-left: 30px;
+}
+
+.speed {
+  font-size: 0.6em;
+  color: orange;
+}
+
+.current-chicken {
+  color: orange;
+}
+
+#chickens li:last-child {
+  border-bottom: none;
+}
+
+#chickens li {
+  border-bottom: 4px dashed white;
+}
+
+#chickens li#finish-line {
+  text-align: right;
+  margin-right: 5px;
+  border-right:none;
+  background: none;
+}
+
+.chicken-box {
+  padding: 10px;
+  display:block;
 }

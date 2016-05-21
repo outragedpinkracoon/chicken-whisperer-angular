@@ -1,5 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {RaceGame} from './game/raceGame';
+import {Chicken} from './game/chicken';
 import { DiceResultsContainer } from './models/diceResultsContainer';
 import { DiceResultsComponent } from './dice-results.component';
 
@@ -15,7 +16,9 @@ export class RaceGameComponent {
   @Input('game') game: RaceGame;
   moved: boolean;
 
-  constructor(private diceResultsContainer: DiceResultsContainer) {}
+  constructor(private diceResultsContainer: DiceResultsContainer) {
+
+  }
 
   roll(){
     if(this.game.isWon()) return;
@@ -24,6 +27,26 @@ export class RaceGameComponent {
     this.game.nextTurn();
     this.moved = true;
   }
+
+  positionPadding(chicken) {
+    if(chicken.racePosition === 0) return "2%";
+    var maxPadding = 100;
+    var finishLine = this.game.finishLine;
+    var percentage = chicken.racePosition / finishLine;
+    var result = percentage * maxPadding;
+    if(result > maxPadding)
+      result = maxPadding;
+    return result + "%";
+  }
+
+  currentChicken(chicken){
+    return chicken.name === this.game.currentChicken.name
+  }
+
+  winningChicken(chicken){
+    return chicken.name === this.game.winningChicken.name;
+  }
+
 }
 
 

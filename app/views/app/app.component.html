@@ -1,9 +1,10 @@
 <div class="container">
   <h1>{{title}}</h1>
   <div *ngIf="game.started == true">
+  <p *ngIf="game.isWon()">{{game.winner.name}} has all the chickens and wins!</p>
     <div class="chicken-container" *ngIf="!game.gameOver()">
       <chicken-pen [game]="game" id="chicken-pen" class="flex-item"></chicken-pen>
-      <div id="player-info" class="flex-item">
+      <div id="player-info" *ngIf="!game.gameOver()" class="flex-item">
         <approach [game]="game"></approach>
       </div>
     </div>
@@ -11,8 +12,6 @@
   </div>
 
   <button id="btn-race" *ngIf="startRacePossible()" (click)="startRace()">Start race!</button>
-
-  <p *ngIf="game.isWon()">{{game.winner.name}} has all the chickens and wins!</p>
 
   <div *ngIf="raceGame">
     <race-game [game]="raceGame"></race-game>

@@ -8,24 +8,33 @@ System.register([], function(exports_1, context_1) {
             RaceGame = (function () {
                 function RaceGame(options) {
                     this.chickenCounter = 0;
-                    this.players = options.players;
-                    this.currentPlayer = this.players[0];
                     this.chickenCounter = 0;
                     this.die = options.die;
                     this.lastRolls = [];
                     this.winningPlayer = undefined;
                     this.winningChicken = undefined;
                     this.finishLine = options.finishLine;
-                    this.currentPlayerIndex = 0;
                     this.lastChicken = undefined;
+                    this.players = options.players;
+                    this.chickens = [];
+                    this.setupChickens(options.players, this.chickens);
                 }
+                RaceGame.prototype.setupChickens = function (players, chickens) {
+                    for (var _i = 0, players_1 = players; _i < players_1.length; _i++) {
+                        var player = players_1[_i];
+                        for (var _a = 0, _b = player.chickens; _a < _b.length; _a++) {
+                            var chicken = _b[_a];
+                            chicken.owner = player;
+                            chickens.push(chicken);
+                        }
+                    }
+                };
                 RaceGame.prototype.updateCurrentChicken = function () {
-                    if (this.chickenCounter == this.currentPlayer.chickenCount()) {
+                    if (this.chickenCounter == this.chickens.length) {
                         this.chickenCounter = 0;
-                        this.updateCurrentPlayer();
                     }
                     this.lastChicken = this.currentChicken;
-                    this.currentChicken = this.currentPlayer.chickens[this.chickenCounter];
+                    this.currentChicken = this.chickens[this.chickenCounter];
                     this.chickenCounter++;
                 };
                 RaceGame.prototype.nextTurn = function () {
@@ -50,18 +59,10 @@ System.register([], function(exports_1, context_1) {
                 RaceGame.prototype.checkForWinner = function () {
                     if (this.currentChicken.racePosition >= this.finishLine) {
                         this.winningChicken = this.currentChicken;
-                        this.winningPlayer = this.currentPlayer;
                     }
                 };
                 RaceGame.prototype.failure = function () {
                     return false;
-                };
-                RaceGame.prototype.updateCurrentPlayer = function () {
-                    this.currentPlayerIndex++;
-                    if (this.currentPlayerIndex == this.players.length) {
-                        this.currentPlayerIndex = 0;
-                    }
-                    this.currentPlayer = this.players[this.currentPlayerIndex];
                 };
                 return RaceGame;
             }());

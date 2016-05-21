@@ -39,6 +39,23 @@ System.register(['angular2/core', './game/raceGame', './models/diceResultsContai
                     this.game.nextTurn();
                     this.moved = true;
                 };
+                RaceGameComponent.prototype.positionPadding = function (chicken) {
+                    if (chicken.racePosition === 0)
+                        return "2%";
+                    var maxPadding = 100;
+                    var finishLine = this.game.finishLine;
+                    var percentage = chicken.racePosition / finishLine;
+                    var result = percentage * maxPadding;
+                    if (result > maxPadding)
+                        result = maxPadding;
+                    return result + "%";
+                };
+                RaceGameComponent.prototype.currentChicken = function (chicken) {
+                    return chicken.name === this.game.currentChicken.name;
+                };
+                RaceGameComponent.prototype.winningChicken = function (chicken) {
+                    return chicken.name === this.game.winningChicken.name;
+                };
                 __decorate([
                     core_1.Input('game'), 
                     __metadata('design:type', raceGame_1.RaceGame)

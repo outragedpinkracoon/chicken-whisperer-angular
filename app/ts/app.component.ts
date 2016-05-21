@@ -24,7 +24,9 @@ export class AppComponent {
   
   constructor(){
     this.game = GameInitializer.generateGame("Val","Chris");
-    this.raceGame = undefined;
+    //this.game.nextTurn();
+    // this.raceGame = RaceGameInitializer.generateGame();
+    // this.raceGame.nextTurn();
   }
 
   startRace(){
