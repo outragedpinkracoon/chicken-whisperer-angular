@@ -1,11 +1,12 @@
 import { Component, Input } from 'angular2/core';
-import { ChickensComponent } from './chickens.component';
+import { RulesComponent } from './rules.component';
 import { CaptureGame } from './game/captureGame';
 
 @Component({
   selector: 'start',
   templateUrl: 'app/views/start/start.component.html',
-  styleUrls:['app/views/start/start.component.css']
+  styleUrls:['app/views/start/start.component.css'],
+  directives: [RulesComponent]
 })
 
 export class StartComponent {

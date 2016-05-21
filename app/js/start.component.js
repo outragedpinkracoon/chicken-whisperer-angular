@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
+System.register(['angular2/core', './rules.component', './game/captureGame'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,12 +10,15 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1;
+    var core_1, rules_component_1, captureGame_1;
     var StartComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (rules_component_1_1) {
+                rules_component_1 = rules_component_1_1;
             },
             function (captureGame_1_1) {
                 captureGame_1 = captureGame_1_1;
@@ -36,7 +39,8 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                     core_1.Component({
                         selector: 'start',
                         templateUrl: 'app/views/start/start.component.html',
-                        styleUrls: ['app/views/start/start.component.css']
+                        styleUrls: ['app/views/start/start.component.css'],
+                        directives: [rules_component_1.RulesComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], StartComponent);
