@@ -11,7 +11,6 @@ System.register([], function(exports_1, context_1) {
                     this.chickenCounter = 0;
                     this.die = options.die;
                     this.lastRolls = [];
-                    this.winningPlayer = undefined;
                     this.winningChicken = undefined;
                     this.finishLine = options.finishLine;
                     this.lastChicken = undefined;

@@ -17,7 +17,6 @@ export class RaceGame {
     this.chickenCounter = 0;
     this.die = options.die;
     this.lastRolls = [];
-    this.winningPlayer = undefined;
     this.winningChicken = undefined;
     this.finishLine = options.finishLine;
     this.lastChicken = undefined;

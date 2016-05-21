@@ -38,6 +38,10 @@ System.register(['angular2/core', './game/raceGame', './models/diceResultsContai
                     this.diceResultsContainer.setupDiceResults(this.game.lastRolls, success);
                     this.game.nextTurn();
                     this.moved = true;
+                    if (this.game.isWon()) {
+                        var audio = new Audio('/app/assets/sounds/trumpet.wav');
+                        audio.play();
+                    }
                 };
                 RaceGameComponent.prototype.positionPadding = function (chicken) {
                     if (chicken.racePosition === 0)
