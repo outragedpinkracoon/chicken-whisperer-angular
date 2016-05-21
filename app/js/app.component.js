@@ -46,7 +46,6 @@ System.register(['angular2/core', './chickens.component', './game/raceGame', './
                 function AppComponent() {
                     this.title = 'Chicken Whisperer';
                     this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Chris");
-                    //this.game.nextTurn();
                     // this.raceGame = RaceGameInitializer.generateGame();
                     // this.raceGame.nextTurn();
                 }

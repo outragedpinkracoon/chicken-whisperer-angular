@@ -24,7 +24,6 @@ export class AppComponent {
   
   constructor(){
     this.game = GameInitializer.generateGame("Val","Chris");
-    //this.game.nextTurn();
     // this.raceGame = RaceGameInitializer.generateGame();
     // this.raceGame.nextTurn();
   }

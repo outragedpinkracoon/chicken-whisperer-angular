@@ -1,10 +1,15 @@
 <div id="race" >
   <ul class="race-item" id="chickens">
+
     <li id="finish-line"><img src="app/assets/images/flag.png" /></li>
+
     <li *ngFor="#chicken of game.chickens">
+
       <span class="chicken-box" [style.padding-left]="positionPadding(chicken)" [class.hide]="game.isWon() && winningChicken(chicken)">
-        <h3 [class.current-chicken]="currentChicken(chicken)">{{chicken.name}}</h3>
-        <img src="{{chicken.image}}"/><span class="speed">({{chicken.speed}})</span>
+
+      <h3>{{chicken.name}}<img *ngIf="currentChicken(chicken)" src="app/assets/images/star.png" class="star" /></h3>
+
+      <img src="{{chicken.image}}"/><span class="speed">({{chicken.speed}})</span>
       </span>
     </li>
   </ul>

@@ -9,7 +9,8 @@
 
 h3 {
   padding: 0px;
-  margin: 0px;
+  margin: 0px 0px 15px 0px;
+  color:white;
 }
 
 .position {
@@ -22,6 +23,11 @@ button {
 
 img {
   width: 50px;
+}
+
+img.star {
+  width: 20px;
+  margin-left:10px;
 }
 
 #race {
@@ -62,8 +68,8 @@ ul {
 }
 
 .speed {
-  font-size: 0.6em;
-  color: orange;
+  font-size: 0.8em;
+  color: #663300;
 }
 
 .current-chicken {
