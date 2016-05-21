@@ -3,8 +3,8 @@
         <div>
         <p class="chicken-name">{{chicken.name}}</p> 
         <p><img src="{{chicken.getImage()}}" class="chicken-image"></p>
-            <p> Scare: {{chicken.scare}} </p>
-            <p> Speed: {{chicken.speed}} </p>
+            <p [class.danger]="chicken.scare === 1"> Scare: {{chicken.scare}} </p>
+            <p [class.possible]="capturePossible(chicken)"> Speed: {{chicken.speed}} </p>
         </div>
     </li>
 </ul>   

@@ -49,6 +49,11 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                 ChickensComponent.prototype.showSuccess = function () {
                     return this.game.turnFinished && this.game.capture.attempted;
                 };
+                ChickensComponent.prototype.capturePossible = function (chicken) {
+                    var dice = this.game.approach.captureDice;
+                    var possibleMax = dice * 6;
+                    return possibleMax >= chicken.speed && chicken.scare > 0;
+                };
                 __decorate([
                     core_1.Input('game'), 
                     __metadata('design:type', captureGame_1.CaptureGame)

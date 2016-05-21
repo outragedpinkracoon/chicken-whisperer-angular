@@ -40,6 +40,12 @@ export class ChickensComponent {
   showSuccess(){
     return this.game.turnFinished && this.game.capture.attempted
   }
+
+  capturePossible(chicken){
+    var dice = this.game.approach.captureDice;
+    var possibleMax = dice * 6;
+    return possibleMax >= chicken.speed && chicken.scare > 0;
+  }
 }
 
 

@@ -11,7 +11,6 @@
   font-family: Impact;
 }
 
-
 ul li {
   display: inline-block;
 }
@@ -27,10 +26,6 @@ ul {
   border: 5px dashed #663300;
 }
 
-.chicken-name {
-  -webkit-text-stroke: 1px black; color: white;
-}
-
 li {
   list-style-type: none;
   width:25%;
@@ -39,4 +34,15 @@ li {
 
 p {
   text-align: center;
+  margin: 2px;
+  padding: 2px;
+  font-size: 1em;
+}
+
+.danger {
+  -webkit-text-stroke: 1px black; color: tomato;
+}
+
+.possible {
+  -webkit-text-stroke: 1px black; color: #2eb82e;
 }
