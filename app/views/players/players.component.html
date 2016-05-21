@@ -1,15 +1,15 @@
-
+<h3>Captured Chickens</h3>
 <table>
     <tr>
         <th *ngFor="#player of game.players">
-        <span [class.current-player]="currentPlayer(player)">{{player.name}}</span>
+        <span [class.current-player]="currentPlayer(player)">{{player.name}} ({{player.chickenCount()}})</span>
         </th>
     </tr>
     <tr>
         <td *ngFor="#player of game.players">
             <ul *ngIf="player.hasChickens()">
                 <li *ngFor="#chicken of player.chickens">
-                    <img height="50px" src="{{chicken.image}}" class="chicken-image-small">
+                    <img src="{{chicken.image}}">
                     <p>{{chicken.name}} ({{chicken.speed}})</p>
                 </li>
             </ul>
