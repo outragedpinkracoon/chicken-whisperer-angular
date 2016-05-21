@@ -10,7 +10,7 @@
     <players *ngIf="!raceGame" [game]="game"></players>
   </div>
 
-  <button *ngIf="startRacePossible()" (click)="startRace()">Start race!</button>
+  <button id="btn-race" *ngIf="startRacePossible()" (click)="startRace()">Start race!</button>
 
   <p *ngIf="game.isWon()">{{game.winner.name}} has all the chickens and wins!</p>
 

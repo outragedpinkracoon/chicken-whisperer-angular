@@ -17,3 +17,7 @@ h1 {
   flex-grow: 20;
   margin-right:10px;
 }
+
+#btn-race {
+  margin-top: 10px;
+}
