@@ -48,7 +48,7 @@ System.register(['./game/captureGame', './game/player', './game/chicken', './gam
                             "image": "/app/assets/images/chicken1.png" }),
                         new chicken_1.Chicken({ "id": 2, "name": "Pudgy", "speed": 5, "maxScare": 3,
                             "image": "/app/assets/images/chicken2.png" }),
-                        new chicken_1.Chicken({ "id": 3, "name": "Jojo", "speed": 8, "maxScare": 3,
+                        new chicken_1.Chicken({ "id": 3, "name": "Albert", "speed": 8, "maxScare": 3,
                             "image": "/app/assets/images/chicken3.png" }),
                         new chicken_1.Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2,
                             "image": "/app/assets/images/chicken4.png" })

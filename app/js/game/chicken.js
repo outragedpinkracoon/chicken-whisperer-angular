@@ -42,6 +42,15 @@ System.register([], function(exports_1, context_1) {
                 Chicken.prototype.refresh = function () {
                     this.scare = this.maxScare;
                 };
+                Chicken.prototype.getImage = function () {
+                    if (this.scare === 0) {
+                        var index = this.image.indexOf(".");
+                        var name = this.image.substring(0, index);
+                        var extension = this.image.substring(index, this.image.length);
+                        return name + "_gone" + extension;
+                    }
+                    return this.image;
+                };
                 return Chicken;
             }());
             exports_1("Chicken", Chicken);

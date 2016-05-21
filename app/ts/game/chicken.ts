@@ -46,4 +46,14 @@ export class Chicken {
     this.scare = this.maxScare
   }
 
+  getImage(){
+    if(this.scare === 0){
+      var index = this.image.indexOf(".");
+      var name = this.image.substring(0,index);
+      var extension = this.image.substring(index, this.image.length);
+      return name + "_gone"+extension;
+    }
+    return this.image;
+  }
+
 }
