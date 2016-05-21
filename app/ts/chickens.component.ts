@@ -16,9 +16,13 @@ import {DiceResultsComponent} from './dice-results.component';
 export class ChickensComponent {
   @Input('game') game: CaptureGame;
   chicken: Chicken;
+  failSound: Audio;
+  successSound: Audio;
 
   constructor(private diceResultsContainer: DiceResultsContainer){
     this.diceResultsContainer = diceResultsContainer;
+    this.failSound = new Audio("/app/assets/sounds/gobble.mp3");
+    this.successSound = new Audio("/app/assets/sounds/cluck.wav");
   }
 
   capture(chicken: Chicken) {
@@ -26,6 +30,7 @@ export class ChickensComponent {
     this.chicken = chicken;
     var success= this.game.attemptCapture(chicken);
     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+    success ? this.successSound.play() : this.failSound.play()
   }
 
   captureNotPossible(chicken){

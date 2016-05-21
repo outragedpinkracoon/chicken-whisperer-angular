@@ -31,6 +31,8 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                 function ChickensComponent(diceResultsContainer) {
                     this.diceResultsContainer = diceResultsContainer;
                     this.diceResultsContainer = diceResultsContainer;
+                    this.failSound = new Audio("/app/assets/sounds/gobble.mp3");
+                    this.successSound = new Audio("/app/assets/sounds/cluck.wav");
                 }
                 ChickensComponent.prototype.capture = function (chicken) {
                     if (this.captureNotPossible(chicken))
@@ -38,6 +40,7 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                     this.chicken = chicken;
                     var success = this.game.attemptCapture(chicken);
                     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+                    success ? this.successSound.play() : this.failSound.play();
                 };
                 ChickensComponent.prototype.captureNotPossible = function (chicken) {
                     var captureDice = this.game.approach.captureDice;
