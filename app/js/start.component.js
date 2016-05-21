@@ -35,7 +35,8 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                 StartComponent = __decorate([
                     core_1.Component({
                         selector: 'start',
-                        templateUrl: 'app/views/start/start.component.html'
+                        templateUrl: 'app/views/start/start.component.html',
+                        styleUrls: ['app/views/start/start.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], StartComponent);

@@ -17,7 +17,7 @@
   <div *ngIf="raceGame">
     <race-game [game]="raceGame"></race-game>
   </div>
-<!-- 
-  <start [game]="game"></start> -->
+
+  <start *ngIf="!game.started" [game]="game"></start>
 </div>
 
