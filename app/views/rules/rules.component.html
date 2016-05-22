@@ -2,20 +2,20 @@
     <h3> Rules </h3>
 
     <h4>Approaching</h4>
-    <p> You catch {{plural()}} by approaching them, quietly!</p> 
+    <p> You catch {{game.animalSet}} by approaching them, quietly!</p> 
 
-    <p>A {{singular()}} has a name, a scare value and a speed value. Scare is the number of times you can frighten it before it runs away that turn and cannot be caught. Speed is the value you need to roll to capture the {{singular()}}, and also how fast it is in the race phase!</p>
+    <p>A {{info.singular(game.animalSet)}} has a name, a scare value and a speed value. Scare is the number of times you can frighten it before it runs away that turn and cannot be caught. Speed is the value you need to roll to capture the {{info.singular(game.animalSet)}}, and also how fast it is in the race phase!</p>
 
-    <p>Each turn you will roll two dice. On an odd roll, you scare the {{plural()}} and each one loses 1 point of scare value. When a {{plural()}} scare value is 0, it can no longer be caught that turn. If you roll too many odd values and all the {{plural()}} have run away, your turn is over.</p>  
+    <p>Each turn you will roll two dice. On an odd roll, you scare the {{game.animalSet}} and each one loses 1 point of scare value. When a {{game.animalSet}} scare value is 0, it can no longer be caught that turn. If you roll too many odd values and all the {{game.animalSet}} have run away, your turn is over.</p>  
 
     <h4>Capturing</h4>
-    <p>On an even roll, you successfully approach the {{plural()}} and gain a "capture dice". When you are ready, you can click on a {{singular()}} to attempt to catch it! All your capture dice are rolled at once and the total is calculated from adding the results. </p>
+    <p>On an even roll, you successfully approach the {{game.animalSet}} and gain a "capture dice". When you are ready, you can click on a {{info.singular(game.animalSet)}} to attempt to catch it! All your capture dice are rolled at once and the total is calculated from adding the results. </p>
 
-    <p>If your total is equal to or higher than the {{plural()}} speed then you successfully capture the {{singular()}}!</p>
+    <p>If your total is equal to or higher than the {{game.animalSet}} speed then you successfully capture the {{info.singular(game.animalSet)}}!</p>
 
     <h4>Winning</h4>
-    <p>If one player captures all the {{plural()}}, they win automatically and the game is over. Otherwise, the race phase begins! </p>
+    <p>If one player captures all the {{game.animalSet}}, they win automatically and the game is over. Otherwise, the race phase begins! </p>
     
-    <p>Each turn, a player will roll 2 dice. On an even roll, the current {{singular()}} moves it's speed toward the finish line. On an odd roll, it does nothing. The first person whose {{singular()}} reaches the finish line wins!</p>
+    <p>Each turn, a player will roll 2 dice. On an even roll, the current {{info.singular(game.animalSet)}} moves it's speed toward the finish line. On an odd roll, it does nothing. The first person whose {{info.singular(game.animalSet)}} reaches the finish line wins!</p>
 
     </div>

@@ -1,11 +1,6 @@
 System.register(['angular2/core', './game/captureGame', './models/animalInfo'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var __extends = (this && this.__extends) || function (d, b) {
-        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -29,10 +24,10 @@ System.register(['angular2/core', './game/captureGame', './models/animalInfo'], 
                 animalInfo_1 = animalInfo_1_1;
             }],
         execute: function() {
-            RulesComponent = (function (_super) {
-                __extends(RulesComponent, _super);
-                function RulesComponent() {
-                    _super.apply(this, arguments);
+            RulesComponent = (function () {
+                function RulesComponent(animalInfo) {
+                    this.animalInfo = animalInfo;
+                    this.info = animalInfo;
                 }
                 __decorate([
                     core_1.Input('game'), 
@@ -42,12 +37,13 @@ System.register(['angular2/core', './game/captureGame', './models/animalInfo'], 
                     core_1.Component({
                         selector: 'rules',
                         templateUrl: 'app/views/rules/rules.component.html',
-                        styleUrls: ['app/views/rules/rules.component.css']
+                        styleUrls: ['app/views/rules/rules.component.css'],
+                        providers: [animalInfo_1.AnimalInfo]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [animalInfo_1.AnimalInfo])
                 ], RulesComponent);
                 return RulesComponent;
-            }(animalInfo_1.AnimalInfo));
+            }());
             exports_1("RulesComponent", RulesComponent);
         }
     }
