@@ -18,13 +18,13 @@ export class GameInitializer {
 
     var chickenPen = new ChickenPen([
       new Chicken({ "id": 1, "name": "Popo", "speed": 14, "maxScare": 1,
-        "image":"/app/assets/images/chicken1.png" }),
+        "image":"/app/assets/images/chickens/1.png" }),
       new Chicken({ "id": 2, "name": "Pudgy", "speed": 5, "maxScare": 3,
-        "image":"/app/assets/images/chicken2.png" }),
+        "image":"/app/assets/images/chickens/2.png" }),
       new Chicken({ "id": 3, "name": "Albert", "speed": 8, "maxScare": 3,
-        "image":"/app/assets/images/chicken3.png" }),
+        "image":"/app/assets/images/chickens/3.png" }),
       new Chicken({ "id": 4, "name": "Colin", "speed": 10, "maxScare": 2,
-        "image":"/app/assets/images/chicken4.png" })
+        "image":"/app/assets/images/chickens/4.png" })
       ]);
 
     var strategyOptions = {

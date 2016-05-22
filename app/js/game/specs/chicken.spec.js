@@ -16,7 +16,7 @@ System.register(['../chicken'], function(exports_1, context_1) {
                         speed: 5,
                         maxScare: 3,
                         racePosition: 0,
-                        image: "/app/assets/images/chicken1.jpg"
+                        image: "/app/assets/images/chickens/1.jpg"
                     };
                     chicken = new chicken_1.Chicken(options);
                 });
@@ -68,11 +68,11 @@ System.register(['../chicken'], function(exports_1, context_1) {
                     expect(chicken.scare).toBe(3);
                 });
                 it("should return normal image", function () {
-                    expect(chicken.getImage()).toBe("/app/assets/images/chicken1.jpg");
+                    expect(chicken.getImage()).toBe("/app/assets/images/chickens/1.jpg");
                 });
                 it("should return gone image", function () {
                     chicken.scare = 0;
-                    expect(chicken.getImage()).toBe("/app/assets/images/chicken1_gone.jpg");
+                    expect(chicken.getImage()).toBe("/app/assets/images/chickens/1_gone.jpg");
                 });
             });
         }
