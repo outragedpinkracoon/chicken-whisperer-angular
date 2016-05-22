@@ -1,5 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {CaptureGame} from './game/captureGame';
+import {AnimalInfo} from './models/animalInfo';
 
 @Component({
     selector: 'rules',
@@ -7,8 +8,8 @@ import {CaptureGame} from './game/captureGame';
     styleUrls: ['app/views/rules/rules.component.css']
 })
 
-export class RulesComponent {
-
+export class RulesComponent extends AnimalInfo {
+  @Input('game') game: CaptureGame;
 }
 
 

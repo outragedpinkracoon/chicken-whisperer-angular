@@ -17,6 +17,7 @@ export class CaptureGame {
   turnFinished: boolean;
   chickensToCapture: number;
   winner: Player;
+  animalSet: string;
   turnOfEndPhase: number;
 
   constructor(options) {
@@ -29,6 +30,7 @@ export class CaptureGame {
      this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
      this.winner = undefined;
      this.turnOfEndPhase = 0;
+     this.animalSet = "chickens";
   }
 
   reset(){
@@ -56,10 +58,10 @@ export class CaptureGame {
     this.started = true;
   }
 
-  setAnimals(pen){
+  setAnimals(pen, animalSet){
     this.chickenPen = pen;
     this.approach.chickenPen = pen;
-    this.capture.chickenPen = pen;
+    this.animalSet = animalSet;
   }
 
   updateCurrentPlayer() {

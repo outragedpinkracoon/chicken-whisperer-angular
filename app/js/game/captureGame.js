@@ -20,6 +20,7 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
                     this.winner = undefined;
                     this.turnOfEndPhase = 0;
+                    this.animalSet = "chickens";
                 }
                 CaptureGame.prototype.reset = function () {
                     if (this.turnOfEndPhase <= 1) {
@@ -45,10 +46,10 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                     this.started = true;
                 };
-                CaptureGame.prototype.setAnimals = function (pen) {
+                CaptureGame.prototype.setAnimals = function (pen, animalSet) {
                     this.chickenPen = pen;
                     this.approach.chickenPen = pen;
-                    this.capture.chickenPen = pen;
+                    this.animalSet = animalSet;
                 };
                 CaptureGame.prototype.updateCurrentPlayer = function () {
                     if (this.currentPlayer === undefined) {

@@ -13,7 +13,7 @@
       </select>
     </li>
     <li>
-      <button (click)="start()">Let's catch some chickens!</button>
+      <button (click)="start()">Let's catch some {{animalSet}}!</button>
     </li>
   </ul>
-  <rules></rules>
+  <rules [game]="game"></rules>

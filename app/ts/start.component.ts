@@ -10,7 +10,7 @@ import { CaptureGame } from './game/captureGame';
   directives: [RulesComponent]
 })
 
-export class StartComponent {
+export class StartComponent{
   @Input('game') game: CaptureGame;
 
   player1Name: string;
@@ -25,7 +25,7 @@ export class StartComponent {
     this.game.setPlayers([this.player1Name, this.player2Name]);
     var animalFactory = new AnimalFactory();
     var pen = animalFactory.generateSet(this.animalSet);
-    this.game.setAnimals(pen);
+    this.game.setAnimals(pen, this.animalSet);
     this.game.nextTurn();
   }
 
@@ -35,6 +35,7 @@ export class StartComponent {
 
   onAnimalSetChange(newSet) {
     this.animalSet = newSet;
+    this.game.animalSet = newSet;
   }
   
 }

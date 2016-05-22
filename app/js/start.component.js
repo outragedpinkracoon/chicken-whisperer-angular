@@ -35,7 +35,7 @@ System.register(['angular2/core', './rules.component', './models/animalFactory',
                     this.game.setPlayers([this.player1Name, this.player2Name]);
                     var animalFactory = new animalFactory_1.AnimalFactory();
                     var pen = animalFactory.generateSet(this.animalSet);
-                    this.game.setAnimals(pen);
+                    this.game.setAnimals(pen, this.animalSet);
                     this.game.nextTurn();
                 };
                 StartComponent.prototype.animalSets = function () {
@@ -43,6 +43,7 @@ System.register(['angular2/core', './rules.component', './models/animalFactory',
                 };
                 StartComponent.prototype.onAnimalSetChange = function (newSet) {
                     this.animalSet = newSet;
+                    this.game.animalSet = newSet;
                 };
                 __decorate([
                     core_1.Input('game'), 
