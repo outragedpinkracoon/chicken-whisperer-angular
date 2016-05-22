@@ -7,9 +7,13 @@
     <li>Player 2
       <input [(ngModel)]="player2Name" />
     </li>
+    <li>What are we catching?
+      <select [ngModel]="animalSet" (ngModelChange)="onAnimalSetChange($event)">
+        <option *ngFor="var set of animalSets()">{{set}}</option>
+      </select>
+    </li>
     <li>
       <button (click)="start()">Let's catch some chickens!</button>
     </li>
   </ul>
-
-<rules></rules>
+  <rules></rules>

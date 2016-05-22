@@ -19,6 +19,9 @@ System.register(['../game/chickenPen', '../game/chicken'], function(exports_1, c
                         "chickens": ["Colin", "Albert", "Pudgy", "Popo"]
                     };
                 }
+                AnimalFactory.animalSets = function () {
+                    return ["chickens", "pandas"];
+                };
                 AnimalFactory.prototype.generateSet = function (animalSet) {
                     var names = this.names[animalSet];
                     var result = this.getAnimals(animalSet, names);

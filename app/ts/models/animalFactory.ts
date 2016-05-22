@@ -12,6 +12,10 @@ export class AnimalFactory {
     }
   }
 
+  static animalSets(){
+    return ["chickens", "pandas"];
+  }
+
   generateSet(animalSet:string){
     var names = this.names[animalSet];
     var result = this.getAnimals(animalSet,names);

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './rules.component', './game/captureGame'], function(exports_1, context_1) {
+System.register(['angular2/core', './rules.component', './models/animalFactory', './game/captureGame'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './rules.component', './game/captureGame'], fu
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, rules_component_1, captureGame_1;
+    var core_1, rules_component_1, animalFactory_1, captureGame_1;
     var StartComponent;
     return {
         setters:[
@@ -20,16 +20,26 @@ System.register(['angular2/core', './rules.component', './game/captureGame'], fu
             function (rules_component_1_1) {
                 rules_component_1 = rules_component_1_1;
             },
+            function (animalFactory_1_1) {
+                animalFactory_1 = animalFactory_1_1;
+            },
             function (captureGame_1_1) {
                 captureGame_1 = captureGame_1_1;
             }],
         execute: function() {
             StartComponent = (function () {
                 function StartComponent() {
+                    this.animalSet = this.animalSets()[0];
                 }
                 StartComponent.prototype.start = function () {
                     this.game.setPlayers([this.player1Name, this.player2Name]);
                     this.game.nextTurn();
+                };
+                StartComponent.prototype.animalSets = function () {
+                    return animalFactory_1.AnimalFactory.animalSets();
+                };
+                StartComponent.prototype.onAnimalSetChange = function (newSet) {
+                    this.animalSet = newSet;
                 };
                 __decorate([
                     core_1.Input('game'), 

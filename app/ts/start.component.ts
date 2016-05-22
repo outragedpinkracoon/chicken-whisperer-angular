@@ -1,5 +1,6 @@
 import { Component, Input } from 'angular2/core';
 import { RulesComponent } from './rules.component';
+import { AnimalFactory } from './models/animalFactory';
 import { CaptureGame } from './game/captureGame';
 
 @Component({
@@ -14,10 +15,23 @@ export class StartComponent {
 
   player1Name: string;
   player2Name: string;
-  
+  animalSet: string;
+
+  constructor(){
+    this.animalSet = this.animalSets()[0];
+  }
+
   start(){
     this.game.setPlayers([this.player1Name, this.player2Name]);
     this.game.nextTurn();
+  }
+
+  animalSets(){
+    return AnimalFactory.animalSets();
+  }
+
+  onAnimalSetChange(newSet) {
+    this.animalSet = newSet;
   }
   
 }
