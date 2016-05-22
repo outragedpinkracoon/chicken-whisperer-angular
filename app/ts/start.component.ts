@@ -23,6 +23,9 @@ export class StartComponent {
 
   start(){
     this.game.setPlayers([this.player1Name, this.player2Name]);
+    var animalFactory = new AnimalFactory();
+    var pen = animalFactory.generateSet(this.animalSet);
+    this.game.setAnimals(pen);
     this.game.nextTurn();
   }
 

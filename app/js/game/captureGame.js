@@ -45,6 +45,11 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                     this.started = true;
                 };
+                CaptureGame.prototype.setAnimals = function (pen) {
+                    this.chickenPen = pen;
+                    this.approach.chickenPen = pen;
+                    this.capture.chickenPen = pen;
+                };
                 CaptureGame.prototype.updateCurrentPlayer = function () {
                     if (this.currentPlayer === undefined) {
                         this.currentPlayer = this.players[0];

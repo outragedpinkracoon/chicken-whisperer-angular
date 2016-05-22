@@ -56,6 +56,12 @@ export class CaptureGame {
     this.started = true;
   }
 
+  setAnimals(pen){
+    this.chickenPen = pen;
+    this.approach.chickenPen = pen;
+    this.capture.chickenPen = pen;
+  }
+
   updateCurrentPlayer() {
     if(this.currentPlayer === undefined) {
       this.currentPlayer = this.players[0];
