@@ -1,4 +1,4 @@
-System.register(['angular2/core', './game/captureGame'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './models/animalInfo'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, captureGame_1;
+    var core_1, captureGame_1, animalInfo_1;
     var PlayersComponent;
     return {
         setters:[
@@ -19,10 +19,15 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
             },
             function (captureGame_1_1) {
                 captureGame_1 = captureGame_1_1;
+            },
+            function (animalInfo_1_1) {
+                animalInfo_1 = animalInfo_1_1;
             }],
         execute: function() {
             PlayersComponent = (function () {
-                function PlayersComponent() {
+                function PlayersComponent(animalInfo) {
+                    this.animalInfo = animalInfo;
+                    this.info = animalInfo;
                 }
                 PlayersComponent.prototype.currentPlayer = function (player) {
                     return player.name === this.game.currentPlayer.name;
@@ -35,9 +40,10 @@ System.register(['angular2/core', './game/captureGame'], function(exports_1, con
                     core_1.Component({
                         selector: 'players',
                         templateUrl: 'app/views/players/players.component.html',
-                        styleUrls: ['app/views/players/players.component.css']
+                        styleUrls: ['app/views/players/players.component.css'],
+                        providers: [animalInfo_1.AnimalInfo]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [animalInfo_1.AnimalInfo])
                 ], PlayersComponent);
                 return PlayersComponent;
             }());

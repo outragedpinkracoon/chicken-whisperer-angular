@@ -23,9 +23,12 @@ export class ChickensComponent {
 
   capture(chicken: Chicken) {
     if (this.captureNotPossible(chicken)) return;
+
     this.chicken = chicken;
     var success= this.game.attemptCapture(chicken);
+
     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+   
     var sound;
     if(success) {
       sound = new Audio("/app/assets/sounds/cluck.wav");

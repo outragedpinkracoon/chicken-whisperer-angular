@@ -15,4 +15,4 @@
     <p *ngIf="diceResultsContainer.success">You successfully captured {{chicken.name}}</p>
     <p *ngIf="!diceResultsContainer.success">You failed to capture {{chicken.name}}</p>
 </div>
-<p class="dice-box approach-info" *ngIf="showFailure()">You failed to approach the chickens.</p>
+<p class="dice-box approach-info" *ngIf="showFailure()">You failed to approach the {{game.animalSet}}.</p>
