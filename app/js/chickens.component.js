@@ -38,6 +38,9 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                     this.chicken = chicken;
                     var success = this.game.attemptCapture(chicken);
                     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+                    this.playSound(success);
+                };
+                ChickensComponent.prototype.playSound = function (success) {
                     var sound;
                     if (success) {
                         sound = new Audio("/app/assets/sounds/cluck.wav");

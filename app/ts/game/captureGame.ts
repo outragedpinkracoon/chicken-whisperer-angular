@@ -104,10 +104,6 @@ export class CaptureGame {
     this.reset();
   }
 
-  endPhaseChickenShit(){
-
-  }
-
   gameOver(){
     return this.chickenPen.count() == 0;
   }

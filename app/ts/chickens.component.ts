@@ -29,12 +29,15 @@ export class ChickensComponent {
 
     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
    
+    this.playSound(success);
+  }
+
+  playSound(success){
     var sound;
     if(success) {
       sound = new Audio("/app/assets/sounds/cluck.wav");
     }
-    else
-    {
+    else {
       sound = new Audio("/app/assets/sounds/gobble.mp3");
     }
     sound.play();

@@ -87,8 +87,6 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.updateCurrentPlayer();
                     this.reset();
                 };
-                CaptureGame.prototype.endPhaseChickenShit = function () {
-                };
                 CaptureGame.prototype.gameOver = function () {
                     return this.chickenPen.count() == 0;
                 };
