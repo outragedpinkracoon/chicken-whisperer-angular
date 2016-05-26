@@ -58,12 +58,21 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                     this.currentPlayer = this.rotate(this.players)[0];
                 };
+                CaptureGame.prototype.captureNotPossible = function (chicken) {
+                    var captureDice = this.approach.captureDice;
+                    return captureDice == 0 || this.turnFinished || chicken.scare == 0;
+                };
                 CaptureGame.prototype.rotate = function (array) {
                     if (array.length === 0)
                         return array;
                     var item = array.shift();
                     array.push(item);
                     return array;
+                };
+                CaptureGame.prototype.capturePossible = function (chicken) {
+                    var dice = this.approach.captureDice;
+                    var possibleMax = dice * 6;
+                    return possibleMax >= chicken.speed && chicken.scare > 0;
                 };
                 CaptureGame.prototype.playerCount = function () {
                     return this.players.length;

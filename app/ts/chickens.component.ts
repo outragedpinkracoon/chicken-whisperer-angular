@@ -41,8 +41,7 @@ export class ChickensComponent {
   }
 
   captureNotPossible(chicken){
-    var captureDice = this.game.approach.captureDice;
-    return captureDice == 0 || this.game.turnFinished || chicken.scare == 0
+    return this.game.captureNotPossible(chicken);
   }
 
   showFailure(){
@@ -54,9 +53,7 @@ export class ChickensComponent {
   }
 
   capturePossible(chicken){
-    var dice = this.game.approach.captureDice;
-    var possibleMax = dice * 6;
-    return possibleMax >= chicken.speed && chicken.scare > 0;
+    return this.game.capturePossible(chicken);
   }
 }
 

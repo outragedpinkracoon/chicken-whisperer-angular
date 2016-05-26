@@ -71,12 +71,23 @@ export class CaptureGame {
     }
     this.currentPlayer = this.rotate(this.players)[0];
   }
+
+  captureNotPossible(chicken){
+    var captureDice = this.approach.captureDice;
+    return captureDice == 0 || this.turnFinished || chicken.scare == 0
+  }
   
   rotate(array){
     if(array.length === 0) return array;
     var item = array.shift();
     array.push(item);
     return array
+  }
+
+  capturePossible(chicken){
+    var dice = this.approach.captureDice;
+    var possibleMax = dice * 6;
+    return possibleMax >= chicken.speed && chicken.scare > 0;
   }
 
   playerCount() {

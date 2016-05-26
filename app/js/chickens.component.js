@@ -48,8 +48,7 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                     sound.play();
                 };
                 ChickensComponent.prototype.captureNotPossible = function (chicken) {
-                    var captureDice = this.game.approach.captureDice;
-                    return captureDice == 0 || this.game.turnFinished || chicken.scare == 0;
+                    return this.game.captureNotPossible(chicken);
                 };
                 ChickensComponent.prototype.showFailure = function () {
                     return this.game.turnFinished && !this.game.capture.attempted;
@@ -58,9 +57,7 @@ System.register(['angular2/core', './game/captureGame', './models/diceResultsCon
                     return this.game.turnFinished && this.game.capture.attempted;
                 };
                 ChickensComponent.prototype.capturePossible = function (chicken) {
-                    var dice = this.game.approach.captureDice;
-                    var possibleMax = dice * 6;
-                    return possibleMax >= chicken.speed && chicken.scare > 0;
+                    return this.game.capturePossible(chicken);
                 };
                 __decorate([
                     core_1.Input('game'), 
