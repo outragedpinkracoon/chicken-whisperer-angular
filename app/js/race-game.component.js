@@ -38,6 +38,9 @@ System.register(['angular2/core', './game/raceGame', './models/diceResultsContai
                     this.diceResultsContainer.setupDiceResults(this.game.lastRolls, success);
                     this.game.nextTurn();
                     this.moved = true;
+                    this.checkWinSound();
+                };
+                RaceGameComponent.prototype.checkWinSound = function () {
                     if (this.game.isWon()) {
                         var audio = new Audio('/app/assets/sounds/trumpet.wav');
                         audio.play();

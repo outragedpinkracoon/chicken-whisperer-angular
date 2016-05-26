@@ -15,12 +15,16 @@ System.register([], function(exports_1, context_1) {
                     this.id = options.id;
                     this.image = options.image;
                     this.racePosition = 0;
+                    this.hasExploded = false;
                 }
                 Chicken.prototype.reduceScare = function (value) {
                     if (value === void 0) { value = 1; }
                     if (this.scare === 0)
                         return;
                     this.scare = this.scare - value;
+                };
+                Chicken.prototype.explode = function () {
+                    this.hasExploded = true;
                 };
                 Chicken.prototype.increaseScare = function (value) {
                     if (value === void 0) { value = 1; }

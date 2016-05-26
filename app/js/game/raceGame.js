@@ -43,9 +43,16 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.roll = function () {
                     this.lastRolls = this.die.rollMultiple(2);
-                    var reduced = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
-                    var result = (reduced % 2 == 0) ? this.success() : this.failure();
+                    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
                     return result;
+                };
+                RaceGame.prototype.calculateSuccess = function () {
+                    if (this.lastRolls[0] == 1 && this.lastRolls[1] == 1) {
+                        this.currentChicken.explode();
+                        return false;
+                    }
+                    var reduced = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
+                    return reduced % 2 == 0;
                 };
                 RaceGame.prototype.success = function () {
                     this.currentChicken.move();

@@ -7,6 +7,7 @@ export class Chicken {
   id: number;
   racePosition: number;
   image: string;
+  hasExploded:boolean;
   
   constructor(options){
     this.name = options.name;
@@ -17,11 +18,16 @@ export class Chicken {
     this.id = options.id;
     this.image = options.image;
     this.racePosition = 0;
+    this.hasExploded = false;
   }
 
   reduceScare(value = 1){
     if(this.scare === 0) return;
     this.scare = this.scare - value;
+  }
+
+  explode(){
+    this.hasExploded = true;
   }
 
   increaseScare(value = 1){ 

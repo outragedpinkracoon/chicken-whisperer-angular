@@ -52,9 +52,17 @@ export class RaceGame {
 
   roll(){
     this.lastRolls = this.die.rollMultiple(2);
-    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr)
-    var result = (reduced % 2 == 0) ? this.success() : this.failure();
+    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
     return result; 
+  }
+
+  calculateSuccess(){
+    if(this.lastRolls[0] == 1 && this.lastRolls[1] == 1) {
+      this.currentChicken.explode();
+      return false;
+    }
+    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr)
+    return reduced % 2 == 0
   }
 
   success(){
