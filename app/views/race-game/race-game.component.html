@@ -9,7 +9,9 @@
 
       <h3>{{chicken.name}}<img *ngIf="currentChicken(chicken)" src="app/assets/images/star.png" class="star" /></h3>
 
-      <img src="{{chicken.image}}"/><span class="speed">({{chicken.speed}})</span>
+      <img *ngIf="!chicken.hasExploded" src="{{chicken.image}}"/>
+      <img *ngIf="chicken.hasExploded" src="/app/assets/images/explosions/1.jpeg"/>
+      <span class="speed">({{chicken.speed}})</span>
       </span>
     </li>
   </ul>
@@ -24,7 +26,8 @@
             <span class="info">{{game.lastChicken.name}} moved {{game.lastChicken.speed}} spaces like a champ</span>
           </li>
           <li *ngIf="!diceResultsContainer.success">
-            <span class="info">{{game.lastChicken.name}} shat it and did nothing</span>
+            <span *ngIf="{{!game.lastChicken.hasExploded}}" class="info">{{game.lastChicken.name}} shat it and did nothing</span>
+            <span *ngIf="{{game.lastChicken.hasExploded}}" class="info">{{game.lastChicken.name}} exploded! Shiiiat!</span>
           </li>
         </ul>
       </div>
