@@ -1,4 +1,4 @@
-import {Player} from './player'
+  import {Player} from './player'
 import {Chicken} from './chicken'
 import {Die} from './die'
 
@@ -52,7 +52,7 @@ export class RaceGame {
 
   roll(){
     this.lastRolls = this.die.rollMultiple(2);
-    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
+    var result = (this.calculateSuccess()) ? this.success() : this.failure();
     return result; 
   }
 

@@ -43,7 +43,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.roll = function () {
                     this.lastRolls = this.die.rollMultiple(2);
-                    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
+                    var result = (this.calculateSuccess()) ? this.success() : this.failure();
                     return result;
                 };
                 RaceGame.prototype.calculateSuccess = function () {
