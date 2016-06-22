@@ -81,12 +81,22 @@ export class RaceGame {
     return result; 
   }
 
+  rolledDoubleOne(){
+    return this.lastRolls[0] == 1 && this.lastRolls[1] == 1;
+  }
+
+  rolledTooHigh(rollResult){
+    return rollResult + this.currentChicken.speed >= 22;
+  }
+
   calculateSuccess(){
-    if(this.lastRolls[0] == 1 && this.lastRolls[1] == 1) {
+    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr);
+
+    if(this.rolledDoubleOne() || this.rolledTooHigh(reduced)) {
       this.currentChicken.explode();
       return false;
     }
-    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr)
+  
     return reduced % 2 == 0
   }
 

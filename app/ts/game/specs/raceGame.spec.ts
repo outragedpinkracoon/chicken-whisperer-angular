@@ -101,6 +101,13 @@ describe("Race Game", function() {
     expect(raceGame.currentChicken.hasExploded).toBe(true);
   });
 
+  it("should explode chicken on roll that is too high", function() {
+    fakeDie.nums = [11,11];
+    raceGame.nextTurn();
+    var result = raceGame.roll();
+    expect(raceGame.currentChicken.hasExploded).toBe(true);
+  });
+
   it("should not explode chicken on 2,2 roll", function() {
     fakeDie.nums = [2,2];
     raceGame.nextTurn();
