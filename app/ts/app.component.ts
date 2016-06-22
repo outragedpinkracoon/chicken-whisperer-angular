@@ -26,6 +26,7 @@ export class AppComponent {
   
   constructor(private animalInfo: AnimalInfo){
     this.game = GameInitializer.generateGame("Val","Chris");
+    //keep for race game simulation
     // this.raceGame = RaceGameInitializer.generateGame();
     // this.raceGame.nextTurn();
     this.info = animalInfo;

@@ -9,14 +9,19 @@
 
       <h3>{{chicken.name}}<img *ngIf="currentChicken(chicken)" src="app/assets/images/star.png" class="star" /></h3>
 
-      <img src="{{chicken.image}}"/><span class="speed">({{chicken.speed}})</span>
+      <img *ngIf="!chicken.hasExploded" src="{{chicken.image}}"/>
+      
+      <img *ngIf="chicken.hasExploded" src="/app/assets/images/explosions/{{explosionImage(chicken)}}.png"/>
+
+      <span class="speed">({{chicken.speed}})</span>
       </span>
     </li>
   </ul>
 
   <div class="race-item" id="info">
-    <div *ngIf="!game.isWon()">
+    <div *ngIf="!game.isWon() && !game.gameOver">
       <button id="roll" (click)="roll()">{{game.currentChicken.owner.name}} roll for {{game.currentChicken.name}}</button>
+
       <div *ngIf="moved" class="dice-box">
         <dice-results [diceResultsContainer]="diceResultsContainer"></dice-results>
         <ul>
@@ -24,10 +29,12 @@
             <span class="info">{{game.lastChicken.name}} moved {{game.lastChicken.speed}} spaces like a champ</span>
           </li>
           <li *ngIf="!diceResultsContainer.success">
-            <span class="info">{{game.lastChicken.name}} shat it and did nothing</span>
+            <span *ngIf="!game.lastChicken.hasExploded" class="info">{{game.lastChicken.name}} shat it and did nothing</span>
+            <span *ngIf="game.lastChicken.hasExploded" class="info">{{game.lastChicken.name}} exploded! Shiiiat!</span>
           </li>
         </ul>
       </div>
+
     </div>
     <div *ngIf="game.isWon()">
       <p id="result">{{game.winningChicken.owner.name}}'s {{game.winningChicken.name}} is the winner!
@@ -35,6 +42,11 @@
         <img src={{game.winningChicken.image}} />
       </p>
 
+    </div>
+
+    <div *ngIf="game.gameOver">
+      <p>Oh no! All the chickens have exploded! Sad!</p>
+      <p>Game over.</p>
     </div>
 
   </div>

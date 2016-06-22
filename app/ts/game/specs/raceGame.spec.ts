@@ -32,7 +32,7 @@ describe("Race Game", function() {
     player2.addChicken(chicken4);
 
     fakeDie = {
-      nums: [1,1],
+      nums: [1,3],
       roll: function(){
          return this.nums.pop();
       },
@@ -87,6 +87,36 @@ describe("Race Game", function() {
     expect(result).toBe(true);
   });
 
+  it("should return false on 1,1 roll", function() {
+    fakeDie.nums = [1,1];
+    raceGame.nextTurn();
+    var result = raceGame.roll();
+    expect(result).toBe(false);
+  });
+
+  it("should explode chicken on 1,1 roll", function() {
+    fakeDie.nums = [1,1];
+    raceGame.nextTurn();
+    var result = raceGame.roll();
+    expect(raceGame.currentChicken.hasExploded).toBe(true);
+  });
+
+  it("should not explode chicken on 2,2 roll", function() {
+    fakeDie.nums = [2,2];
+    raceGame.nextTurn();
+    var result = raceGame.roll();
+    expect(raceGame.currentChicken.hasExploded).toBe(false);
+  });
+
+
+  it("should not explode chicken on 1,3 roll", function() {
+    fakeDie.nums = [1,3];
+    raceGame.nextTurn();
+    var result = raceGame.roll();
+    expect(raceGame.currentChicken.hasExploded).toBe(false);
+  });
+
+
   it("should move chicken on even roll", function() {
     raceGame.nextTurn();
     var result = raceGame.roll();
@@ -105,6 +135,29 @@ describe("Race Game", function() {
     fakeDie.nums = [1,2]
     var result = raceGame.roll();
     expect(chicken1.racePosition).toBe(0);
+  });
+
+  it("should not move exploded chicken", function() {
+    raceGame.chickens = [chicken1]
+    raceGame.nextTurn();
+    fakeDie.nums = [1,1]
+    var result = raceGame.roll();
+    expect(chicken1.racePosition).toBe(0);
+  });
+
+  it("should skip exploded chicken", function() {
+    raceGame.nextTurn();
+    raceGame.chickens[1].hasExploded = true;
+    raceGame.nextTurn();
+    expect(raceGame.currentChicken.name).toBe("Jojo");
+  });
+
+  it("should not take next turn if all chickens exploded", function() {
+    chicken1.hasExploded = true;
+    raceGame.chickens = [chicken1]
+    var result = raceGame.allChickensHaveExploded();
+    expect(result).toBe(true);
+   
   });
 
   it("returns the last rolls", function() {

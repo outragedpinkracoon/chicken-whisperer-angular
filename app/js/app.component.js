@@ -49,6 +49,7 @@ System.register(['angular2/core', './chickens.component', './game/raceGame', './
                 function AppComponent(animalInfo) {
                     this.animalInfo = animalInfo;
                     this.game = gameInitializer_1.GameInitializer.generateGame("Val", "Chris");
+                    //keep for race game simulation
                     // this.raceGame = RaceGameInitializer.generateGame();
                     // this.raceGame.nextTurn();
                     this.info = animalInfo;
