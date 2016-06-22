@@ -1,5 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {CaptureGame} from './game/captureGame';
+import {AnimalInfo} from './models/animalInfo';
 
 @Component({
     selector: 'player-status',
@@ -9,6 +10,12 @@ import {CaptureGame} from './game/captureGame';
 
 export class PlayerStatusComponent {
   @Input('game') game: CaptureGame;
+
+  info: AnimalInfo;
+
+  constructor(private animalInfo:AnimalInfo){
+    this.info = animalInfo;
+  }
 }
 
 
