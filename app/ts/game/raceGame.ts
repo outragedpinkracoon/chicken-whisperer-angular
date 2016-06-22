@@ -12,6 +12,7 @@ export class RaceGame {
   finishLine: number;
   lastChicken: Chicken;
   chickens: Array<Chicken>;
+  gameOver: boolean;
 
   constructor(options) {
     this.chickenCounter = 0;
@@ -23,7 +24,9 @@ export class RaceGame {
     this.players = options.players;
     this.chickens = [];
     this.setupChickens(options.players, this.chickens);
-    
+    this.rollSequence = [[1,1],[2,2]]
+    this.rollIndex = 0;
+    this.gameOver = false;
   }
 
   setupChickens(players, chickens){
@@ -36,7 +39,7 @@ export class RaceGame {
   }
 
   updateCurrentChicken(){
-    if(this.allChickensHaveExploded()) return;
+    if(this.allChickensHaveExploded()) return false;
 
     if(this.chickenCounter == this.chickens.length) this.chickenCounter = 0;
 
@@ -55,16 +58,25 @@ export class RaceGame {
 
   allChickensHaveExploded(){
     var intact = this.chickens.filter(function(c) { return !c.hasExploded; });
-    return intact == 0;
+    if(intact == 0) {
+      this.gameOver = true;
+      return true;
+    }
+    return false;
   }
 
   nextTurn(){
-    if(this.winningChicken != undefined) return;
+    if(this.winningChicken != undefined || this.gameOver) return;
     this.updateCurrentChicken();
   }
 
   roll(){
+    if(this.gameOver) return;
     this.lastRolls = this.die.rollMultiple(2);
+    //keep for dice simulation
+    // this.lastRolls = this.rollSequence[this.rollIndex];
+    // this.rollIndex++;
+    // if(this.rollIndex > this.rollSequence.length - 1) this.rollIndex = 0;
     var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
     return result; 
   }

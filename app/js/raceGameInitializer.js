@@ -35,13 +35,9 @@ System.register(["./game/player", "./game/chicken", "./game/die", "./game/raceGa
                     player1.addChicken(chicken2);
                     player2.addChicken(chicken3);
                     player2.addChicken(chicken4);
-                    var die = new die_1.Die();
-                    die.roll = function () {
-                        return 1;
-                    };
                     var options = {
                         players: players,
-                        die: die,
+                        die: new die_1.Die(),
                         finishLine: 40
                     };
                     return new raceGame_1.RaceGame(options);

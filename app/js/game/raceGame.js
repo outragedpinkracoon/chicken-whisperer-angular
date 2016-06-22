@@ -17,6 +17,9 @@ System.register([], function(exports_1, context_1) {
                     this.players = options.players;
                     this.chickens = [];
                     this.setupChickens(options.players, this.chickens);
+                    this.rollSequence = [[1, 1], [2, 2]];
+                    this.rollIndex = 0;
+                    this.gameOver = false;
                 }
                 RaceGame.prototype.setupChickens = function (players, chickens) {
                     for (var _i = 0, players_1 = players; _i < players_1.length; _i++) {
@@ -30,7 +33,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.updateCurrentChicken = function () {
                     if (this.allChickensHaveExploded())
-                        return;
+                        return false;
                     if (this.chickenCounter == this.chickens.length)
                         this.chickenCounter = 0;
                     this.lastChicken = this.currentChicken;
@@ -44,15 +47,25 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.allChickensHaveExploded = function () {
                     var intact = this.chickens.filter(function (c) { return !c.hasExploded; });
-                    return intact == 0;
+                    if (intact == 0) {
+                        this.gameOver = true;
+                        return true;
+                    }
+                    return false;
                 };
                 RaceGame.prototype.nextTurn = function () {
-                    if (this.winningChicken != undefined)
+                    if (this.winningChicken != undefined || this.gameOver)
                         return;
                     this.updateCurrentChicken();
                 };
                 RaceGame.prototype.roll = function () {
+                    if (this.gameOver)
+                        return;
                     this.lastRolls = this.die.rollMultiple(2);
+                    //keep for dice simulation
+                    // this.lastRolls = this.rollSequence[this.rollIndex];
+                    // this.rollIndex++;
+                    // if(this.rollIndex > this.rollSequence.length - 1) this.rollIndex = 0;
                     var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
                     return result;
                 };

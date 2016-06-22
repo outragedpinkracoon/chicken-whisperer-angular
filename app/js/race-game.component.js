@@ -37,8 +37,17 @@ System.register(['angular2/core', './game/raceGame', './models/diceResultsContai
                     var success = this.game.roll();
                     this.diceResultsContainer.setupDiceResults(this.game.lastRolls, success);
                     this.game.nextTurn();
+                    if (this.game.lastChicken.hasExploded) {
+                        var audio = new Audio('/app/assets/sounds/boom.mp3');
+                        audio.play();
+                    }
                     this.moved = true;
                     this.checkWinSound();
+                };
+                RaceGameComponent.prototype.explosionImage = function (chicken) {
+                    if (chicken.id <= 3)
+                        return chicken.id;
+                    return 1;
                 };
                 RaceGameComponent.prototype.checkWinSound = function () {
                     if (this.game.isWon()) {

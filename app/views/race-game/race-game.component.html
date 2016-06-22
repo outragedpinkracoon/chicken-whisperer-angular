@@ -10,14 +10,16 @@
       <h3>{{chicken.name}}<img *ngIf="currentChicken(chicken)" src="app/assets/images/star.png" class="star" /></h3>
 
       <img *ngIf="!chicken.hasExploded" src="{{chicken.image}}"/>
-      <img *ngIf="chicken.hasExploded" src="/app/assets/images/explosions/1.jpeg"/>
+      
+      <img *ngIf="chicken.hasExploded" src="/app/assets/images/explosions/{{explosionImage(chicken)}}.png"/>
+
       <span class="speed">({{chicken.speed}})</span>
       </span>
     </li>
   </ul>
 
   <div class="race-item" id="info">
-    <div *ngIf="!game.isWon()">
+    <div *ngIf="!game.isWon() && !game.gameOver">
       <button id="roll" (click)="roll()">{{game.currentChicken.owner.name}} roll for {{game.currentChicken.name}}</button>
 
       <div *ngIf="moved" class="dice-box">
@@ -40,6 +42,11 @@
         <img src={{game.winningChicken.image}} />
       </p>
 
+    </div>
+
+    <div *ngIf="game.gameOver">
+      <p>Oh no! All the chickens have exploded! Sad!</p>
+      <p>Game over.</p>
     </div>
 
   </div>

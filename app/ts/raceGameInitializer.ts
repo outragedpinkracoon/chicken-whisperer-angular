@@ -24,14 +24,9 @@ export class RaceGameInitializer {
     player2.addChicken(chicken3);
     player2.addChicken(chicken4);
 
-    var die = new Die();
-    die.roll = function(){
-      return 1;
-    }
-
     var options = {
       players: players,
-      die: die,
+      die: new Die(),
       finishLine: 40
     }
 

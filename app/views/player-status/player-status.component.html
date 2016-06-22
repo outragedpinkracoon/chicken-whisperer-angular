@@ -1,3 +1,9 @@
 <div id="player-status">
   <h3 class="current-player">{{game.currentPlayer.name}} <span *ngIf="game.currentPlayer.isWhisperer && !game.gameOver()" class="whispering"> is the chicken whisperer!</span></h3>
+  <ul class="info">
+    <li>Roll even - gain capture dice.</li> 
+    <li>Roll odd - chickens run away</li>  
+    <li>Click on chicken to attempt capture</li>
+    <li>Roll chicken speed or higher to capture</li>
+  </ul>
 </div>
