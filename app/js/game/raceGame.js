@@ -29,12 +29,22 @@ System.register([], function(exports_1, context_1) {
                     }
                 };
                 RaceGame.prototype.updateCurrentChicken = function () {
-                    if (this.chickenCounter == this.chickens.length) {
+                    if (this.allChickensHaveExploded())
+                        return;
+                    if (this.chickenCounter == this.chickens.length)
                         this.chickenCounter = 0;
-                    }
                     this.lastChicken = this.currentChicken;
-                    this.currentChicken = this.chickens[this.chickenCounter];
+                    var nextChicken = this.chickens[this.chickenCounter];
+                    if (nextChicken.hasExploded) {
+                        this.chickenCounter++;
+                        return this.updateCurrentChicken();
+                    }
+                    this.currentChicken = nextChicken;
                     this.chickenCounter++;
+                };
+                RaceGame.prototype.allChickensHaveExploded = function () {
+                    var intact = this.chickens.filter(function (c) { return !c.hasExploded; });
+                    return intact == 0;
                 };
                 RaceGame.prototype.nextTurn = function () {
                     if (this.winningChicken != undefined)
@@ -43,7 +53,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.roll = function () {
                     this.lastRolls = this.die.rollMultiple(2);
-                    var result = (this.calculateSuccess()) ? this.success() : this.failure();
+                    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
                     return result;
                 };
                 RaceGame.prototype.calculateSuccess = function () {

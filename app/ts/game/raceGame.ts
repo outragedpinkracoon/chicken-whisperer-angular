@@ -1,4 +1,4 @@
-  import {Player} from './player'
+import {Player} from './player'
 import {Chicken} from './chicken'
 import {Die} from './die'
 
@@ -36,13 +36,26 @@ export class RaceGame {
   }
 
   updateCurrentChicken(){
-    if(this.chickenCounter == this.chickens.length)
-    {
-      this.chickenCounter = 0;
-    }
+    if(this.allChickensHaveExploded()) return;
+
+    if(this.chickenCounter == this.chickens.length) this.chickenCounter = 0;
+
     this.lastChicken = this.currentChicken;
-    this.currentChicken = this.chickens[this.chickenCounter];
+
+    var nextChicken = this.chickens[this.chickenCounter];
+
+    if(nextChicken.hasExploded) {
+      this.chickenCounter++;
+      return this.updateCurrentChicken();
+    }
+
+    this.currentChicken = nextChicken;
     this.chickenCounter++;
+  }
+
+  allChickensHaveExploded(){
+    var intact = this.chickens.filter(function(c) { return !c.hasExploded; });
+    return intact == 0;
   }
 
   nextTurn(){
@@ -52,7 +65,7 @@ export class RaceGame {
 
   roll(){
     this.lastRolls = this.die.rollMultiple(2);
-    var result = (this.calculateSuccess()) ? this.success() : this.failure();
+    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
     return result; 
   }
 

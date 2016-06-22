@@ -137,6 +137,29 @@ describe("Race Game", function() {
     expect(chicken1.racePosition).toBe(0);
   });
 
+  it("should not move exploded chicken", function() {
+    raceGame.chickens = [chicken1]
+    raceGame.nextTurn();
+    fakeDie.nums = [1,1]
+    var result = raceGame.roll();
+    expect(chicken1.racePosition).toBe(0);
+  });
+
+  it("should skip exploded chicken", function() {
+    raceGame.nextTurn();
+    raceGame.chickens[1].hasExploded = true;
+    raceGame.nextTurn();
+    expect(raceGame.currentChicken.name).toBe("Jojo");
+  });
+
+  it("should not take next turn if all chickens exploded", function() {
+    chicken1.hasExploded = true;
+    raceGame.chickens = [chicken1]
+    var result = raceGame.allChickensHaveExploded();
+    expect(result).toBe(true);
+   
+  });
+
   it("returns the last rolls", function() {
     raceGame.nextTurn();
     fakeDie.nums = [1,2]
