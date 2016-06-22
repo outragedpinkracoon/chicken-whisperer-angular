@@ -6,8 +6,7 @@ import { CaptureGame } from './game/captureGame';
 @Component({
   selector: 'start',
   templateUrl: 'app/views/start/start.component.html',
-  styleUrls:['app/views/start/start.component.css'],
-  directives: [RulesComponent]
+  styleUrls:['app/views/start/start.component.css']
 })
 
 export class StartComponent{

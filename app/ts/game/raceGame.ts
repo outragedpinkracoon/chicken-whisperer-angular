@@ -86,7 +86,7 @@ export class RaceGame {
   }
 
   rolledTooHigh(rollResult){
-    return rollResult + this.currentChicken.speed >= 22;
+    return rollResult - this.currentChicken.speed >= 22;
   }
 
   calculateSuccess(){

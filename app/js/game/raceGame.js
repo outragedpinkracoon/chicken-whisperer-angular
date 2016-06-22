@@ -73,7 +73,7 @@ System.register([], function(exports_1, context_1) {
                     return this.lastRolls[0] == 1 && this.lastRolls[1] == 1;
                 };
                 RaceGame.prototype.rolledTooHigh = function (rollResult) {
-                    return rollResult + this.currentChicken.speed >= 22;
+                    return rollResult - this.currentChicken.speed >= 22;
                 };
                 RaceGame.prototype.calculateSuccess = function () {
                     var reduced = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
