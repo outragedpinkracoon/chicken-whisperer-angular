@@ -13,6 +13,8 @@ export class RaceGame {
   lastChicken: Chicken;
   chickens: Array<Chicken>;
   gameOver: boolean;
+  rollSequence: Array<Array<number>>;
+  rollIndex: number;
 
   constructor(options) {
     this.chickenCounter = 0;
@@ -58,7 +60,7 @@ export class RaceGame {
 
   allChickensHaveExploded(){
     var intact = this.chickens.filter(function(c) { return !c.hasExploded; });
-    if(intact == 0) {
+    if(intact.length == 0) {
       this.gameOver = true;
       return true;
     }
@@ -77,7 +79,7 @@ export class RaceGame {
     this.lastRolls = this.rollSequence[this.rollIndex];
     this.rollIndex++;
     if(this.rollIndex > this.rollSequence.length - 1) this.rollIndex = 0;
-    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
+    var result = (this.calculateSuccess()) ? this.success() : this.failure();
     return result; 
   }
 

@@ -47,7 +47,7 @@ System.register([], function(exports_1, context_1) {
                 };
                 RaceGame.prototype.allChickensHaveExploded = function () {
                     var intact = this.chickens.filter(function (c) { return !c.hasExploded; });
-                    if (intact == 0) {
+                    if (intact.length == 0) {
                         this.gameOver = true;
                         return true;
                     }
@@ -67,7 +67,7 @@ System.register([], function(exports_1, context_1) {
                     this.rollIndex++;
                     if (this.rollIndex > this.rollSequence.length - 1)
                         this.rollIndex = 0;
-                    var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
+                    var result = (this.calculateSuccess()) ? this.success() : this.failure();
                     return result;
                 };
                 RaceGame.prototype.rolledDoubleOne = function () {

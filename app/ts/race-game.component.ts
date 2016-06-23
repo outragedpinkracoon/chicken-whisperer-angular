@@ -36,7 +36,7 @@ export class RaceGameComponent {
   }
 
   explosionImage(chicken){
-    if chicken.id <= 3 return chicken.id
+    if (chicken.id <= 3) return chicken.id;
     return 1;
   }
 
