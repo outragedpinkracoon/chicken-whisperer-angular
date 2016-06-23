@@ -11,11 +11,6 @@ import {AnimalInfo} from './models/animalInfo';
 
 export class PlayerStatusComponent {
   @Input('game') game: CaptureGame;
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> explosions
   info: AnimalInfo;
 
   constructor(private animalInfo:AnimalInfo){

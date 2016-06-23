@@ -72,11 +72,11 @@ export class RaceGame {
 
   roll(){
     if(this.gameOver) return;
-    this.lastRolls = this.die.rollMultiple(2);
+    //this.lastRolls = this.die.rollMultiple(2);
     //keep for dice simulation
-    // this.lastRolls = this.rollSequence[this.rollIndex];
-    // this.rollIndex++;
-    // if(this.rollIndex > this.rollSequence.length - 1) this.rollIndex = 0;
+    this.lastRolls = this.rollSequence[this.rollIndex];
+    this.rollIndex++;
+    if(this.rollIndex > this.rollSequence.length - 1) this.rollIndex = 0;
     var result = (this.calculateSuccess(this.lastRolls)) ? this.success() : this.failure();
     return result; 
   }
