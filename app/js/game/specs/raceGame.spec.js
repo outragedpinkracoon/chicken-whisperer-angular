@@ -45,6 +45,9 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                         },
                         rollAndReduce: function () {
                             return this.nums.reduce(function (prev, curr) { return prev + curr; });
+                        },
+                        rollRandom: function (max) {
+                            return 100;
                         }
                     };
                     var options = {
@@ -81,36 +84,6 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                     var result = raceGame.roll();
                     expect(result).toBe(true);
                 });
-                it("should return false on 1,1 roll", function () {
-                    fakeDie.nums = [1, 1];
-                    raceGame.nextTurn();
-                    var result = raceGame.roll();
-                    expect(result).toBe(false);
-                });
-                it("should explode chicken on 1,1 roll", function () {
-                    fakeDie.nums = [1, 1];
-                    raceGame.nextTurn();
-                    var result = raceGame.roll();
-                    expect(raceGame.currentChicken.hasExploded).toBe(true);
-                });
-                it("should explode chicken on roll that is too high", function () {
-                    fakeDie.nums = [11, 11];
-                    raceGame.nextTurn();
-                    var result = raceGame.roll();
-                    expect(raceGame.currentChicken.hasExploded).toBe(true);
-                });
-                it("should not explode chicken on 2,2 roll", function () {
-                    fakeDie.nums = [2, 2];
-                    raceGame.nextTurn();
-                    var result = raceGame.roll();
-                    expect(raceGame.currentChicken.hasExploded).toBe(false);
-                });
-                it("should not explode chicken on 1,3 roll", function () {
-                    fakeDie.nums = [1, 3];
-                    raceGame.nextTurn();
-                    var result = raceGame.roll();
-                    expect(raceGame.currentChicken.hasExploded).toBe(false);
-                });
                 it("should move chicken on even roll", function () {
                     raceGame.nextTurn();
                     var result = raceGame.roll();
@@ -131,7 +104,7 @@ System.register(["../player", "../chicken", "../raceGame"], function(exports_1, 
                 it("should not move exploded chicken", function () {
                     raceGame.chickens = [chicken1];
                     raceGame.nextTurn();
-                    fakeDie.nums = [1, 1];
+                    fakeDie.rollRandom = function () { return 1; };
                     var result = raceGame.roll();
                     expect(chicken1.racePosition).toBe(0);
                 });

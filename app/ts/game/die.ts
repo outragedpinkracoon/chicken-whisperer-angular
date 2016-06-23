@@ -19,6 +19,10 @@ export class Die {
     return results.reduce((prev,curr) => func(prev,curr));
   }
 
+  rollRandom(max) {
+    return Math.ceil(Math.random() * max);
+  }
+
   rollMultiple(times){
     var results = [];
     for(var i = 0; i < times; i++)

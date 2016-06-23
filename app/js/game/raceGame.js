@@ -17,7 +17,7 @@ System.register([], function(exports_1, context_1) {
                     this.players = options.players;
                     this.chickens = [];
                     this.setupChickens(options.players, this.chickens);
-                    this.rollSequence = [[1, 1], [2, 2]];
+                    // this.rollSequence = [150,2,100,1,50,1]
                     this.rollIndex = 0;
                     this.gameOver = false;
                 }
@@ -61,12 +61,7 @@ System.register([], function(exports_1, context_1) {
                 RaceGame.prototype.roll = function () {
                     if (this.gameOver)
                         return;
-                    //this.lastRolls = this.die.rollMultiple(2);
-                    //keep for dice simulation
-                    this.lastRolls = this.rollSequence[this.rollIndex];
-                    this.rollIndex++;
-                    if (this.rollIndex > this.rollSequence.length - 1)
-                        this.rollIndex = 0;
+                    this.lastRolls = this.die.rollMultiple(2);
                     var result = (this.calculateSuccess()) ? this.success() : this.failure();
                     return result;
                 };
@@ -76,12 +71,18 @@ System.register([], function(exports_1, context_1) {
                 RaceGame.prototype.rolledTooHigh = function (rollResult) {
                     return rollResult - this.currentChicken.speed >= 22;
                 };
+                RaceGame.prototype.chickenHasExploded = function () {
+                    var result = this.die.rollRandom(100);
+                    //keep for testing
+                    // var result = this.rollSequence.pop();
+                    return result <= this.currentChicken.speed;
+                };
                 RaceGame.prototype.calculateSuccess = function () {
-                    var reduced = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
-                    if (this.rolledDoubleOne() || this.rolledTooHigh(reduced)) {
+                    if (this.chickenHasExploded()) {
                         this.currentChicken.explode();
                         return false;
                     }
+                    var reduced = this.lastRolls.reduce(function (prev, curr) { return prev + curr; });
                     return reduced % 2 == 0;
                 };
                 RaceGame.prototype.success = function () {

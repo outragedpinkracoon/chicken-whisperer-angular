@@ -13,7 +13,7 @@ export class RaceGame {
   lastChicken: Chicken;
   chickens: Array<Chicken>;
   gameOver: boolean;
-  rollSequence: Array<Array<number>>;
+  rollSequence: Array<number>;
   rollIndex: number;
 
   constructor(options) {
@@ -26,7 +26,7 @@ export class RaceGame {
     this.players = options.players;
     this.chickens = [];
     this.setupChickens(options.players, this.chickens);
-    this.rollSequence = [[1,1],[2,2]]
+    // this.rollSequence = [150,2,100,1,50,1]
     this.rollIndex = 0;
     this.gameOver = false;
   }
@@ -74,11 +74,7 @@ export class RaceGame {
 
   roll(){
     if(this.gameOver) return;
-    //this.lastRolls = this.die.rollMultiple(2);
-    //keep for dice simulation
-    this.lastRolls = this.rollSequence[this.rollIndex];
-    this.rollIndex++;
-    if(this.rollIndex > this.rollSequence.length - 1) this.rollIndex = 0;
+    this.lastRolls = this.die.rollMultiple(2);
     var result = (this.calculateSuccess()) ? this.success() : this.failure();
     return result; 
   }
@@ -91,13 +87,20 @@ export class RaceGame {
     return rollResult - this.currentChicken.speed >= 22;
   }
 
-  calculateSuccess(){
-    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr);
+  chickenHasExploded(){
+    var result = this.die.rollRandom(100);
+    //keep for testing
+    // var result = this.rollSequence.pop();
+    return result <= this.currentChicken.speed;
+  }
 
-    if(this.rolledDoubleOne() || this.rolledTooHigh(reduced)) {
+  calculateSuccess(){
+    if(this.chickenHasExploded()) {
       this.currentChicken.explode();
       return false;
     }
+
+    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr);
   
     return reduced % 2 == 0
   }

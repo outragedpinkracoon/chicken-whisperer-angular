@@ -20,6 +20,9 @@ System.register([], function(exports_1, context_1) {
                     var results = this.rollMultiple(times);
                     return results.reduce(function (prev, curr) { return func(prev, curr); });
                 };
+                Die.prototype.rollRandom = function (max) {
+                    return Math.ceil(Math.random() * max);
+                };
                 Die.prototype.rollMultiple = function (times) {
                     var results = [];
                     for (var i = 0; i < times; i++) {
