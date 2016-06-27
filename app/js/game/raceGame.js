@@ -17,7 +17,7 @@ System.register([], function(exports_1, context_1) {
                     this.players = options.players;
                     this.chickens = [];
                     this.setupChickens(options.players, this.chickens);
-                    // this.rollSequence = [150,2,100,1,50,1]
+                    this.rollSequence = [150, 2, 100, 1, 50, 1];
                     this.rollIndex = 0;
                     this.gameOver = false;
                 }
@@ -74,7 +74,7 @@ System.register([], function(exports_1, context_1) {
                 RaceGame.prototype.chickenHasExploded = function () {
                     var result = this.die.rollRandom(100);
                     //keep for testing
-                    // var result = this.rollSequence.pop();
+                    //var result = this.rollSequence.pop();
                     return result <= this.currentChicken.speed;
                 };
                 RaceGame.prototype.calculateSuccess = function () {

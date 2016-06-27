@@ -26,7 +26,7 @@ export class RaceGame {
     this.players = options.players;
     this.chickens = [];
     this.setupChickens(options.players, this.chickens);
-    // this.rollSequence = [150,2,100,1,50,1]
+    this.rollSequence = [150,2,100,1,50,1]
     this.rollIndex = 0;
     this.gameOver = false;
   }
@@ -90,7 +90,7 @@ export class RaceGame {
   chickenHasExploded(){
     var result = this.die.rollRandom(100);
     //keep for testing
-    // var result = this.rollSequence.pop();
+    //var result = this.rollSequence.pop();
     return result <= this.currentChicken.speed;
   }
 
