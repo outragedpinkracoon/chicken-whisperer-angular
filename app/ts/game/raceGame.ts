@@ -12,6 +12,9 @@ export class RaceGame {
   finishLine: number;
   lastChicken: Chicken;
   chickens: Array<Chicken>;
+  gameOver: boolean;
+  rollSequence: Array<number>;
+  rollIndex: number;
 
   constructor(options) {
     this.chickenCounter = 0;
@@ -23,7 +26,9 @@ export class RaceGame {
     this.players = options.players;
     this.chickens = [];
     this.setupChickens(options.players, this.chickens);
-    
+    this.rollSequence = [150,2,100,1,50,1]
+    this.rollIndex = 0;
+    this.gameOver = false;
   }
 
   setupChickens(players, chickens){
@@ -36,25 +41,68 @@ export class RaceGame {
   }
 
   updateCurrentChicken(){
-    if(this.chickenCounter == this.chickens.length)
-    {
-      this.chickenCounter = 0;
-    }
+    if(this.allChickensHaveExploded()) return false;
+
+    if(this.chickenCounter == this.chickens.length) this.chickenCounter = 0;
+
     this.lastChicken = this.currentChicken;
-    this.currentChicken = this.chickens[this.chickenCounter];
+
+    var nextChicken = this.chickens[this.chickenCounter];
+
+    if(nextChicken.hasExploded) {
+      this.chickenCounter++;
+      return this.updateCurrentChicken();
+    }
+
+    this.currentChicken = nextChicken;
     this.chickenCounter++;
   }
 
+  allChickensHaveExploded(){
+    var intact = this.chickens.filter(function(c) { return !c.hasExploded; });
+    if(intact.length == 0) {
+      this.gameOver = true;
+      return true;
+    }
+    return false;
+  }
+
   nextTurn(){
-    if(this.winningChicken != undefined) return;
+    if(this.winningChicken != undefined || this.gameOver) return;
     this.updateCurrentChicken();
   }
 
   roll(){
+    if(this.gameOver) return;
     this.lastRolls = this.die.rollMultiple(2);
-    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr)
-    var result = (reduced % 2 == 0) ? this.success() : this.failure();
+    var result = (this.calculateSuccess()) ? this.success() : this.failure();
     return result; 
+  }
+
+  rolledDoubleOne(){
+    return this.lastRolls[0] == 1 && this.lastRolls[1] == 1;
+  }
+
+  rolledTooHigh(rollResult){
+    return rollResult - this.currentChicken.speed >= 22;
+  }
+
+  chickenHasExploded(){
+    var result = this.die.rollRandom(100);
+    //keep for testing
+    //var result = this.rollSequence.pop();
+    return result <= this.currentChicken.speed;
+  }
+
+  calculateSuccess(){
+    if(this.chickenHasExploded()) {
+      this.currentChicken.explode();
+      return false;
+    }
+
+    var reduced = this.lastRolls.reduce((prev,curr) => prev +curr);
+  
+    return reduced % 2 == 0
   }
 
   success(){

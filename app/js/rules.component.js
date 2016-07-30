@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', './game/captureGame', './models/animalInfo'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,24 +10,37 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, captureGame_1, animalInfo_1;
     var RulesComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (captureGame_1_1) {
+                captureGame_1 = captureGame_1_1;
+            },
+            function (animalInfo_1_1) {
+                animalInfo_1 = animalInfo_1_1;
             }],
         execute: function() {
             RulesComponent = (function () {
-                function RulesComponent() {
+                function RulesComponent(animalInfo) {
+                    this.animalInfo = animalInfo;
+                    this.info = animalInfo;
                 }
+                __decorate([
+                    core_1.Input('game'), 
+                    __metadata('design:type', captureGame_1.CaptureGame)
+                ], RulesComponent.prototype, "game", void 0);
                 RulesComponent = __decorate([
                     core_1.Component({
                         selector: 'rules',
                         templateUrl: 'app/views/rules/rules.component.html',
-                        styleUrls: ['app/views/rules/rules.component.css']
+                        styleUrls: ['app/views/rules/rules.component.css'],
+                        providers: [animalInfo_1.AnimalInfo]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [animalInfo_1.AnimalInfo])
                 ], RulesComponent);
                 return RulesComponent;
             }());

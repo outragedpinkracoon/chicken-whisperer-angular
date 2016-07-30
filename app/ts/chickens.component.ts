@@ -23,23 +23,28 @@ export class ChickensComponent {
 
   capture(chicken: Chicken) {
     if (this.captureNotPossible(chicken)) return;
+
     this.chicken = chicken;
     var success= this.game.attemptCapture(chicken);
+
     this.diceResultsContainer.setupDiceResults(this.game.lastCaptureRolls(), success);
+   
+    this.playSound(success);
+  }
+
+  playSound(success){
     var sound;
     if(success) {
       sound = new Audio("/app/assets/sounds/cluck.wav");
     }
-    else
-    {
+    else {
       sound = new Audio("/app/assets/sounds/gobble.mp3");
     }
     sound.play();
   }
 
   captureNotPossible(chicken){
-    var captureDice = this.game.approach.captureDice;
-    return captureDice == 0 || this.game.turnFinished || chicken.scare == 0
+    return this.game.captureNotPossible(chicken);
   }
 
   showFailure(){
@@ -51,9 +56,7 @@ export class ChickensComponent {
   }
 
   capturePossible(chicken){
-    var dice = this.game.approach.captureDice;
-    var possibleMax = dice * 6;
-    return possibleMax >= chicken.speed && chicken.scare > 0;
+    return this.game.capturePossible(chicken);
   }
 }
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>{{title}}</h1>
+  <h1>{{info.capped(info.singular(game.animalSet))}} Whisperer</h1>
   <div *ngIf="game.started == true">
   <p *ngIf="game.isWon()">{{game.winner.name}} has all the chickens and wins!</p>
     <div class="chicken-container" *ngIf="!game.gameOver()">
@@ -18,5 +18,7 @@
   </div>
 
   <start *ngIf="!game.started" [game]="game"></start>
+
+  <rules [game]="game"></rules>
 </div>
 

@@ -17,6 +17,7 @@ export class CaptureGame {
   turnFinished: boolean;
   chickensToCapture: number;
   winner: Player;
+  animalSet: string;
   turnOfEndPhase: number;
 
   constructor(options) {
@@ -29,6 +30,7 @@ export class CaptureGame {
      this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
      this.winner = undefined;
      this.turnOfEndPhase = 0;
+     this.animalSet = "chickens";
   }
 
   reset(){
@@ -56,6 +58,12 @@ export class CaptureGame {
     this.started = true;
   }
 
+  setAnimals(pen, animalSet){
+    this.chickenPen = pen;
+    this.approach.chickenPen = pen;
+    this.animalSet = animalSet;
+  }
+
   updateCurrentPlayer() {
     if(this.currentPlayer === undefined) {
       this.currentPlayer = this.players[0];
@@ -63,12 +71,23 @@ export class CaptureGame {
     }
     this.currentPlayer = this.rotate(this.players)[0];
   }
+
+  captureNotPossible(chicken){
+    var captureDice = this.approach.captureDice;
+    return captureDice == 0 || this.turnFinished || chicken.scare == 0
+  }
   
   rotate(array){
     if(array.length === 0) return array;
     var item = array.shift();
     array.push(item);
     return array
+  }
+
+  capturePossible(chicken){
+    var dice = this.approach.captureDice;
+    var possibleMax = dice * 6;
+    return possibleMax >= chicken.speed && chicken.scare > 0;
   }
 
   playerCount() {
@@ -83,10 +102,6 @@ export class CaptureGame {
     }
     this.updateCurrentPlayer();
     this.reset();
-  }
-
-  endPhaseChickenShit(){
-
   }
 
   gameOver(){

@@ -32,7 +32,7 @@ describe("Race Game", function() {
     player2.addChicken(chicken4);
 
     fakeDie = {
-      nums: [1,1],
+      nums: [1,3],
       roll: function(){
          return this.nums.pop();
       },
@@ -41,6 +41,9 @@ describe("Race Game", function() {
       },
       rollAndReduce: function(){
         return this.nums.reduce((prev,curr) => prev + curr);
+      },
+      rollRandom: function(max){
+        return 100;
       }
     }
 
@@ -105,6 +108,29 @@ describe("Race Game", function() {
     fakeDie.nums = [1,2]
     var result = raceGame.roll();
     expect(chicken1.racePosition).toBe(0);
+  });
+
+  it("should not move exploded chicken", function() {
+    raceGame.chickens = [chicken1]
+    raceGame.nextTurn();
+    fakeDie.rollRandom = function(){ return 1; }
+    var result = raceGame.roll();
+    expect(chicken1.racePosition).toBe(0);
+  });
+
+  it("should skip exploded chicken", function() {
+    raceGame.nextTurn();
+    raceGame.chickens[1].hasExploded = true;
+    raceGame.nextTurn();
+    expect(raceGame.currentChicken.name).toBe("Jojo");
+  });
+
+  it("should not take next turn if all chickens exploded", function() {
+    chicken1.hasExploded = true;
+    raceGame.chickens = [chicken1]
+    var result = raceGame.allChickensHaveExploded();
+    expect(result).toBe(true);
+   
   });
 
   it("returns the last rolls", function() {

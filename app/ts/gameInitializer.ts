@@ -15,7 +15,7 @@ export class GameInitializer {
     var player2 = new Player(player2Name);
 
     var players = [player1, player2];
-    
+
     var chickenPen = new ChickenPen([
       new Chicken({ "id": 1, "name": "Popo", "speed": 14, "maxScare": 1,
         "image":"/app/assets/images/chickens/1.png" }),

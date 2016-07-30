@@ -20,6 +20,7 @@ System.register(["./player"], function(exports_1, context_1) {
                     this.chickensToCapture = this.chickenPen.chickens.slice(0).length;
                     this.winner = undefined;
                     this.turnOfEndPhase = 0;
+                    this.animalSet = "chickens";
                 }
                 CaptureGame.prototype.reset = function () {
                     if (this.turnOfEndPhase <= 1) {
@@ -45,6 +46,11 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                     this.started = true;
                 };
+                CaptureGame.prototype.setAnimals = function (pen, animalSet) {
+                    this.chickenPen = pen;
+                    this.approach.chickenPen = pen;
+                    this.animalSet = animalSet;
+                };
                 CaptureGame.prototype.updateCurrentPlayer = function () {
                     if (this.currentPlayer === undefined) {
                         this.currentPlayer = this.players[0];
@@ -52,12 +58,21 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                     this.currentPlayer = this.rotate(this.players)[0];
                 };
+                CaptureGame.prototype.captureNotPossible = function (chicken) {
+                    var captureDice = this.approach.captureDice;
+                    return captureDice == 0 || this.turnFinished || chicken.scare == 0;
+                };
                 CaptureGame.prototype.rotate = function (array) {
                     if (array.length === 0)
                         return array;
                     var item = array.shift();
                     array.push(item);
                     return array;
+                };
+                CaptureGame.prototype.capturePossible = function (chicken) {
+                    var dice = this.approach.captureDice;
+                    var possibleMax = dice * 6;
+                    return possibleMax >= chicken.speed && chicken.scare > 0;
                 };
                 CaptureGame.prototype.playerCount = function () {
                     return this.players.length;
@@ -71,8 +86,6 @@ System.register(["./player"], function(exports_1, context_1) {
                     }
                     this.updateCurrentPlayer();
                     this.reset();
-                };
-                CaptureGame.prototype.endPhaseChickenShit = function () {
                 };
                 CaptureGame.prototype.gameOver = function () {
                     return this.chickenPen.count() == 0;
