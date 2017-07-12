@@ -4,6 +4,8 @@ Originally a physical board game designed by myself and Jay Chetty, this is the 
 
 ![Screenshot](screenshot.png?raw=true "Screenshot")
 
+http://awake-yarn.surge.sh/
+
 ## Rules
 
 ### Approaching
